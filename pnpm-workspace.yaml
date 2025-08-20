@@ -1,4 +1,0 @@
-packages:
-  - 'packages/**'
-  - '!packages/create/template-js'
-  - '!packages/create/template-ts'
