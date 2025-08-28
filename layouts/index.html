@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="homepage-container">
+    <!-- 왼쪽: 목차 -->
+    <nav class="sidebar">
+        <h2>목차</h2>
+        <ul>
+            {{ with site.GetPage "developer" }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+
+            <li>운동
+                <ul>
+                    {{ with site.GetPage "tennis" }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </li>
+
+            <li>평가
+                <ul>
+                    {{ with site.GetPage "book" }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                    {{ with site.GetPage "movie" }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 가운데: 사진 -->
+    <main class="hero-image">
+        <img src="/images/g.jpg" alt="메인 사진">
+    </main>
+</div>
+
+<style>
+.homepage-container { display: flex; gap: 2rem; padding: 2rem; flex-wrap: wrap; }
+.sidebar { flex: 1; min-width: 200px; }
+.sidebar h2 { margin-bottom: 1rem; }
+.sidebar ul { list-style: none; padding-left: 0; }
+.sidebar ul ul { padding-left: 1rem; }
+.hero-image { flex: 2; text-align: center; min-width: 300px; }
+.hero-image img { max-width: 100%; border-radius: 8px; }
+</style>
+</body>
+</html>
