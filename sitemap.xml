@@ -2,17 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-    <lastmod>2025-08-20T13:52:34+09:00</lastmod>
+    <loc>https://ijjeon1203.github.io/</loc>
+    <lastmod>2025-08-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/my-first-post/</loc>
-    <lastmod>2025-08-20T13:52:34+09:00</lastmod>
+    <loc>https://ijjeon1203.github.io/developer/</loc>
+    <lastmod>2025-08-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2025-08-20T13:52:34+09:00</lastmod>
+    <loc>https://ijjeon1203.github.io/movie/</loc>
+    <lastmod>2025-08-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://ijjeon1203.github.io/book/</loc>
+    <lastmod>2025-08-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://ijjeon1203.github.io/tennis/</loc>
+    <lastmod>2025-08-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ijjeon1203.github.io/categories/</loc>
+  </url><url>
+    <loc>https://ijjeon1203.github.io/tags/</loc>
   </url>
 </urlset>
