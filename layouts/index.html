@@ -28,11 +28,18 @@
                 </ul>
             </li>
         </ul>
+
     </nav>
 
     <!-- 가운데: 메인 이미지 -->
     <main class="hero-image" style="flex:2; text-align:center; min-width:300px;">
         <img src="/images/g.jpg" alt="메인 사진" style="max-width:100%; border-radius:8px;">
+        <img src="/images/dog.png" alt="메인 사진" style="max-width:100%; border-radius:8px;">
+
+        
+    <!-- GitHub 레포 목록 삽입 -->
+    {{ partial "github-repos.html" . }}
+
     </main>
 
 </div>
