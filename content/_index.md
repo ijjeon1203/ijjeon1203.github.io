@@ -1,5 +1,5 @@
 ---
-title: "홈"
+title: "My Blog"
 draft: false
 ---
 
