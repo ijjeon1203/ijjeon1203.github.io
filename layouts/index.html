@@ -1,46 +1,57 @@
 {{ define "main" }}
-<div class="custom-homepage" style="display:flex; gap:2rem; flex-wrap:wrap;">
+<link rel="stylesheet" href="/css/mainpage.css">
 
-    <!-- 왼쪽: 목차 -->
-    <nav class="sidebar" style="flex:1; min-width:200px;">
-        <h2>목차</h2>
-        <ul>
-            {{ with site.GetPage "developer" }}
+<div class="custom-homepage">
+
+  <!-- 왼쪽: 목차 -->
+  <nav class="sidebar">
+    <button class="toc-toggle" onclick="toggleTOC()">목차 보기/숨기기</button>
+    <div class="toc-content">
+      <h2>목차</h2>
+      <ul>
+        {{ with site.GetPage "developer" }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+
+        <li>운동
+          <ul>
+            {{ with site.GetPage "tennis" }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
             {{ end }}
+          </ul>
+        </li>
 
-            <li>운동
-                <ul>
-                    {{ with site.GetPage "tennis" }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                    {{ end }}
-                </ul>
-            </li>
+        <li>평가
+          <ul>
+            {{ with site.GetPage "book" }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+            {{ with site.GetPage "movie" }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </li>
+      </ul>
 
-            <li>평가
-                <ul>
-                    {{ with site.GetPage "book" }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                    {{ end }}
-                    {{ with site.GetPage "movie" }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                    {{ end }}
-                </ul>
-            </li>
-        </ul>
 
-    </nav>
+    </div>
+  </nav>
 
-    <!-- 가운데: 메인 이미지 -->
-    <main class="hero-image" style="flex:2; text-align:center; min-width:300px;">
-        <img src="/images/g.jpg" alt="메인 사진" style="max-width:100%; border-radius:8px;">
-        <img src="/images/dog.png" alt="메인 사진" style="max-width:100%; border-radius:8px;">
-
-        
-    <!-- GitHub 레포 목록 삽입 -->
-    {{ partial "github-repos.html" . }}
-
-    </main>
+  <!-- 가운데: 메인 이미지 -->
+  <div class="hero-image">
+    <img src="/images/g.jpg" alt="메인 사진">
+    <img src="/images/dog.png" alt="추가 이미지">      <!-- GitHub 레포 목록 -->
+      <div class="github-repos">
+        {{ partial "github-repos.html" . }}
+      </div>
+  </div>
 
 </div>
+
+<script>
+function toggleTOC() {
+  const toc = document.querySelector('.toc-content');
+  toc.style.display = (toc.style.display === 'block') ? 'none' : 'block';
+}
+</script>
 {{ end }}
