@@ -1,4 +1,29 @@
 theme = "ananke"
 baseURL = "https://ijjeon1203.github.io/"
 languageCode = "en-us"
-title = "Blog"
+title = " "
+
+[params]
+headerBackground = "/images/g.jpg"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "2"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    identifier = "blog"
+    name = "3"
+    url = "/post/"
+    weight = 3
+  [[menu.main]]
+    identifier = "contact"
+    name = "4"
+    url = "/contact/"
+    weight = 4
