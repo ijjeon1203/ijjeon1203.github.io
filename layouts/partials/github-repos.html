@@ -1,0 +1,47 @@
+<div id="repo-list">
+  <h2>GitHub Repositories</h2>
+  <ul></ul>
+</div>
+
+<script>
+const username = "ijjeon1203"; // 여기 본인 GitHub ID로 바꾸기
+fetch(`https://api.github.com/users/${username}/repos`)
+  .then(res => res.json())
+  .then(repos => {
+    const ul = document.querySelector("#repo-list ul");
+    repos.forEach(repo => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = repo.html_url;
+      a.textContent = repo.name + (repo.description ? ` - ${repo.description}` : '');
+      a.target = "_blank";
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+  })
+  .catch(err => console.error(err));
+</script>
+
+<style>
+#repo-list {
+  margin-top: 2rem;
+}
+
+#repo-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#repo-list ul li {
+  margin-bottom: 0.5rem;
+}
+
+#repo-list ul li a {
+  text-decoration: none;
+  color: #1a0dab;
+}
+
+#repo-list ul li a:hover {
+  text-decoration: underline;
+}
+</style>
