@@ -182,3 +182,6 @@ hugo server --buildDrafts
 일부 테마는 SCSS 빌드가 필요하므로 Hugo Extended 필요
 
 테마 내부 static/과 layouts/ 파일이 새 테마 스타일로 덮어쓰기 됨
+
+
+public 폴더는 빌드 산출물 
