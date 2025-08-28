@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Blog on Blog</title>
+    <link>https://ijjeon1203.github.io/</link>
+    <description>Recent content in My Blog on Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ijjeon1203.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>개발자</title>
+      <link>https://ijjeon1203.github.io/developer/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ijjeon1203.github.io/developer/</guid>
+      <description>&lt;p&gt;안녕하세요, 개발자 블로그입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>영화</title>
+      <link>https://ijjeon1203.github.io/movie/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ijjeon1203.github.io/movie/</guid>
+      <description>&lt;p&gt;영화 평가 글&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>책</title>
+      <link>https://ijjeon1203.github.io/book/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ijjeon1203.github.io/book/</guid>
+      <description>&lt;p&gt;책 평가 글&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>테니스</title>
+      <link>https://ijjeon1203.github.io/tennis/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ijjeon1203.github.io/tennis/</guid>
+      <description>&lt;p&gt;운동 관련 글: 테니스&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
