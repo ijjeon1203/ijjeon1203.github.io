@@ -1,6 +1,6 @@
 ---
-title: "My Blog"
-draft: false
+title: "JJunney's Blog"
+draft: true
+featured_image: "/images/gohugo-default-sample-hero-image.jpg"
 ---
 
-홈페이지 테스트
