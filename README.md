@@ -191,3 +191,22 @@ public 폴더는 빌드 산출물
 
 즉, hugo.toml 대신 config.toml로 두어도 Hugo는 똑같이 읽습니다.
 단, 동시에 두 개 이상 있으면 우선순위가 있어서 hugo.toml이 config.toml보다 먼저 읽힙
+
+
+
+# push 방법 
+
+hugo -D 
+- publish 폴더 생성 
+
+cd publish
+- 생성된 publish 폴더로 접근
+
+git add .
+- 전체 사항 add
+
+git commit -m "msg"
+- 커밋하고 메시지 등록 
+
+git push --set-upstream origin master
+- 저장소 올리기
