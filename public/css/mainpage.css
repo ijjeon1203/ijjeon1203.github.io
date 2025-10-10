@@ -1,0 +1,94 @@
+/* 레이아웃 */
+.custom-homepage {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* 목차 */
+.sidebar {
+    flex: 1;
+    min-width: 200px;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+}
+
+.sidebar h2 {
+    margin-bottom: 1rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul ul li {
+    margin-bottom: 0.3rem;
+    padding-left: 1rem;
+}
+
+/* GitHub 레포 */
+.github-repos {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+/* 토글 숨김 처리 */
+.toc-content {
+    display: none;
+}
+
+.toc-toggle {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+/* 메인 이미지 */
+.hero-image {
+    flex: 2;
+    text-align: center;
+    min-width: 300px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* body 전체 높이 확보, footer와 간격 제거 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, ul, p {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-homepage {
+  margin-bottom: 0;  /* 메인 컨텐츠 끝 */
+  padding-bottom: 0;
+}
+
+footer {
+  margin-top: 0;
+  padding-top: 0;
+}
