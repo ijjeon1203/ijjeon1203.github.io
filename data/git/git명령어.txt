@@ -1,0 +1,31 @@
+git branch생성
+
+git checkout -b test
+
+git push origin test
+이렇게되면 local과 저장소의 remote branch가 생성됩니다.
+생성된 branch는 각자가 local 및 저장소 기준이므로, local의 branch를 retmoe branch와 연동하는 작업을 수행하는 것이 좋습니다.
+branch 연동은 다음을 통해 수행합니
+
+
+git branch --set-upstream-to origin/feature-01
+
+branch 삭제하기
+작업이 끝나고, 기준 branch로 pull request가 종료되어서 merge까지 완료 되었다면, 해당 branch를 삭제 해줍니다.
+merge 작업이 끝난 local의 feature-01 branch를 삭제하기 위해서는, 다른 branch로 checkout 후, feature-01 branch를 삭제해 주어야 합니다.
+여기서는 develop branch로 이동해서 feature-01 branch를 삭제해 보겠습니다.
+
+git checkout develop
+git branch --delete feature-01
+그러나, 작업된 사항이나 commit 한 이력이 남아있는 경우, 해당 command로 branch가 삭제되지 않는 경우가 있습니다.
+이러한 경우에는 강제로 branch를 삭제할 수 있습니다.
+
+git branch -D feature-01
+-D(대문자) option을 통해서 local branch를 강제로 삭제할 수 있습니다.
+
+이 경우, local의 branch는 삭제 되었으나, remote branch는 삭제가 아직 되지 않았습니다. remote branch를 삭제하기 위해서는, 다음과 같은 command를 수행합니다.
+
+git push origin :feature-01
+해당 command를 통해서 원격 remote branch를 삭제할 수 있습니다.
+
+
