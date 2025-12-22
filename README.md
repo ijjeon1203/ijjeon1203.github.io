@@ -13,6 +13,11 @@
 | `themes/ananke/`  | Ananke 테마 파일들                         |
 | `config.toml`     | 사이트 설정 파일                             |
 
+data 대신 contents에 넣어야함 
+
+
+
+
 # Setting
 ## 테마 설치 (예: Ananke 테마)
 git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
