@@ -1,5 +1,0 @@
-https://gbsb.tistory.com/10
-
-
-https://git-scm.com/book/en/v2
-git 명령어 다 나와 있음
