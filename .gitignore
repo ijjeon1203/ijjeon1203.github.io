@@ -1,79 +1,18 @@
-.DS_Store
-node_modules
-.svelte-kit
-/package
-.env
-.env.*
-!.env.example
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-.sveltepress
-!packages/theme-default/.sveltepress
-dist
-.vscode
-.history
-node-jiti
-
-# Node modules
-node_modules/
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS 관련 파일
+# OS & System
 .DS_Store
 Thumbs.db
-
-# 빌드 결과
-/dist
-/build
-
-# 환경 설정 파일
-.env
-.env.local
-.env.*.local
-
-# SvelteKit / Vite 관련
-.vite
-.svelte-kit
-
-# TypeScript
-*.tsbuildinfo
-
-# Editor/IDE
-.vscode/
-.idea/
-*.swp
-# Hugo build output
-/public/
-/resources/_gen/
-
-# OS & Editor temp files
-.DS_Store
-Thumbs.db
-
-# IDE / Editor files
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
-
-# Logs & backups
 *.log
-*.bak
+
+# Hugo 특정 (핵심)
+/public/            # 빌드 결과물 (배포 시 생성)
+/resources/_gen/    # 이미지 처리 및 자산 캐시
+.hugo_cache/        # Hugo 캐시 데이터
+
+# IDE & Editor
+.vscode/
+.idea/
 *.swp
+
+# (혹시 모를) 백업 및 임시 파일
+*.bak
 *.tmp
-
-# Node-related (if you use npm for theme assets)
-node_modules/
-package-lock.json
-yarn.lock
-
-# Hugo cache (optional, if you use --gc or caching)
-.hugo_cache/
-
-# Build / temp artifacts
-*.tar.gz
-*.zip
