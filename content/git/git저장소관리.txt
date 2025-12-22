@@ -1,5 +1,0 @@
-SLAM
-Atmega
-C++/C
-JAva
-NetProgramming
