@@ -1,6 +1,0 @@
-리모트 저장소 삭제
-git remote rm 이름
-리모트 브랜치 삭제
-git push <remote-name> --delete <branch-name>
-git remote rename 원래 바꿀 이름
-

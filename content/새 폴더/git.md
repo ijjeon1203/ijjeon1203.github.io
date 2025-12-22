@@ -1,39 +1,6 @@
-
-
-240529
-
-git
-
-  
-
-작업순서
-
-  
-
-현재 폴더확인
-
-빈폴더 생성
-
-폴더 이동
-
-로컬 저장소 생성
-
-폴더 생성확인
-
-폴더 내부 확인
-
-  
-  
-
-인스타 출처
-
----
-
 # devops
 
 git
-
-  
 
 base command
 
@@ -43,72 +10,8 @@ pull request
 
 branching
 
-  
-
 merging
 
-  
-  
-
-git 배우기
-
-프로그래밍 언어 배우기
-
-- python
-
-- go
-
-- java script
-
-리눅스 배우기
-
-shell commands
-
-file system
-
-netwroking
-
-virtualization
-
-posix
-
-  
-
-네트워크 및 보안
-
-osi model
-
-dns
-
-http
-
-ssh
-
-security tools
-
-  
-
-server manage ment
-
-- reverse proxy
-
-- cashing server
-
-- firewall
-
-- web serer
-
-  
-
-컨테이너 배우기
-
-- running containers
-
-- docker files
-
-- networking
-
-- docker-compose
 
   
   
@@ -118,15 +21,10 @@ server manage ment
 # 필요한 것
 
 - branch 나누기
-
 - 당장 시험
-
 - 전체 데이터 베이스
-
 - 프로그램별 branch? 어차피 폴더가 다르니 각각 관리하지 않나
-
 - merging
-
 - 브랜치개념을 폴더 개념으로 바꿔서 합치기
 
   
@@ -134,21 +32,6 @@ server manage ment
 가장 최신 받아오기 pull request
 
   
-
-리눅스 배우기
-
-shell commands
-
-file system
-
-netwroking
-
-virtualization
-
-posix
-
-  
-
 ---
 
 ```markdown
