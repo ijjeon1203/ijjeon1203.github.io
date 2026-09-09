@@ -1,0 +1,64 @@
+baseURL = "https://yourname.github.io/"
+languageCode = "ko-kr"
+title = "Your Name — PKB & Portfolio"
+theme = "PaperMod"
+
+# 콘텐츠 조직 방식
+[permalinks]
+  requirements = "/requirements/:slug/"
+  projects = "/projects/:slug/"
+  posts = "/posts/:year/:month/:slug/"
+
+# 요구사항 문서용 커스텀 taxonomy (front matter의 module/type/priority/status/tags 매핑)
+[taxonomies]
+  tag        = "tags"
+  category   = "categories"
+  module     = "modules"
+  type       = "types"
+  priority   = "priorities"
+  status     = "statuses"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]   # JSON 출력 -> 클라이언트 사이드 검색(Fuse.js 등)에 사용
+
+[params]
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  defaultTheme = "auto"
+
+  [params.homeInfoParams]
+    Title = "Hi 👋"
+    Content = "임베디드 개발 기록, 요구사항/의사결정 관리, 포트폴리오"
+
+[[menu.main]]
+  name = "Requirements"
+  url = "/requirements/"
+  weight = 10
+
+[[menu.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 20
+
+[[menu.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 30
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 40
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true   # HTML 태그(체크박스 등) 렌더링 허용
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
