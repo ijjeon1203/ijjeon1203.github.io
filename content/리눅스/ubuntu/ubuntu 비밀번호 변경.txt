@@ -1,0 +1,4 @@
+ubuntu 비밀번호 변경
+
+sudo passwd 
+
