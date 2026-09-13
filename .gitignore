@@ -7,6 +7,7 @@ Thumbs.db
 /public/            # 빌드 결과물 (배포 시 생성)
 /resources/_gen/    # 이미지 처리 및 자산 캐시
 .hugo_cache/        # Hugo 캐시 데이터
+.hugo_build.lock
 
 # IDE & Editor
 .vscode/
