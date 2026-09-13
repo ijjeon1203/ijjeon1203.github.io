@@ -1,170 +1,86 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title> </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.
-1. Xfce
-
-
-경량화된 데스크탑 환경으로, 서버 리소스를 많이 사용하지 않으면서도 기본적인 GUI를 제공합니다.
-
-
-설치 명령:
-sudo apt update
-sudo apt install xfce4 xfce4-goodies
-
-
-특징:
-
-가벼운 리소스 사용
-직관적인 인터페이스
-다양한 애플리케이션과 잘 통합됨
-
-
-
-2. LXQt
-
-
-또 다른 경량 데스크탑 환경으로, LXDE의 후속 버전입니다. 매우 적은 시스템 자원을 사용하면서도 직관적인 GUI를 제공합니다.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gui · JJunney&#39;s Blog</title>
+    <meta name="description" content="리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하 …">
+    <meta name="theme-color" content="#0a0a0b">
     <meta name="generator" content="Hugo 0.166.0">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/">
     
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
-
-
-
-
-    
-
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/">
-    
-
-    <meta property="og:url" content="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/">
-	<meta property="og:site_name" content=" ">
-	<meta property="og:title" content=" ">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/site.css"><meta property="og:url" content="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/">
+	<meta property="og:site_name" content="JJunney&#39;s Blog">
+	<meta property="og:title" content="JJunney&#39;s Blog">
 	<meta property="og:description" content="리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.
 1. Xfce 경량화된 데스크탑 환경으로, 서버 리소스를 많이 사용하지 않으면서도 기본적인 GUI를 제공합니다.
 설치 명령:
 sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 가벼운 리소스 사용 직관적인 인터페이스 다양한 애플리케이션과 잘 통합됨 2. LXQt 또 다른 경량 데스크탑 환경으로, LXDE의 후속 버전입니다. 매우 적은 시스템 자원을 사용하면서도 직관적인 GUI를 제공합니다.">
-	<meta property="og:locale" content="en_us">
+	<meta property="og:locale" content="ko_kr">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="리눅스">
 
-	<meta itemprop="name" content=" ">
-	<meta itemprop="description" content="리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.
-1. Xfce 경량화된 데스크탑 환경으로, 서버 리소스를 많이 사용하지 않으면서도 기본적인 GUI를 제공합니다.
-설치 명령:
-sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
-가벼운 리소스 사용 직관적인 인터페이스 다양한 애플리케이션과 잘 통합됨 2. LXQt 또 다른 경량 데스크탑 환경으로, LXDE의 후속 버전입니다. 매우 적은 시스템 자원을 사용하면서도 직관적인 GUI를 제공합니다.">
-	<meta itemprop="wordCount" content="546">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content=" ">
+	<meta name="twitter:title" content="JJunney&#39;s Blog">
 	<meta name="twitter:description" content="리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.
 1. Xfce 경량화된 데스크탑 환경으로, 서버 리소스를 많이 사용하지 않으면서도 기본적인 GUI를 제공합니다.
 설치 명령:
 sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 가벼운 리소스 사용 직관적인 인터페이스 다양한 애플리케이션과 잘 통합됨 2. LXQt 또 다른 경량 데스크탑 환경으로, LXDE의 후속 버전입니다. 매우 적은 시스템 자원을 사용하면서도 직관적인 GUI를 제공합니다.">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-         
-      
+</head>
+  <body class="">
+    <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">JJunney&#39;s Blog</span>
     </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
-              2
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
-              3
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
-              4
-            </a>
-          </li>
-          
-        </ul>
-      
-      <div class="ananke-socials"></div>
-
-    </div>
+    <nav class="nav" aria-label="섹션">
+      <a class="nav-link" href="/mlflow/">MLFlow</a>
+      <a class="nav-link" href="/python/">Python</a>
+      <a class="nav-link" href="/web/">Web</a>
+      <a class="nav-link" href="/yocto/">Yocto</a>
+      <a class="nav-link" href="/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/">개발일지</a>
+      <a class="nav-link is-active" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+      <a class="nav-link" href="/%EC%97%AC%ED%96%89/">여행</a>
+      <a class="nav-link" href="/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/">정규표현식</a>
+    </nav>
+    <a class="icon-link" href="https://github.com/ijjeon1203" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+    </a>
   </div>
+</header>
+
+    <main id="main">
+      
+<article class="article">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="/">Home</a>
+  <span aria-hidden="true">/</span><a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
 </nav>
 
+      <h1 class="page-title">gui</h1>
+      <div class="article-meta">
+        
+        <span>3분 읽기</span>
+        
+      </div>
     </div>
   </header>
 
-
-
-    <main class="pb7" role="main">
-      
-  
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        리눅스s
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1"></h1>
-      
-      
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.</p>
+  <div class="container article-layout has-toc">
+    <div class="prose">
+      <p>리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.</p>
 <h3 id="1-xfce">1. <strong>Xfce</strong></h3>
 <ul>
 <li>
@@ -172,7 +88,7 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
 </span></span><span style="display:flex;"><span>sudo apt install xfce4 xfce4-goodies
 </span></span></code></pre></div></li>
 <li>
@@ -191,7 +107,7 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
 </span></span><span style="display:flex;"><span>sudo apt install lxqt
 </span></span></code></pre></div></li>
 <li>
@@ -209,7 +125,7 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
 </span></span><span style="display:flex;"><span>sudo apt install mate-desktop-environment
 </span></span></code></pre></div></li>
 <li>
@@ -227,7 +143,7 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
 </span></span><span style="display:flex;"><span>sudo apt install ubuntu-gnome-desktop
 </span></span></code></pre></div></li>
 <li>
@@ -246,7 +162,7 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
 </span></span><span style="display:flex;"><span>sudo apt install kde-plasma-desktop
 </span></span></code></pre></div></li>
 <li>
@@ -264,7 +180,7 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install cockpit
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install cockpit
 </span></span><span style="display:flex;"><span>sudo systemctl start cockpit
 </span></span><span style="display:flex;"><span>sudo systemctl enable cockpit
 </span></span></code></pre></div></li>
@@ -284,11 +200,11 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 <li>
 <p><strong>VNC 설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install tightvncserver
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install tightvncserver
 </span></span></code></pre></div></li>
 <li>
 <p><strong>RDP 설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install xrdp
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install xrdp
 </span></span></code></pre></div></li>
 <li>
 <p><strong>특징</strong>:</p>
@@ -330,33 +246,50 @@ sudo apt update sudo apt install xfce4 xfce4-goodies 특징:
 </li>
 </ol>
 <p>서버에서 GUI를 사용할 때는, 시스템 자원을 절약하고 필요한 기능만 활성화하는 것이 중요합니다. <code>xrdp</code>를 설치하여 원격으로 GUI를 사용할 수도 있습니다.</p>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
+
     </div>
+    
+    <aside class="toc" aria-label="목차">
+      <p class="toc-title">On this page</p>
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-xfce">1. <strong>Xfce</strong></a></li>
+            <li><a href="#2-lxqt">2. <strong>LXQt</strong></a></li>
+            <li><a href="#3-mate">3. <strong>MATE</strong></a></li>
+            <li><a href="#4-gnome">4. <strong>GNOME</strong></a></li>
+            <li><a href="#5-kde-plasma">5. <strong>KDE Plasma</strong></a></li>
+            <li><a href="#6-web-based-gui-예-cockpit">6. <strong>Web-based GUI (예: Cockpit)</strong></a></li>
+            <li><a href="#7-vnc--xrdp">7. <strong>VNC / Xrdp</strong></a></li>
+            <li><a href="#결론">결론:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    
+  </div>
 
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
-  </article>
+  
+  <nav class="container pager" aria-label="이전/다음 글">
+    <a class="pager-link" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui-%EC%84%A4%EC%B9%98/"><span>&larr; 이전 글</span><strong>gui 설치</strong></a>
+    <a class="pager-link is-next" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/nmcli/"><span>다음 글 &rarr;</span><strong>nmcli</strong></a>
+  </nav>
+  
+</article>
 
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
-      &copy; 2025 
-    </a>
-    <div>
-      <a href="https://twitter.com/username">Twitter</a>
-      <a href="https://github.com/username">GitHub</a>
+    <footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; 2026 JJunney&#39;s Blog <span class="dot-sep">/</span> Built with Hugo</p>
+    <div class="footer-links">
+      <a href="https://github.com/ijjeon1203" target="_blank" rel="noopener">GitHub</a>
+      <a href="/index.xml">RSS</a>
     </div>
   </div>
 </footer>

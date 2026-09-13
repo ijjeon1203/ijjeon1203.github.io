@@ -1,178 +1,83 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title> </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="A.I 모델
-AI 모델 = 구조 (코드) &#43; 가중치 (학습 결과물, .pt 파일)
-개념적으로는 가중치가 모델의 일부
-lr (Learning Rate, 학습률)
-→ AI가 한 번 실수했을 때 얼마나 크게 수정하는지
-→ 너무 크면: 왔다갔다 불안정
-→ 너무 작으면: 학습이 너무 느림
-→ 보통 0.0001 ~ 0.01 사이
-
-arch (Architecture, 신경망 구조)
-→ AI 뇌의 크기/구조
-→ pi=[128,128]: 판단하는 뇌 (2층, 각 128개 뉴런)
-→ vf=[256,256]: 평가하는 뇌 (2층, 각 256개 뉴런)
-→ 크면 더 복잡한 판단 가능, 학습은 느려짐
-
-reward (보상)
-→ AI가 잘했는지 못했는지 점수
-→ 미사일이 표적 추적 잘하면 &#43;점수
-→ FOV 이탈하면 -점수
-→ 이 점수를 최대화하도록 학습
-
-PyTorch에서 이 둘을 따로 저장하는 이유
-# 구조만 저장 (코드에 이미 있으니 보통 생략)
-# 가중치만 저장 (용량 작고 구조랑 분리 관리)
-torch.save(model.state_dict(), &#34;weights.pt&#34;)  # 가중치만
-
-# vs 통째로 저장 (구조&#43;가중치 한번에)
-torch.save(model, &#34;full_model.pt&#34;)  # 전체
-
-torch.save(model, &hellip;)) : 가중치가 모델에 포함된 형태
-실무에서는 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례
-
-필요성
-코드와 가중치 매칭
-
-어떤 코드로 만들었는지 확인하기 위해서 필요
-모델 구조(hidden layer 크기, layer 수 등)가 가중치 파일이랑 정확히 일치해야 불러올 수 있음
-코드가 바뀌면 옛날 가중치를 못 씀
-
-구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례
-가중치 파일은 수백MB가 될 수 있어서 git에 올리면 레포가 뚱뚱">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>overview · JJunney&#39;s Blog</title>
+    <meta name="description" content="A.I 모델 AI 모델 = 구조 (코드) &#43; 가중치 (학습 결과물, .pt 파일) 개념적으로는 가중치가 모델의 일부
+lr (Learning Rate, 학습률) → AI가 한 번 실수했을 때 얼마나 크게 수정하는지 → 너무 크면: 왔다갔다 불안정 → 너무 작으면: 학습이 너무 느림 → 보 …">
+    <meta name="theme-color" content="#0a0a0b">
     <meta name="generator" content="Hugo 0.166.0">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ijjeon1203.github.io/mlflow/overview/">
     
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
-
-
-
-
-    
-
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="https://ijjeon1203.github.io/mlflow/overview/">
-    
-
-    <meta property="og:url" content="https://ijjeon1203.github.io/mlflow/overview/">
-	<meta property="og:site_name" content=" ">
-	<meta property="og:title" content=" ">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/site.css"><meta property="og:url" content="https://ijjeon1203.github.io/mlflow/overview/">
+	<meta property="og:site_name" content="JJunney&#39;s Blog">
+	<meta property="og:title" content="JJunney&#39;s Blog">
 	<meta property="og:description" content="A.I 모델 AI 모델 = 구조 (코드) &#43; 가중치 (학습 결과물, .pt 파일) 개념적으로는 가중치가 모델의 일부
 lr (Learning Rate, 학습률) → AI가 한 번 실수했을 때 얼마나 크게 수정하는지 → 너무 크면: 왔다갔다 불안정 → 너무 작으면: 학습이 너무 느림 → 보통 0.0001 ~ 0.01 사이 arch (Architecture, 신경망 구조) → AI 뇌의 크기/구조 → pi=[128,128]: 판단하는 뇌 (2층, 각 128개 뉴런) → vf=[256,256]: 평가하는 뇌 (2층, 각 256개 뉴런) → 크면 더 복잡한 판단 가능, 학습은 느려짐 reward (보상) → AI가 잘했는지 못했는지 점수 → 미사일이 표적 추적 잘하면 &#43;점수 → FOV 이탈하면 -점수 → 이 점수를 최대화하도록 학습 PyTorch에서 이 둘을 따로 저장하는 이유 # 구조만 저장 (코드에 이미 있으니 보통 생략) # 가중치만 저장 (용량 작고 구조랑 분리 관리) torch.save(model.state_dict(), &#34;weights.pt&#34;) # 가중치만 # vs 통째로 저장 (구조&#43;가중치 한번에) torch.save(model, &#34;full_model.pt&#34;) # 전체 torch.save(model, …)) : 가중치가 모델에 포함된 형태 실무에서는 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례 필요성 코드와 가중치 매칭 어떤 코드로 만들었는지 확인하기 위해서 필요 모델 구조(hidden layer 크기, layer 수 등)가 가중치 파일이랑 정확히 일치해야 불러올 수 있음 코드가 바뀌면 옛날 가중치를 못 씀 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례 가중치 파일은 수백MB가 될 수 있어서 git에 올리면 레포가 뚱뚱">
-	<meta property="og:locale" content="en_us">
+	<meta property="og:locale" content="ko_kr">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="mlflow">
+		<meta property="article:published_time" content="2026-09-09T17:09:09+09:00">
+		<meta property="article:modified_time" content="2026-09-09T17:09:09+09:00">
 
-	<meta itemprop="name" content=" ">
-	<meta itemprop="description" content="A.I 모델 AI 모델 = 구조 (코드) &#43; 가중치 (학습 결과물, .pt 파일) 개념적으로는 가중치가 모델의 일부
-lr (Learning Rate, 학습률) → AI가 한 번 실수했을 때 얼마나 크게 수정하는지 → 너무 크면: 왔다갔다 불안정 → 너무 작으면: 학습이 너무 느림 → 보통 0.0001 ~ 0.01 사이 arch (Architecture, 신경망 구조) → AI 뇌의 크기/구조 → pi=[128,128]: 판단하는 뇌 (2층, 각 128개 뉴런) → vf=[256,256]: 평가하는 뇌 (2층, 각 256개 뉴런) → 크면 더 복잡한 판단 가능, 학습은 느려짐 reward (보상) → AI가 잘했는지 못했는지 점수 → 미사일이 표적 추적 잘하면 &#43;점수 → FOV 이탈하면 -점수 → 이 점수를 최대화하도록 학습 PyTorch에서 이 둘을 따로 저장하는 이유 # 구조만 저장 (코드에 이미 있으니 보통 생략) # 가중치만 저장 (용량 작고 구조랑 분리 관리) torch.save(model.state_dict(), &#34;weights.pt&#34;) # 가중치만 # vs 통째로 저장 (구조&#43;가중치 한번에) torch.save(model, &#34;full_model.pt&#34;) # 전체 torch.save(model, …)) : 가중치가 모델에 포함된 형태 실무에서는 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례 필요성 코드와 가중치 매칭 어떤 코드로 만들었는지 확인하기 위해서 필요 모델 구조(hidden layer 크기, layer 수 등)가 가중치 파일이랑 정확히 일치해야 불러올 수 있음 코드가 바뀌면 옛날 가중치를 못 씀 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례 가중치 파일은 수백MB가 될 수 있어서 git에 올리면 레포가 뚱뚱">
-	<meta itemprop="wordCount" content="842">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content=" ">
+	<meta name="twitter:title" content="JJunney&#39;s Blog">
 	<meta name="twitter:description" content="A.I 모델 AI 모델 = 구조 (코드) &#43; 가중치 (학습 결과물, .pt 파일) 개념적으로는 가중치가 모델의 일부
 lr (Learning Rate, 학습률) → AI가 한 번 실수했을 때 얼마나 크게 수정하는지 → 너무 크면: 왔다갔다 불안정 → 너무 작으면: 학습이 너무 느림 → 보통 0.0001 ~ 0.01 사이 arch (Architecture, 신경망 구조) → AI 뇌의 크기/구조 → pi=[128,128]: 판단하는 뇌 (2층, 각 128개 뉴런) → vf=[256,256]: 평가하는 뇌 (2층, 각 256개 뉴런) → 크면 더 복잡한 판단 가능, 학습은 느려짐 reward (보상) → AI가 잘했는지 못했는지 점수 → 미사일이 표적 추적 잘하면 &#43;점수 → FOV 이탈하면 -점수 → 이 점수를 최대화하도록 학습 PyTorch에서 이 둘을 따로 저장하는 이유 # 구조만 저장 (코드에 이미 있으니 보통 생략) # 가중치만 저장 (용량 작고 구조랑 분리 관리) torch.save(model.state_dict(), &#34;weights.pt&#34;) # 가중치만 # vs 통째로 저장 (구조&#43;가중치 한번에) torch.save(model, &#34;full_model.pt&#34;) # 전체 torch.save(model, …)) : 가중치가 모델에 포함된 형태 실무에서는 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례 필요성 코드와 가중치 매칭 어떤 코드로 만들었는지 확인하기 위해서 필요 모델 구조(hidden layer 크기, layer 수 등)가 가중치 파일이랑 정확히 일치해야 불러올 수 있음 코드가 바뀌면 옛날 가중치를 못 씀 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례 가중치 파일은 수백MB가 될 수 있어서 git에 올리면 레포가 뚱뚱">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-         
-      
+</head>
+  <body class="">
+    <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">JJunney&#39;s Blog</span>
     </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
-              2
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
-              3
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
-              4
-            </a>
-          </li>
-          
-        </ul>
-      
-      <div class="ananke-socials"></div>
-
-    </div>
+    <nav class="nav" aria-label="섹션">
+      <a class="nav-link is-active" href="/mlflow/">MLFlow</a>
+      <a class="nav-link" href="/python/">Python</a>
+      <a class="nav-link" href="/web/">Web</a>
+      <a class="nav-link" href="/yocto/">Yocto</a>
+      <a class="nav-link" href="/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/">개발일지</a>
+      <a class="nav-link" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+      <a class="nav-link" href="/%EC%97%AC%ED%96%89/">여행</a>
+      <a class="nav-link" href="/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/">정규표현식</a>
+    </nav>
+    <a class="icon-link" href="https://github.com/ijjeon1203" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+    </a>
   </div>
+</header>
+
+    <main id="main">
+      
+<article class="article">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="/">Home</a>
+  <span aria-hidden="true">/</span><a href="/mlflow/">MLFlow</a>
 </nav>
 
+      <h1 class="page-title">overview</h1>
+      <div class="article-meta">
+        <time datetime="2026-09-09">2026.09.09</time>
+        <span>4분 읽기</span>
+        
+      </div>
     </div>
   </header>
 
-
-
-    <main class="pb7" role="main">
-      
-  
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        MLFlows
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1"></h1>
-      
-      
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="ai-모델">A.I 모델</h1>
+  <div class="container article-layout has-toc">
+    <div class="prose">
+      <h1 id="ai-모델">A.I 모델</h1>
 <p>AI 모델 = 구조 (코드) + 가중치 (학습 결과물, .pt 파일)
 개념적으로는 가중치가 모델의 일부</p>
 <h1 id="lr-learning-rate-학습률">lr (Learning Rate, 학습률)</h1>
@@ -288,13 +193,13 @@ ep_5000.pt   → 조금 배움
 ep_10000.pt  → 꽤 잘 맞춤
 ep_50000.pt  → 최종 (reward 높음)
 </code></pre><h2 id="나중에-불러올-때">나중에 불러올 때:</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> PolicyNet()  <span style="color:#75715e"># 구조만 정의</span>
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>load_state_dict(torch<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;ep_50000.pt&#34;</span>))  <span style="color:#75715e"># 가중치 주입</span>
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>eval()
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#ff7b72;font-weight:bold">=</span> PolicyNet()  <span style="color:#8b949e;font-style:italic"># 구조만 정의</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#ff7b72;font-weight:bold">.</span>load_state_dict(torch<span style="color:#ff7b72;font-weight:bold">.</span>load(<span style="color:#a5d6ff">&#34;ep_50000.pt&#34;</span>))  <span style="color:#8b949e;font-style:italic"># 가중치 주입</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#ff7b72;font-weight:bold">.</span>eval()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이제 학습 없이 바로 게임 실행 가능</span>
-</span></span><span style="display:flex;"><span>state <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
-</span></span><span style="display:flex;"><span>action <span style="color:#f92672">=</span> model(state)  <span style="color:#75715e"># AI가 바로 판단</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 이제 학습 없이 바로 게임 실행 가능</span>
+</span></span><span style="display:flex;"><span>state <span style="color:#ff7b72;font-weight:bold">=</span> env<span style="color:#ff7b72;font-weight:bold">.</span>reset()
+</span></span><span style="display:flex;"><span>action <span style="color:#ff7b72;font-weight:bold">=</span> model(state)  <span style="color:#8b949e;font-style:italic"># AI가 바로 판단</span>
 </span></span></code></pre></div><hr>
 <p><strong>그래서 &ldquo;코드와 가중치 매칭&quot;이 왜 중요한가</strong></p>
 <pre tabindex="0"><code>❌ 위험한 상황
@@ -383,33 +288,72 @@ policy.py
 HuggingFace Hub  →  가중치 (.pt) 버전 관리, 무료 대용량
 MLflow (로컬)    →  실험 결과 추적, commit hash 연결
 </code></pre><p>HuggingFace Hub는 모델/가중치 저장 특화라 무료로 대용량 쓸 수 있고, <code>huggingface_hub</code> 라이브러리로 업로드/다운로드 자동화도 쉬워요.</p>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
+
     </div>
+    
+    <aside class="toc" aria-label="목차">
+      <p class="toc-title">On this page</p>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ai-모델">A.I 모델</a></li>
+    <li><a href="#lr-learning-rate-학습률">lr (Learning Rate, 학습률)</a></li>
+    <li><a href="#arch-architecture-신경망-구조">arch (Architecture, 신경망 구조)</a></li>
+    <li><a href="#reward-보상">reward (보상)</a></li>
+    <li><a href="#pytorch에서-이-둘을-따로-저장하는-이유">PyTorch에서 이 둘을 따로 저장하는 이유</a></li>
+    <li><a href="#필요성">필요성</a></li>
+    <li><a href="#코드와-가중치-매칭">코드와 가중치 매칭</a></li>
+    <li><a href="#목표">목표</a></li>
+    <li><a href="#측정된-데이터">측정된 데이터</a></li>
+    <li><a href="#가중치-파일-pt">가중치 파일 (.pt)</a></li>
+    <li><a href="#관리-방법">관리 방법</a>
+      <ul>
+        <li><a href="#환경-설정--결과물을-코드와-묶는-게-핵심">환경 설정 + 결과물을 코드와 묶는 게 핵심</a></li>
+      </ul>
+    </li>
+    <li><a href="#개요">개요</a>
+      <ul>
+        <li><a href="#mlflow">MLflow</a></li>
+        <li><a href="#주요-기능">주요 기능</a></li>
+      </ul>
+    </li>
+    <li><a href="#가중치-파일--학습-결과물"><strong>가중치 파일 = 학습 결과물</strong></a>
+      <ul>
+        <li><a href="#학습-중-체크포인트-저장">학습 중 체크포인트 저장</a></li>
+        <li><a href="#나중에-불러올-때">나중에 불러올 때:</a></li>
+      </ul>
+    </li>
+    <li><a href="#가중치-파일">가중치 파일</a></li>
+    <li><a href="#gitlab-lfs-large-file-storage">GitLab LFS (Large File Storage)</a>
+      <ul>
+        <li><a href="#구조">구조</a></li>
+      </ul>
+    </li>
+    <li><a href="#gitlab--nas">gitlab + nas</a>
+      <ul>
+        <li><a href="#비교">비교</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    
+  </div>
 
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
-  </article>
+  
+  <nav class="container pager" aria-label="이전/다음 글">
+    <a class="pager-link" href="/mlflow/notes/260702/"><span>&larr; 이전 글</span><strong>260702</strong></a>
+    <a class="pager-link is-next" href="/mlflow/structure/"><span>다음 글 &rarr;</span><strong>structure</strong></a>
+  </nav>
+  
+</article>
 
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
-      &copy; 2025 
-    </a>
-    <div>
-      <a href="https://twitter.com/username">Twitter</a>
-      <a href="https://github.com/username">GitHub</a>
+    <footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; 2026 JJunney&#39;s Blog <span class="dot-sep">/</span> Built with Hugo</p>
+    <div class="footer-links">
+      <a href="https://github.com/ijjeon1203" target="_blank" rel="noopener">GitHub</a>
+      <a href="/index.xml">RSS</a>
     </div>
   </div>
 </footer>

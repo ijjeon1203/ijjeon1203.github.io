@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-sub">{{ len .Pages }} terms</p>
+  </div>
+</section>
+<div class="container list-body">
+  <div class="chip-row">
+    {{ range .Pages.ByTitle }}<a class="chip" href="{{ .RelPermalink }}">{{ .LinkTitle }} <em>{{ len .Pages }}</em></a>{{ end }}
+  </div>
+</div>
+{{ end }}

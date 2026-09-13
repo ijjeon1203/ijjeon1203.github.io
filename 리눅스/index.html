@@ -1,530 +1,555 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title> </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>리눅스 · JJunney&#39;s Blog</title>
+    <meta name="description" content="리눅스 · 임베디드 · MLOps · Python 공부 기록">
+    <meta name="theme-color" content="#0a0a0b">
     <meta name="generator" content="Hugo 0.166.0">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/">
+    <link rel="alternate" type="application/rss+xml" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/index.xml" title="JJunney&#39;s Blog">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
-
-
-
-
-    
-
-
-    
-      
-
-    
-
-    
-    
-      <link href="/%EB%A6%AC%EB%88%85%EC%8A%A4/index.xml" rel="alternate" type="application/rss+xml" title=" " />
-      <link href="/%EB%A6%AC%EB%88%85%EC%8A%A4/index.xml" rel="feed" type="application/rss+xml" title=" " />
-      
-    
-
-    
-      <link rel="canonical" href="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/">
-    
-
-    <meta property="og:url" content="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/">
-	<meta property="og:site_name" content=" ">
-	<meta property="og:title" content="리눅스s">
-	<meta property="og:locale" content="en_us">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/site.css"><meta property="og:url" content="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/">
+	<meta property="og:site_name" content="JJunney&#39;s Blog">
+	<meta property="og:title" content="리눅스">
+	<meta property="og:description" content="리눅스 · 임베디드 · MLOps · Python 공부 기록">
+	<meta property="og:locale" content="ko_kr">
 	<meta property="og:type" content="website">
 
-	<meta itemprop="name" content="리눅스s">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="리눅스s">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-         
-      
+	<meta name="twitter:title" content="리눅스">
+	<meta name="twitter:description" content="리눅스 · 임베디드 · MLOps · Python 공부 기록">
+</head>
+  <body class="">
+    <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">JJunney&#39;s Blog</span>
     </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
-              2
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
-              3
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
-              4
-            </a>
-          </li>
-          
-        </ul>
-      
-      <div class="ananke-socials"></div>
-
-    </div>
+    <nav class="nav" aria-label="섹션">
+      <a class="nav-link" href="/mlflow/">MLFlow</a>
+      <a class="nav-link" href="/python/">Python</a>
+      <a class="nav-link" href="/web/">Web</a>
+      <a class="nav-link" href="/yocto/">Yocto</a>
+      <a class="nav-link" href="/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/">개발일지</a>
+      <a class="nav-link is-active" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+      <a class="nav-link" href="/%EC%97%AC%ED%96%89/">여행</a>
+      <a class="nav-link" href="/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/">정규표현식</a>
+    </nav>
+    <a class="icon-link" href="https://github.com/ijjeon1203" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+    </a>
   </div>
+</header>
+
+    <main id="main">
+      
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="/">Home</a>
 </nav>
 
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          리눅스s
-        </h1>
-        
-      </div>
-    </div>
-  </header>
+    <h1 class="page-title">리눅스</h1>
+    <p class="page-sub">37 posts</p>
+  </div>
+</section>
 
+<div class="container list-body">
+  
 
-    <main class="pb7" role="main">
-      
-  <article class="pa3 pa4-ns nested-copy-line-height">
-    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
-    <section class="flex-ns mt5 flex-wrap justify-around">
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/chat_session_summary/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="chatgpt-대화-요약">ChatGPT 대화 요약</h1>
-<p>이 세션에서는 다음 내용을 다루었습니다.</p>
-<ul>
-<li>Ubuntu에서 .bz2 파일 처리</li>
-<li>CIFS(SMB) 네트워크 공유 마운트</li>
-<li>mount: bad usage 원인</li>
-<li>특수문자(#, $, !)가 포함된 비밀번호 처리</li>
-<li><code>Unknown parameter ' vers'</code> 원인 (쉼표 뒤 공백)</li>
-<li><code>STATUS_LOGON_FAILURE</code> 분석</li>
-<li><code>mount error(13): Permission denied</code> 원인</li>
-<li><code>dmesg</code> 로그 해석</li>
-<li><code>smbclient</code>를 이용한 인증 확인 방법</li>
-</ul>
-<p>주요 결론: - <code>STATUS_LOGON_FAILURE</code>는 인증(아이디/비밀번호/권한) 실패를
-의미합니다. - <code>vers</code> 앞 공백은 제거해야 합니다. - 비밀번호에 <code>!</code>, <code>#</code>,
-<code>$</code>가 포함된 경우 credentials 파일 사용을 권장합니다.</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/chat_session_summary/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  
+
+  <div class="post-list">
+    <a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%99%95%EC%9D%B8/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">확인</h3>
+    <p class="post-row-summary">du 디렉토리 크기 계산할 때 파일 수가 많으면 엄청 오래 걸려요. Yocto 빌드 디렉토리는 파일이 수백만 개라 10~20분 걸리는 경우도 있음 Docker 실행 중이어도 du 속도랑은 무관해요. …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%8B%A4%ED%96%89/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">프로그램실행</h3>
+    <p class="post-row-summary">꼭 테라텀을 3개 띄울 필요는 없습니다.
+상황에 따라 방법이 다릅니다.
+1. 백그라운드 실행 (&amp;) ./program1 &amp; ./program2 &amp; ./program3 &amp; 이렇게 하면 한 터미널에서 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%A0%88%EC%A0%84%EB%AA%A8%EB%93%9C/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">절전모드</h3>
+    <p class="post-row-summary">digitron@digitron-virtual-machine:~/Desktop$ xfconf-query -c xfce4-power-manager -lv …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%9E%84%EB%B2%A0%EB%94%94%EB%93%9C-%EB%A6%AC%EB%88%85%EC%8A%A4/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">임베디드 리눅스</h3>
+    <p class="post-row-summary">임베디드 Linux 개발
+요소 하드웨어: 하드웨어 플랫폼은 임베디드 Linux가 작동하는 곳입니다. 이러한 하드웨어 플랫폼은 처리 능력, 메모리, 스토리지 및 인터페이스와 같은 필수 기능을 제공하여 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%95%EC%B6%95/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">압축</h3>
+    <p class="post-row-summary">.tgz 또는 .tar.gz 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.
+Linux tar -tzf 파일명.tgz 예시:
+tar -tzf backup.tgz 자세한 정보 포함 tar …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">아키텍처</h3>
+    <p class="post-row-summary">아키텍처 ALSA
+Advanced Linux Sound Architecture 고급 리눅스 사운드 아키텍처
+리눅스에서 사운드 카드 드라이버를 위한 API을 제공하는 커널 모듈. Pulseaudio …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%82%AD%EC%A0%9C/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">삭제</h3>
+    <p class="post-row-summary"># 홈 디렉토리 휴지통 du -sh ~/.local/share/Trash/ rm -rf ~/.local/share/Trash/* # 혹시 /mnt/work 마운트 포인트에도 휴지통이 있을 수 있어요 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%82%AC%EC%9A%A9%EB%B2%95/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">사용법</h3>
+    <p class="post-row-summary">사용기 np로 저장하기 전에 취소했으니 저장 안된것?</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%B6%80%ED%8C%85/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">부팅</h3>
+    <p class="post-row-summary">11:21:38.644 11:21:58.993
+전체 20초 정도 uboot 300mm kernal demon service
+uboot cpu rom , bootrom
+bootrom
+sd,emmc, …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/%EC%8B%A4%ED%96%89/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">실행</h3>
+    <p class="post-row-summary">&amp; 이렇게 하면 한 터미널에서 여러 프로세스가 동시에 실행
+1번작업 백그라운드로
+bg %1 전면(Foreground)으로
+fg %1 kill %1
+kill 12345
+pid로</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/ip/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">ip</h3>
+    <p class="post-row-summary">linux ip 수동 설정방법 sudo nmcli connection modify “Wired connection 2” ipv4.addresses 192.168.1.29/24 ipv4.method …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">명령어</h3>
+    <p class="post-row-summary">Linux 명령어 명령어 sudo : super user uo
+sudo su - 루트 사용자 변경 ubuntu 비밀번호 변경
+sudo passwd
+사진캡처 단축키 Ubuntu에서는 예전 윈도우용과 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%A2%85%EB%A5%98/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">리눅스종류</h3>
+    <p class="post-row-summary">https://servermon.tistory.com/347
+데비안 자유컴퓨터 운영체제
+특징 패키지 설치 및 업그레이드의 단순함 패키지매니저 apt업데이트 방식을 이용하면 소프트웨어의 설치나 업데이 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">리눅스</h3>
+    <p class="post-row-summary">리눅스 나무위키
+OS 커널의 일종인 리눅스 커널 리눅스 커널을 사용하는 운영체제
+오픈 소스 소프트웨어
+관련책 에릭 레이먼드의 “시장과 성당
+GNU 프로젝트가 리눅스 커널에 관심을 가졌고, 리눅스 커 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BD%94%EB%B0%9C%EC%A6%88/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">리눅스 코발즈</h3>
+    <p class="post-row-summary">리눅스 코발즈 커널을 C++로 짜는 것은 멍청한 생각
+C++ 프로그래머들을 접근하지 못하게 한 것만으로도 C를 선택할 이유가 충분
+효과적이고, 시스템 수준이며 이식성 높으신 C++는 C에서 가능한 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EA%B5%AC%EC%A1%B0/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">구조</h3>
+    <p class="post-row-summary">리눅스 구조 etc systemd : 리눅스의 초기화 시스템 또는 데몬시스템 이전에는 system5 boot 컴퓨터가 켜질 때 가장 먼저 읽히는 곳 새로 빌드한 커널 이미지나 DTB(Device …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/%EA%B4%80%EB%A0%A8%EA%B3%B5%EB%B6%80/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">관련공부</h3>
+    <p class="post-row-summary">혼자서 운영체제를 만드는 것은 도전적이지만 충분히 가능합니다. 많은 사람들이 개인 프로젝트로 운영체제를 만들었고, 그 과정에서 많은 것을 배울 수 있습니다. 그러나 혼자서 운영체제를 개발하기 위해서 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/vi/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">vi</h3>
+    <p class="post-row-summary">gg # 파일 맨 위로 vG # 전체 선택 y # 복사 (yank)
+한 줄로 하려면 노멀 모드에서: gg yG
+붙여넣기는 p
+터미널에서 클립보드로 복사하려면 vim이 클립보드 지원이 있어야 해서 안 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/%EC%9A%B0%EB%B6%84%ED%88%AC%EC%BB%A4%EB%84%90/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">우분투커널</h3>
+    <p class="post-row-summary">리눅스 커널(Linux kernel) 모놀리딕 유닉스 계열 컴퓨터 운영체제 커널이며 자유-오픈 소프트웨어
+커널을 무료로 배포하여 누구나(솔직히 아무나 못하지만) 커널을 수정하고 공부하여 더 나은 방 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/%EB%AA%85%EB%A0%B9%EC%96%B4/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">명령어</h3>
+    <p class="post-row-summary">파일및디렉터리개요(파일관련명령어포함) 파일의종류
+일반파일(ordinaryfile) 파일 속성
+표현 소유자 그룹 기타 명령어 리눅스 리눅스나 유닉스에서는 df 라는 명령으로 현재 디스크의 남은 용량 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%9B%90%EA%B2%A9/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">ubuntu_원격</h3>
+    <p class="post-row-summary">sudo apt-get install xrdp sudo apt-get install xfce4
+/etc/xrdp/startwm.sh 파일 수정
+./etc/X1/Xession -&gt; …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%84%A4%EC%B9%98/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">ubuntu_설치</h3>
+    <p class="post-row-summary">우분투 16.04 /var/lib/dpkg/lock 잠금 파일을 얻을 수 없습니다 해결방법
+reboot 로 해결 sudo apt-get upgrade
+ㅅㅂ 버전 안맞을때 취소방법? 맥 OS X 에서 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%84%A4%EC%A0%95/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">ubuntu_설정</h3>
+    <p class="post-row-summary">#계정
+원격 들어갈 계정과 다름
+원격으로 들어간것
+한글 입력안됨 텍스트 입력창이란 항목이 없음 ubuntu
+리눅스 운영체제에서 기본적으로 최고 관리 권한 계정인 root 계정을 활성화 시켜놓지 않습 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EB%B6%80%ED%8C%85/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">ubuntu_부팅</h3>
+    <p class="post-row-summary">부팅 에러 원인
+현상
+해결
+fsck /dev/sda1 sda는 오류창에 명시되있음 다른해결
+우선 root 패스워드를 넣으면 single mode 로 들어갑니다. 여기서 fsck 를 이용해서 파티션들 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_usb/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">ubuntu_usb</h3>
+    <p class="post-row-summary">우분투에서 인식하니까 폴더가 또하나있네 ㅇㅇ
+ImportError: No module named ’tkinter&#39;
+sudo apt-get install python3-tk Linux(Ubuntu)에 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_server/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">Ubuntu_Server</h3>
+    <p class="post-row-summary">Ubuntu server
+서버는 일반적으로 랙 마운트 타워의 두 가지 폼 팩터로 제공
+타워 서버는 기본적으로 데스크탑이지만 수명, 안정성 및 보안에 중점을 둔 부분이 종종 다릅니다. 예를 들어, 서 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">Ubuntu</h3>
+    <p class="post-row-summary">Ubuntu 정의 우분투 LTS 의미 및 차이점 우분투에서 LTS는 Long Term Support의 약자입니다. 오랜 시간 동안 지원을 받을 수 있다고 해석할 수 있는데요. LTS가 붙은 버전은 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/linux/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">linux</h3>
+    <p class="post-row-summary">ctrl alt delete
+잠금 vm 입력후 tab키 두번 누르기
+붙여넣기 shift + insert shift ctrl +v
+명령어 ipa 명령어
+보드 버전 확인 명령어 do apt-cache …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vi%EB%8B%A8%EC%B6%95%ED%82%A4/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">vi단축키</h3>
+    <p class="post-row-summary">vi 단축키 명령모드 (esc 눌렀을때, vi 처음 들어갔을때) 파일의 끝으로 이동할때는 - G 한줄 잘라내기 - dd 세줄 잘라내기 - 3dd 붙여넣기 - p 한글자 삭제 - x 단어 삭제 - …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vivim/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">vi,vim</h3>
+    <p class="post-row-summary">vi set encoding
+encoding 확인 v, y, p
+3개의 키로, 텍스트를 복사하여 다른 곳에 붙이는 작업을 할 수 있습니다.
+텍스트 복사 붙이기 순서 (1)
+v Visual mode …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/todo/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">todo</h3>
+    <p class="post-row-summary">Linux 영상 재생 프로그램</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/scp/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">scp</h3>
+    <p class="post-row-summary">scp 로 파일 전송 예시 scp code_1.106.3-1764110883_arm64.deb nvidia@192.168.1.179:~/Downloads scp CORE_512.TGZ …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/overview/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">overview</h3>
+    <p class="post-row-summary">리눅스 Ctrl + A # 줄 맨 앞으로 Ctrl + E # 줄 맨 뒤로 Ctrl + R # 히스토리 검색 (최강) Ctrl + L # 화면 정리 Alt + . # 이전 명령어의 마지막 인자
+명령어 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/nmcli/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">nmcli</h3>
+    <p class="post-row-summary">nmcli
+리눅스에서 NetworkManager를 커맨드라인으로 제어하는 도구 GUI 없이 네트워크 연결(Wi-Fi, 이더넷, VPN 등)을 설정하고 관리 # 전체 네트워크 상태 확인 nmcli …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">gui</h3>
+    <p class="post-row-summary">리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개 …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui-%EC%84%A4%EC%B9%98/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">gui 설치</h3>
+    <p class="post-row-summary">update
+sudo apt install ubuntu-desktop-minimal
+sudo apt install ubuntu-desktop-minimal 최소설치
+sudo apt install …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+<a class="post-row" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/chat_session_summary/">
+  <div class="post-row-main">
+    <span class="post-row-section">리눅스</span>
+    <h3 class="post-row-title">chat_session_summary</h3>
+    <p class="post-row-summary">ChatGPT 대화 요약 이 세션에서는 다음 내용을 다루었습니다.
+Ubuntu에서 .bz2 파일 처리 CIFS(SMB) 네트워크 공유 마운트 mount: bad usage 원인 특수문자(#, $, …</p>
+  </div>
+  <div class="post-row-meta">
+    
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>
+
   </div>
 </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui-%EC%84%A4%EC%B9%98/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>update</p>
-<p>sudo apt install ubuntu-desktop-minimal</p>
-<p>sudo apt install ubuntu-desktop-minimal 최소설치</p>
-<p>sudo apt install ubuntu-desktop 전체설치</p>
-<p>startx</p>
-<ul>
-<li>x window를 실행</li>
-</ul>
-<p>부팅시 다시 x window가 자동 실행되게 하기
-sudo systemctl set-default graphical</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui-%EC%84%A4%EC%B9%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.</p>
-<h3 id="1-xfce">1. <strong>Xfce</strong></h3>
-<ul>
-<li>
-<p><strong>경량화</strong>된 데스크탑 환경으로, 서버 리소스를 많이 사용하지 않으면서도 기본적인 GUI를 제공합니다.</p>
-</li>
-<li>
-<p><strong>설치 명령</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install xfce4 xfce4-goodies
-</span></span></code></pre></div></li>
-<li>
-<p><strong>특징</strong>:</p>
-<ul>
-<li>가벼운 리소스 사용</li>
-<li>직관적인 인터페이스</li>
-<li>다양한 애플리케이션과 잘 통합됨</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-lxqt">2. <strong>LXQt</strong></h3>
-<ul>
-<li>
-<p>또 다른 경량 데스크탑 환경으로, <strong>LXDE</strong>의 후속 버전입니다. 매우 적은 시스템 자원을 사용하면서도 직관적인 GUI를 제공합니다.</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/nmcli/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>nmcli</p>
-<ul>
-<li>리눅스에서 NetworkManager를 커맨드라인으로 제어하는 도구</li>
-<li>GUI 없이 네트워크 연결(Wi-Fi, 이더넷, VPN 등)을 설정하고 관리</li>
-</ul>
-<pre tabindex="0"><code># 전체 네트워크 상태 확인
-nmcli general status
-
-# 연결된 장치 목록
-nmcli device status
-
-# Wi-Fi 목록 스캔
-nmcli device wifi list
-
-# Wi-Fi 연결
-nmcli device wifi connect &#34;SSID이름&#34; password &#34;비밀번호&#34;
-
-# 현재 연결 목록 확인
-nmcli connection show
-
-# 특정 연결 활성화/비활성화
-nmcli connection up &#34;연결이름&#34;
-nmcli connection down &#34;연결이름&#34;
-
-# IP 정보 확인
-nmcli device show eth0
-
-# 고정 IP 설정 (예시)
-nmcli connection modify &#34;연결이름&#34; ipv4.addresses 192.168.1.100/24
-nmcli connection modify &#34;연결이름&#34; ipv4.gateway 192.168.1.1
-nmcli connection modify &#34;연결이름&#34; ipv4.dns 8.8.8.8
-nmcli connection modify &#34;연결이름&#34; ipv4.method manual
-nmcli connection up &#34;연결이름&#34;
-</code></pre>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/nmcli/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/overview/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="리눅스">리눅스</h1>
-<p>Ctrl + A   # 줄 맨 앞으로
-Ctrl + E   # 줄 맨 뒤로
-Ctrl + R   # 히스토리 검색 (최강)
-Ctrl + L   # 화면 정리
-Alt  + .   # 이전 명령어의 마지막 인자</p>
-<h1 id="명령어">명령어</h1>
-<p>ls -alh
-cd
-pwd
-cp / mv / rm
-grep
-find
-less
-tail -f
-chmod
-chown</p>
-<p>man grep, grep &ndash;help에 익숙해지</p>
-<h1 id="쉘-환경">쉘 환경</h1>
-<p>커스터마이징</p>
-<p>sudo apt install zsh
-chsh -s $(which zsh)</p>
-<h1 id="에러-해결-루틴-고정하기">에러 해결 루틴 고정하기</h1>
-<ul>
-<li>❌ 에러 → 구글 → 복붙</li>
-<li>⭕ 에러 → 로그 → 재현 → 원인 분리</li>
-</ul>
-<p>dmesg
-journalctl -xe
-journalctl -u 서비스명</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/overview/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/scp/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="scp-로-파일-전송">scp 로 파일 전송</h1>
-<h2 id="예시">예시</h2>
-<p>scp code_1.106.3-1764110883_arm64.deb <a href="mailto:nvidia@192.168.1.179">nvidia@192.168.1.179</a>:~/Downloads
-scp CORE_512.TGZ <a href="mailto:root@192.168.1.179">root@192.168.1.179</a>:/tmp</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/scp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/todo/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Linux 영상 재생 프로그램</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/todo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vivim/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="vi">vi</h1>
-<p>set encoding</p>
-<ul>
-<li>encoding 확인</li>
-<li></li>
-</ul>
-<p><strong>v, y, p</strong></p>
-<p>3개의 키로, 텍스트를 복사하여 다른 곳에 붙이는 작업을 할 수 있습니다.</p>
-<h3 id="텍스트-복사-붙이기-순서"><strong>텍스트 복사 붙이기 순서</strong></h3>
-<p>(1)</p>
-<dl>
-<dt><strong>v</strong></dt>
-<dd>
-<p>Visual mode 로 진입 (현재 문서를 편집중이라면 Esc키를 누르고, v키를 눌러야 함)</p>
-</dd>
-</dl>
-<p>(2) 그런 후, 상하좌우 화살표키를 움직이면, 이제 선택 블록이 회색으로 잡힙니다. 복사할 부분을 선택합니다.</p>
-<p>(3)</p>
-<dl>
-<dt><strong>y</strong></dt>
-<dd>
-<p>yank (복사; Copy) yank는 &lsquo;홱 잡아당긴다&rsquo;는 뜻</p>
-</dd>
-</dl>
-<p>(4) 문서를 스크롤하여, 복사된 텍스트를 붙어 넣을 곳으로 이동</p>
-<p>(5)</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vivim/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vi%EB%8B%A8%EC%B6%95%ED%82%A4/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>vi 단축키
-명령모드 (esc 눌렀을때, vi 처음 들어갔을때)
-파일의 끝으로 이동할때는 - G
-한줄 잘라내기 - dd
-세줄 잘라내기 - 3dd
-붙여넣기 - p
-한글자 삭제 - x
-단어 삭제 - dw
-실행취소! - u
-줄의 맨 앞 - o
-줄의 맨 뒤 - $
-(G, $ 이거 개꿀)
-마지막행 모드 (esc -&gt; : 눌렀을때)
-(명령어 뒤에 !를 붙이면 강제로 수행하니까, vi가 궁시렁 궁시렁 거리면 &quot; ! &ldquo;붙여서 실행)
-저장만 : w
-종료만 : q
-저장 후 종료 : wq
-라인 번호좀 보자 : set nu
-커서 위치 뒤로 문자열좀 찾자 : ?문자열
-커서 위치 앞으로 문자열좀 찾자 : /문자열
-(set nu, wq! 개꿀)</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vi%EB%8B%A8%EC%B6%95%ED%82%A4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">리눅스s</span>
-    <h1 class="f3 near-black">
-      <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/linux/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>ctrl alt delete</p>
-<ul>
-<li>잠금</li>
-</ul>
-<p>vm 입력후 tab키 두번 누르기</p>
-<p>붙여넣기
-shift + insert
-shift ctrl +v</p>
-<h1 id="명령어">명령어</h1>
-<p>ipa 명령어</p>
-<p>보드 버전 확인 명령어
-do apt-cache show nvidia-l4t-co</p>
-<p>rm -rf [삭제할_폴더_경로]</p>
-<p>linux
-여러 문장한번에?</p>
-<p>dmesg</p>
-<ul>
-<li>dmesg -c</li>
-<li>이후 한번더하면 수정사항만 확인 가능</li>
-</ul>
-<p>makefile 그냥 make 만 하면 댐</p>
-<p>lsmod</p>
-<p>vi /etc/systemd/digitron.sh</p>
-<p>uname</p>
-<p>uname -a</p>
-<p>uname -r</p>
-<p>sshfs <a href="mailto:root@192.168.1.179">root@192.168.1.179</a>:/usr/src /mnt/nvd1</p>
-<p>bitbake fsl-image-gui</p>
-<h1 id="linux-명령어-중">linux 명령어 중</h1>
-<p>설치중 y , n , a : accept</p>
-<hr>
-<p>dmesg 명령어</p>
-    </div>
-    <a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/linux/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-    </section>
-		<ul class="pagination pagination-default">
-			<li class="page-item disabled">
-				<a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
-			</li>
-		<li class="page-item disabled">
-			<a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
-		</li>
-			<li class="page-item active">
-				<a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
-			</li>
-			<li class="page-item">
-				<a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
-			</li>
-			<li class="page-item">
-				<a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
-			</li>
-			<li class="page-item">
-				<a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
-			</li>
-		<li class="page-item">
-			<a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-		</li>
-			<li class="page-item">
-				<a href="/%EB%A6%AC%EB%88%85%EC%8A%A4/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
-			</li>
-		</ul></article>
 
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
-      &copy; 2025 
-    </a>
-    <div>
-      <a href="https://twitter.com/username">Twitter</a>
-      <a href="https://github.com/username">GitHub</a>
+    <footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; 2026 JJunney&#39;s Blog <span class="dot-sep">/</span> Built with Hugo</p>
+    <div class="footer-links">
+      <a href="https://github.com/ijjeon1203" target="_blank" rel="noopener">GitHub</a>
+      <a href="/index.xml">RSS</a>
     </div>
   </div>
 </footer>

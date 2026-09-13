@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{- $toc := .TableOfContents }}
+{{- $hasToc := in $toc "<li" }}
+<article class="article">
+  <header class="page-hero">
+    <div class="container">
+      {{ partial "breadcrumb.html" . }}
+      <h1 class="page-title">{{ partial "func/title.html" . }}</h1>
+      <div class="article-meta">
+        {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
+        <span>{{ .ReadingTime }}분 읽기</span>
+        {{ range .GetTerms "tags" }}<a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+      </div>
+    </div>
+  </header>
+
+  <div class="container article-layout{{ if $hasToc }} has-toc{{ end }}">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+    {{ if $hasToc }}
+    <aside class="toc" aria-label="목차">
+      <p class="toc-title">On this page</p>
+      {{ $toc }}
+    </aside>
+    {{ end }}
+  </div>
+
+  {{ if or .PrevInSection .NextInSection }}
+  <nav class="container pager" aria-label="이전/다음 글">
+    {{ with .NextInSection }}<a class="pager-link" href="{{ .RelPermalink }}"><span>&larr; 이전 글</span><strong>{{ partial "func/title.html" . }}</strong></a>{{ else }}<span></span>{{ end }}
+    {{ with .PrevInSection }}<a class="pager-link is-next" href="{{ .RelPermalink }}"><span>다음 글 &rarr;</span><strong>{{ partial "func/title.html" . }}</strong></a>{{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}

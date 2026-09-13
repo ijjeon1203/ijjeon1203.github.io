@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Pythons on  </title>
+		<title>Python on JJunney&#39;s Blog</title>
 		<link>https://ijjeon1203.github.io/python/</link>
-		<description>Recent content in Pythons on  </description>
+		<description>Recent content in Python on JJunney&#39;s Blog</description>
 		<generator>Hugo</generator>
-		<language>en-us</language>
+		<language>ko-kr</language>
 		
 		
 		
+		
+			<lastBuildDate>Wed, 09 Sep 2026 17:09:09 +0900</lastBuildDate>
 		
 			<atom:link href="https://ijjeon1203.github.io/python/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title></title>
 				<link>https://ijjeon1203.github.io/python/pyinstaller/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
 				<guid>https://ijjeon1203.github.io/python/pyinstaller/</guid>
 				<description>&lt;p&gt;pyinstaller &amp;ndash;onefile &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows &amp;ndash;collect-submodules=windows main.py&lt;/p&gt;&#xA;&lt;p&gt;pyinstaller &amp;ndash;onefile &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows.main_window &amp;ndash;collect-submodules=windows main.py&lt;/p&gt;&#xA;&lt;p&gt;pyinstaller &amp;ndash;onedir &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows &amp;ndash;hidden-import=windows.main_window &amp;ndash;hidden-import=psutil &amp;ndash;collect-submodules=windows &amp;ndash;collect-all=psutil &amp;ndash;paths=. main.py&lt;/p&gt;&#xA;&lt;p&gt;PyInstaller &amp;ndash;clean &amp;ndash;onedir &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows   &amp;ndash;hidden-import=windows.main_window &amp;ndash;hidden-import=psutil &amp;ndash;collect-submodules=windows   &amp;ndash;collect-all=psutil &amp;ndash;paths=. main.py&lt;/p&gt;&#xA;&lt;p&gt;문제가 결국 pyinstaller 가 설치가 안된게 문제였네 제기랄&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;아 여기 적어 놨구나&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;pyinstaller 가 .venv 에 없었&lt;/p&gt;&#xA;&lt;p&gt;python 으로 실행시키기&lt;/p&gt;&#xA;&lt;p&gt;&amp;ndash; 사이에 딱 한칸만 비우기&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; PyInstaller --clean --onefile --windowed --icon assets/icon/logo.ico --hidden-import=windows   --hidden-import=windows.main_window --hidden-import=psutil&#xA; --collect-submodules=windows   --collect-all=psutil --paths=. main.py --add-data C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\Spin_Tester.exe;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\&#xA; &#xA;PyInstaller --clean --onefile --windowed --icon assets/icon/logo.ico --hidden-import=windows --hidden-import=windows.main_window --hidden-import=psutil --collect-submodules=windows --collect-all=psutil --paths=. main.py --add-data &amp;#34;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\Spin_Tester.exe;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\&amp;#34;&#xA;&#xA;PyInstaller --clean --onefile --windowed --icon assets/icon/logo.ico --hidden-import=windows --hidden-import=windows.main_window --hidden-import=psutil --collect-submodules=windows --collect-all=psutil --paths=. main.py --add-data &amp;#34;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\Spin_Tester.exe;.&amp;#34; &#xA;&lt;/code&gt;&lt;/pre&gt;</description>
 			</item>
 			<item>
 				<title></title>
 				<link>https://ijjeon1203.github.io/python/rule/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
 				<guid>https://ijjeon1203.github.io/python/rule/</guid>
 				<description>&lt;p&gt;레이아웃 구조는 Designer, 동적 크기 조정은 코드&amp;quot;**로 나누는 게 정석&lt;/p&gt;&#xA;&lt;p&gt;Designer에서 할 것&lt;/p&gt;&#xA;&lt;p&gt;레이아웃 배치 (QVBoxLayout, QHBoxLayout, QGridLayout, QSplitter 등)&#xA;sizePolicy 설정 (Expanding, Fixed, Preferred 등) — 이게 핵심인데, 이것만 제대로 잡아두면 창 리사이즈될 때 위젯들이 알아서 비율대로 늘어나고 줄어듦&#xA;minimumSize / maximumSize 같은 제약조건&#xA;고정된 배치 구조 (예: sena의 A~H 헥사곤 배치처럼 &amp;ldquo;이 위젯은 여기, 저 위젯은 저기&amp;quot;라는 구조 자체)&lt;/p&gt;&#xA;&lt;p&gt;이유는 간단해요. 레이아웃 구조를 코드로 짜면 나중에 위젯 하나 위치만 바꿔도 코드를 열어서 addWidget 호출 순서, row/col 인덱스 다 뒤져야 함. Designer는 드래그 앤 드롭으로 끝나고, .ui 파일이 XML이라 diff도 보기 편함.&#xA;코드로 할 것&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title></title>
 				<link>https://ijjeon1203.github.io/python/setting/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
 				<guid>https://ijjeon1203.github.io/python/setting/</guid>
 				<description>&lt;p&gt;interpreter 추가 - edit configuration 수정하기&lt;/p&gt;</description>
 			</item>

@@ -1,47 +1,50 @@
-<div id="repo-list">
-  <h2>GitHub Repositories</h2>
-  <ul></ul>
+<div class="repo-grid" id="repo-grid" data-user="{{ site.Params.github }}">
+  {{ range seq 6 }}<div class="repo-card is-skeleton" aria-hidden="true"><span></span><span></span><span></span></div>{{ end }}
 </div>
 
 <script>
-const username = "ijjeon1203"; // 여기 본인 GitHub ID로 바꾸기
-fetch(`https://api.github.com/users/${username}/repos`)
-  .then(res => res.json())
-  .then(repos => {
-    const ul = document.querySelector("#repo-list ul");
-    repos.forEach(repo => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = repo.html_url;
-      a.textContent = repo.name + (repo.description ? ` - ${repo.description}` : '');
-      a.target = "_blank";
-      li.appendChild(a);
-      ul.appendChild(li);
+(function () {
+  const grid = document.getElementById("repo-grid");
+  const user = grid.dataset.user;
+  const LANG_COLORS = { Python: "#3572A5", JavaScript: "#f1e05a", TypeScript: "#3178c6", HTML: "#e34c26", CSS: "#563d7c", Shell: "#89e051", C: "#555555", "C++": "#f34b7d", Go: "#00ADD8", Svelte: "#ff3e00", Java: "#b07219", Kotlin: "#A97BFF" };
+
+  function el(tag, cls, text) {
+    const node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=100`)
+    .then((res) => { if (!res.ok) throw new Error(res.status); return res.json(); })
+    .then((repos) => {
+      grid.replaceChildren();
+      repos.filter((r) => !r.fork).slice(0, 6).forEach((repo) => {
+        const card = el("a", "repo-card");
+        card.href = repo.html_url;
+        card.target = "_blank";
+        card.rel = "noopener";
+
+        card.appendChild(el("h3", "repo-name", repo.name));
+        card.appendChild(el("p", "repo-desc", repo.description || "설명이 없는 저장소"));
+
+        const meta = el("div", "repo-meta");
+        if (repo.language) {
+          const lang = el("span", "repo-lang");
+          const dot = el("i");
+          dot.style.background = LANG_COLORS[repo.language] || "#e11d2e";
+          lang.append(dot, repo.language);
+          meta.appendChild(lang);
+        }
+        meta.appendChild(el("span", null, "★ " + repo.stargazers_count));
+        meta.appendChild(el("span", null, new Date(repo.pushed_at).toLocaleDateString("ko-KR")));
+        card.appendChild(meta);
+        grid.appendChild(card);
+      });
+      if (!grid.children.length) grid.appendChild(el("p", "repo-empty", "공개 저장소가 없습니다."));
+    })
+    .catch(() => {
+      grid.replaceChildren(el("p", "repo-empty", "저장소 목록을 불러오지 못했습니다. (GitHub API 요청 한도 초과일 수 있어요)"));
     });
-  })
-  .catch(err => console.error(err));
+})();
 </script>
-
-<style>
-#repo-list {
-  margin-top: 2rem;
-}
-
-#repo-list ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-#repo-list ul li {
-  margin-bottom: 0.5rem;
-}
-
-#repo-list ul li a {
-  text-decoration: none;
-  color: #1a0dab;
-}
-
-#repo-list ul li a:hover {
-  text-decoration: underline;
-}
-</style>

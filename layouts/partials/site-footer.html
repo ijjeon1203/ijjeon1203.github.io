@@ -1,11 +1,9 @@
-<footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
-      &copy; 2025 
-    </a>
-    <div>
-      <a href="https://twitter.com/username">Twitter</a>
-      <a href="https://github.com/username">GitHub</a>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; {{ now.Year }} {{ site.Title }} <span class="dot-sep">/</span> Built with Hugo</p>
+    <div class="footer-links">
+      <a href="https://github.com/{{ site.Params.github }}" target="_blank" rel="noopener">GitHub</a>
+      {{ with site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
     </div>
   </div>
 </footer>

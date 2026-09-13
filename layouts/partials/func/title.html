@@ -1,0 +1,6 @@
+{{- /* front matter에 title이 없는 글이 대부분이라 파일명으로 대체한다 */ -}}
+{{- $t := .Title -}}
+{{- if not (strings.TrimSpace $t) -}}
+  {{- with .File -}}{{- $t = .ContentBaseName -}}{{- end -}}
+{{- end -}}
+{{- return (strings.TrimSpace $t | default "Untitled") -}}

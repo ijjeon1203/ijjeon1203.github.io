@@ -1,40 +1,472 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>JJunney&#39;s Blog on  </title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in JJunney&#39;s Blog on  </description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 28 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>개발자</title>
-      <link>http://localhost:1313/developer/</link>
-      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/developer/</guid>
-      <description>&lt;p&gt;안녕하세요, 개발자 블로그입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>영화</title>
-      <link>http://localhost:1313/movie/</link>
-      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/movie/</guid>
-      <description>&lt;p&gt;영화 평가 글&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>책</title>
-      <link>http://localhost:1313/book/</link>
-      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/book/</guid>
-      <description>&lt;p&gt;책 평가 글&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>테니스</title>
-      <link>http://localhost:1313/tennis/</link>
-      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tennis/</guid>
-      <description>&lt;p&gt;운동 관련 글: 테니스&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>JJunney&#39;s Blog</title>
+		<link>https://ijjeon1203.github.io/</link>
+		<description>Recent content on JJunney&#39;s Blog</description>
+		<generator>Hugo</generator>
+		<language>ko-kr</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 13 Sep 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://ijjeon1203.github.io/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>저장소 정리: SvelteKit/Sveltepress 잔재 제거</title>
+				<link>https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2026-09-13-repo-cleanup/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2026-09-13-repo-cleanup/</guid>
+				<description>&lt;h2 id=&#34;배경&#34;&gt;배경&lt;/h2&gt;&#xA;&lt;p&gt;저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로&#xA;전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;node_modules/&lt;/code&gt; 가 통째로 git에 커밋되어 있었음 (17,996개 파일)&lt;/li&gt;&#xA;&lt;li&gt;정작 그걸 설치했을 &lt;code&gt;package.json&lt;/code&gt;은 저장소 어디에도 없음 (테마 서브모듈 내부 제외)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;.svelte-kit/&lt;/code&gt;, &lt;code&gt;.sveltepress/&lt;/code&gt;, &lt;code&gt;src/routes/+page.md&lt;/code&gt; 도 같은 이유로 잔재로 남아있었음&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;.git&lt;/code&gt; 디렉토리가 132MB까지 불어난 주 원인이었음&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;작업-내역&#34;&gt;작업 내역&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;code&gt;.gitignore&lt;/code&gt; 정비&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;처음엔 &lt;code&gt;node_modules/&lt;/code&gt;, &lt;code&gt;.svelte-kit/&lt;/code&gt;, &lt;code&gt;.sveltepress/&lt;/code&gt; 등을 ignore 규칙으로&#xA;추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는&#xA;저장소에서 사라지지 않는다는 점을 확인함&lt;/li&gt;&#xA;&lt;li&gt;논의 후 &amp;ldquo;무시&amp;quot;가 아니라 &amp;ldquo;완전 삭제&amp;quot;로 방향을 바꿈&lt;/li&gt;&#xA;&lt;li&gt;Hugo가 빌드 때마다 재생성하는 &lt;code&gt;.hugo_build.lock&lt;/code&gt;, &lt;code&gt;/public/&lt;/code&gt;,&#xA;&lt;code&gt;/resources/_gen/&lt;/code&gt;, &lt;code&gt;.hugo_cache/&lt;/code&gt; 만 계속 ignore 대상으로 유지&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;죽은 산출물 삭제&lt;/strong&gt; (&lt;code&gt;git rm -r&lt;/code&gt;)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/code/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/code/</guid>
+				<description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mlflow.set_tracking_uri(&amp;#34;http://192.168.1.236:5050&amp;#34;) # mlflow url 주소 &#xA;mlflow.set_experiment(&amp;#34;model-1&amp;#34;) # 실험 이름 설정&#xA;mlflow.start_run()        # 실행 시작&#xA;mlflow.log_params()       # 하이퍼파라미터 기록&#xA;mlflow.log_metrics()      # 학습 결과 기록&#xA;mlflow.log_artifact()     # 가중치 파일 기록&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;예제&#34;&gt;예제&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;def main():&#xA;    mlflow.set_tracking_uri(&amp;#34;http://192.168.1.236:5050&amp;#34;)&#xA;    mlflow.set_experiment(&amp;#34;model-1&amp;#34;)&#xA;&#xA;    # ✅ 여기서 run 시작&#xA;    with mlflow.start_run(run_name=f&amp;#34;ppo_{args.timesteps}steps&amp;#34;):&#xA;        &#xA;        # ✅ 하이퍼파라미터 기록&#xA;        mlflow.log_params({&#xA;            &amp;#34;algo&amp;#34;: &amp;#34;PPO&amp;#34;,&#xA;            &amp;#34;policy&amp;#34;: &amp;#34;MlpPolicy&amp;#34;,&#xA;            &amp;#34;learning_rate&amp;#34;: 0.001,&#xA;            &amp;#34;gamma&amp;#34;: 0.99,&#xA;            &amp;#34;num_cpu&amp;#34;: 8,&#xA;            &amp;#34;timesteps&amp;#34;: args.timesteps,&#xA;            &amp;#34;pi_arch&amp;#34;: &amp;#34;[128, 128]&amp;#34;,&#xA;            &amp;#34;vf_arch&amp;#34;: &amp;#34;[256, 256]&amp;#34;,&#xA;            &amp;#34;activation&amp;#34;: &amp;#34;ReLU&amp;#34;,&#xA;            &amp;#34;boost_time&amp;#34;: 5.0,&#xA;            &amp;#34;init_pitch&amp;#34;: 30.0,&#xA;        })&#xA;&#xA;        # 기존 모델 로드 or 신규 생성 코드 그대로...&#xA;        &#xA;        # ✅ 학습 콜백으로 메트릭 기록 (아래 설명 참고)&#xA;        model.learn(&#xA;            total_timesteps=args.timesteps,&#xA;            reset_num_timesteps=False,&#xA;            callback=MLflowCallback()  # ✅ 추가&#xA;        )&#xA;        &#xA;        # ✅ 가중치 저장 후 MLflow에도 업로드&#xA;        model.save(model_filename)&#xA;        mlflow.log_artifact(f&amp;#34;{model_filename}.zip&amp;#34;)&#xA;        print(&amp;#34;💾 학습 완료 및 MLflow 기록 완료!&amp;#34;)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;콜백-클래스&#34;&gt;콜백 클래스&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;class MLflowCallback(BaseCallback):&#xA;    def __init__(self, log_interval=1000):&#xA;        super().__init__()&#xA;        self.log_interval = log_interval&#xA;&#xA;    def _on_step(self) -&amp;gt; bool:&#xA;        if self.n_calls % self.log_interval == 0:&#xA;            # SB3가 자동으로 계산하는 메트릭 가져오기&#xA;            if len(self.model.ep_info_buffer) &amp;gt; 0:&#xA;                ep_rewards = [ep[&amp;#34;r&amp;#34;] for ep in self.model.ep_info_buffer]&#xA;                ep_lens = [ep[&amp;#34;l&amp;#34;] for ep in self.model.ep_info_buffer]&#xA;                mlflow.log_metrics({&#xA;                    &amp;#34;mean_reward&amp;#34;: sum(ep_rewards) / len(ep_rewards),&#xA;                    &amp;#34;mean_ep_length&amp;#34;: sum(ep_lens) / len(ep_lens),&#xA;                }, step=self.num_timesteps)&#xA;        return True&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;테스트-가이드라인&#34;&gt;테스트 가이드라인&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;1단계 - 기준 실험 (Baseline) 잡기&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/compare/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/compare/</guid>
+				<description>&lt;h1 id=&#34;종류&#34;&gt;종류&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Weights &amp;amp; Biases (W&amp;amp;B)&lt;/strong&gt; ← 현재 RL 연구자들 사이에서 가장 인기&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;설치 없이 클라우드에 바로 기록, UI가 MLflow보다 훨씬 세련됨&lt;/li&gt;&#xA;&lt;li&gt;RL 특화 기능이 잘 되어 있음 (reward curve, video 기록 등)&lt;/li&gt;&#xA;&lt;li&gt;무료 플랜으로도 개인 프로젝트 충분&lt;/li&gt;&#xA;&lt;li&gt;단점: 클라우드 기반 → 인터넷 필요, 데이터가 W&amp;amp;B 서버로 올라감&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;2. DVC (Data Version Control)&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Git에 붙여 쓰는 데이터/모델 버전관리 특화&lt;/li&gt;&#xA;&lt;li&gt;코드는 git, 데이터/모델은 DVC로 → 완전한 재현성&lt;/li&gt;&#xA;&lt;li&gt;MLflow처럼 실험 메트릭 비교 UI는 약함&lt;/li&gt;&#xA;&lt;li&gt;단점: 설정이 다소 복잡&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;3. Neptune.ai&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/data/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/data/</guid>
+				<description>&lt;h1 id=&#34;artifacts&#34;&gt;artifacts&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;현재 저장 예정 ✅&#xA;├── lr&#xA;├── gamma&#xA;├── arch (pi, vf)&#xA;├── timesteps&#xA;├── num_cpu&#xA;└── 가중치 (.zip)&#xA;&#xA;추가하면 좋은 것들 📋&#xA;├── 환경 파라미터&#xA;│   ├── boost_time (5.0)&#xA;│   ├── init_pitch (30.0)&#xA;│   └── rocket_speed (150.0)&#xA;│&#xA;├── 학습 결과 메트릭&#xA;│   ├── mean_reward (평균 보상)&#xA;│   ├── mean_ep_length (평균 에피소드 길이)&#xA;│   ├── hit_rate (명중률)&#xA;│   ├── loss_of_lock_rate (FOV 이탈률)&#xA;│   ├── overshoot_rate (오버슈트률)&#xA;│   └── fallout_rate (추락률)&#xA;│&#xA;├── 학습 환경 정보&#xA;│   ├── git_commit&#xA;│   ├── 학습 시작/종료 시간&#xA;│   └── 총 학습 소요 시간&#xA;│&#xA;└── 기타&#xA;    ├── activation_fn (ReLU)&#xA;    └── device (cuda/cpu)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;항목&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;설명&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;mean_reward&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;학습이 잘 되고 있는지&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;hit_rate&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;명중률 추이&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;fallout_rate&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;추락률 (초반에 높음)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;loss_of_lock_rate&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;FOV 이탈률&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;demo_hit_rate&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;최종 시연 명중률&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;git_commit&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;어떤 코드로 학습했는지&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;artifacts-1&#34;&gt;artifacts&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;trained_3d_rocket.zip&#xA;├── policy.pth            ← 실제 신경망 가중치 (핵심!)&#xA;├── policy.optimizer.pth  ← 옵티마이저 상태&#xA;└── data                  ← 모델 메타데이터 (JSON)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;policypth-------------실제-신경망-가중치-핵심&#34;&gt;policy.pth            ← 실제 신경망 가중치 (핵심!)&lt;/h1&gt;&#xA;&lt;p&gt;신경망의 모든 뉴런 가중치값&#xA;→ AI가 &amp;ldquo;학습한 것&amp;rdquo; 그 자체&#xA;→ 이것만 있으면 추론(시연) 가능&#xA;→ PyTorch의 state_dict 형식&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/mldashboard/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/mldashboard/</guid>
+				<description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;실험 선택&#xA;왼쪽 사이드바에 &lt;code&gt;missile-rl&lt;/code&gt; 이 생겼을 거예요 → 클릭&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;실행 목록&#xA;&lt;code&gt;test_run&lt;/code&gt; 이 테이블에 보여요 → 클릭&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;상세 페이지&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Parameters&#xA;├── lr: 0.0003&#xA;└── gamma: 0.99&#xA;&#xA;Metrics&#xA;└── reward: 95.0&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/mlflow/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/mlflow/</guid>
+				<description>&lt;h1 id=&#34;모델-불러오기&#34;&gt;모델 불러오기&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;model = PolicyNet()  # 구조만 정의&#xA;model.load_state_dict(torch.load(&amp;#34;ep_50000.pt&amp;#34;))  # 가중치 주입&#xA;model.eval()&#xA;&#xA;# 이제 학습 없이 바로 게임 실행 가능&#xA;state = env.reset()&#xA;action = model(state)  # AI가 바로 판단&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/notes/260701/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/notes/260701/</guid>
+				<description>&lt;p&gt;포트 번호 변경&lt;/p&gt;&#xA;&lt;p&gt;db 삭제후 재설치&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/notes/260702/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/notes/260702/</guid>
+				<description>&lt;p&gt;Experiment 이름: 고정 (예: missile-tracking-ppo) — 대시보드 좌측 트리에 이걸로 묶여서 보임&lt;/p&gt;&#xA;&lt;p&gt;Run 이름: 매 학습마다 새로 생성 (타임스탬프나 자동 생성된 랜덤 이름)&lt;/p&gt;&#xA;&lt;p&gt;가중치 저장은 MLflow가 아니라 체크포인트 로직에 따라 동작&lt;/p&gt;&#xA;&lt;p&gt;tag에서 git_commit 확인&#xA;해당 run의 artifact 경로에서 가중치 파일 다운로드 (NAS 경로)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/overview/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/overview/</guid>
+				<description>&lt;h1 id=&#34;ai-모델&#34;&gt;A.I 모델&lt;/h1&gt;&#xA;&lt;p&gt;AI 모델 = 구조 (코드) + 가중치 (학습 결과물, .pt 파일)&#xA;개념적으로는 가중치가 모델의 일부&lt;/p&gt;&#xA;&lt;h1 id=&#34;lr-learning-rate-학습률&#34;&gt;lr (Learning Rate, 학습률)&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;→ AI가 한 번 실수했을 때 얼마나 크게 수정하는지&#xA;→ 너무 크면: 왔다갔다 불안정&#xA;→ 너무 작으면: 학습이 너무 느림&#xA;→ 보통 0.0001 ~ 0.01 사이&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;arch-architecture-신경망-구조&#34;&gt;arch (Architecture, 신경망 구조)&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;→ AI 뇌의 크기/구조&#xA;→ pi=[128,128]: 판단하는 뇌 (2층, 각 128개 뉴런)&#xA;→ vf=[256,256]: 평가하는 뇌 (2층, 각 256개 뉴런)&#xA;→ 크면 더 복잡한 판단 가능, 학습은 느려짐&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;reward-보상&#34;&gt;reward (보상)&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;→ AI가 잘했는지 못했는지 점수&#xA;→ 미사일이 표적 추적 잘하면 +점수&#xA;→ FOV 이탈하면 -점수&#xA;→ 이 점수를 최대화하도록 학습&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;pytorch에서-이-둘을-따로-저장하는-이유&#34;&gt;PyTorch에서 이 둘을 따로 저장하는 이유&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 구조만 저장 (코드에 이미 있으니 보통 생략)&#xA;# 가중치만 저장 (용량 작고 구조랑 분리 관리)&#xA;torch.save(model.state_dict(), &amp;#34;weights.pt&amp;#34;)  # 가중치만&#xA;&#xA;# vs 통째로 저장 (구조+가중치 한번에)&#xA;torch.save(model, &amp;#34;full_model.pt&amp;#34;)  # 전체&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;torch.save(model, &amp;hellip;)) : 가중치가 모델에 포함된 형태&lt;/li&gt;&#xA;&lt;li&gt;실무에서는 구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;필요성&#34;&gt;필요성&lt;/h1&gt;&#xA;&lt;h1 id=&#34;코드와-가중치-매칭&#34;&gt;코드와 가중치 매칭&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;어떤 코드로 만들었는지 확인하기 위해서 필요&lt;/li&gt;&#xA;&lt;li&gt;모델 구조(hidden layer 크기, layer 수 등)가 가중치 파일이랑 정확히 일치해야 불러올 수 있음&lt;/li&gt;&#xA;&lt;li&gt;코드가 바뀌면 옛날 가중치를 못 씀&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;구조 변경 유연성 때문에 가중치만 따로 저장하는 게 관례&#xA;가중치 파일은 수백MB가 될 수 있어서 git에 올리면 레포가 뚱뚱&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/structure/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/structure/</guid>
+				<description>&lt;h1 id=&#34;프로젝트-추천-구조&#34;&gt;프로젝트 추천 구조&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git commit a3f9c2b&#xA;    ├── policy.py     (코드)&#xA;    ├── config.yaml   (하이퍼파라미터)&#xA;    └── best.pt       (가중치, LFS에 저장)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;missile-rl/&#xA;├── game/                    # 파이썬 게임 환경&#xA;│   ├── env.py               # Gym 형태로 래핑&#xA;│   ├── missile.py&#xA;│   └── renderer.py&#xA;│&#xA;├── model/                   # 모델 구조 정의&#xA;│   ├── policy.py            # PolicyNet 클래스&#xA;│   └── weights/             # 가중치 파일들&#xA;│       ├── ep_1000.pt&#xA;│       ├── ep_5000.pt&#xA;│       └── best.pt&#xA;│&#xA;├── train.py                 # 학습 실행&#xA;├── play.py                  # 가중치 불러와서 게임 실행&#xA;├── config.yaml              # 하이퍼파라미터&#xA;└── experiments/             # 실험 결과 기록&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[무엇을 저장하나]          [어디에 저장하나]&#xA;─────────────────          ─────────────────&#xA;W&amp;amp;B / MLflow               GitLab (코드)&#xA;: 실험 메타데이터 추적      NAS (가중치)&#xA;: 어떤 코드로?              S3 / HuggingFace&#xA;: 어떤 파라미터로?&#xA;: 결과가 얼마나?&#xA;: 가중치 어디 있는지?&#xA;&#xA;──────────────────────────────────────────────&#xA;&#xA;GitLab   →  코드 버전관리&#xA;NAS      →  가중치 파일 백업&#xA;MLflow   →  둘을 연결하는 실험 기록부&#xA;──────────────────────────────────────────────&#xA;&#xA;&#xA;&#xA;NAS        =  실제 파일 보관하는 창고&#xA;GitLab     =  코드 보관하는 창고&#xA;──────────────────────────────────────────────&#xA;MLflow     =  창고 관리 대장&#xA;W&amp;amp;B        =  창고 관리 대장 (클라우드 버전)&#xA;&#xA;&amp;#34;a3f9c2b 커밋으로 lr=3e-4 돌린 결과&#xA; reward 95점, 가중치는 NAS/weights/a3f9c2b/에 있음&amp;#34;&#xA;→ 이걸 기록하는 게 MLflow/W&amp;amp;B&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;nas-폴더-구조&#34;&gt;NAS 폴더 구조&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/volume1/&#xA;└── docker/&#xA;    └── mlflow/&#xA;        ├── artifacts/    ← 가중치 파일 저장될 곳&#xA;        └── db/           ← 실험 기록 DB&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;프로젝트-구조&#34;&gt;프로젝트 구조&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GitLab (코드/설정)         NAS (데이터/결과)&#xA;──────────────────         ─────────────────────────────&#xA;config.yaml                mlflow/artifacts/&#xA;train.py                   └── {experiment_id}/&#xA;play.py                        └── {run_id}/&#xA;rocket_tracking_sim.py             ├── config/&#xA;                                   │   └── config.yaml  ← 참고용 사본&#xA;                                   ├── final_model/&#xA;                                   │   └── trained_3d_rocket.zip&#xA;                                   ├── checkpoints/&#xA;                                   │   ├── rocket_ckpt_10000_steps.zip&#xA;                                   │   └── rocket_ckpt_20000_steps.zip&#xA;                                   └── emergency/  ← Ctrl+C 시&#xA;                                       └── trained_3d_rocket_emergency.zip&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;재현&#34;&gt;재현&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python play.py                        → 로컬 가중치 (빠름)&#xA;python play.py --run-id abc123...     → NAS 가중치 (다운로드 후 실행)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/todo/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/todo/</guid>
+				<description>&lt;p&gt;nas에 저장되는 파일의 형태는 .db ??&lt;/p&gt;&#xA;&lt;p&gt;로컬 경로 변경&#xA;로컬 저장되는 함수확인&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/troubleshooting/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/troubleshooting/</guid>
+				<description>&lt;p&gt;request error internal error&#xA;NAS까지 데이터 전송 중에 에러&#xA;MLflow 설치 버전 확인&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip show mlflow&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;License: Copyright 2018 Databricks, Inc.  All rights reserved.&#xA;                                Apache License&#xA;                           Version 2.0, January 2004&#xA;                        http://www.apache.org/licenses/&#xA;   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION&#xA;   1. Definitions.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;db-마이그레이션-충돌&#34;&gt;DB 마이그레이션 충돌&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NAS File Station에서 삭제&lt;/li&gt;&#xA;&lt;li&gt;/volume1/docker/mlflow/db/mlflow.db  → 삭제&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/usage/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/usage/</guid>
+				<description>&lt;h1 id=&#34;nas가-mlflow-서버-역할까지-하려면-최소-사양&#34;&gt;NAS가 MLflow 서버 역할까지 하려면 최소 사양&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;MLflow 자체는 엄청 가벼워요. Python + SQLite만 있으면 돌아감&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;MLflow 서버로 쓸 때 NAS 요구사항&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;항목&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;최소&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;권장&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;CPU&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1코어 이상&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2코어&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;RAM&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;1GB&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2GB&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;저장공간&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;가중치 용량 + 여유&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;SSD 권장&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;OS&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Linux 가능해야 함&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Ubuntu/Debian&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;네트워크&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;로컬 접근 가능&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;고정 IP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;구조&#34;&gt;구조&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[게임 환경]  →  state (위치, 속도, 각도 등)  →  [AI 모델 (Policy)]&#xA;    ↑                                                      ↓&#xA;reward (명중/회피)  ←←←←←←←←  action (방향, 가속 등)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;에피소드마다 (state, action, reward, next_state, done)  →  Replay Buffer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;구분&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;내용&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;코드&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;모델 구조, 알고리즘 (PPO/DQN 등), 리워드 설계&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;환경 설정&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;게임 파라미터 (미사일 속도, 맵 크기 등)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;모델&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;학습된 가중치 (.pt 파일)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;플레이 데이터&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Replay Buffer (state/action/reward 시퀀스)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;결과&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;episode reward, 명중률 등&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;기록-내용&#34;&gt;기록 내용&lt;/h1&gt;&#xA;&lt;p&gt;git_dirty : 커밋되지 않은 변경사항 존재 여부&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/user_guide/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/user_guide/</guid>
+				<description>&lt;h1 id=&#34;목표&#34;&gt;목표&lt;/h1&gt;&#xA;&lt;p&gt;어떤 코드(commit)로 학습했는지&#xA;어떤 하이퍼파라미터로 학습했는지&#xA;학습 결과 (reward가 얼마나 나왔는지)&lt;/p&gt;&#xA;&lt;h1 id=&#34;mlflow-서버로-쓸-때-nas-요구사항&#34;&gt;MLflow 서버로 쓸 때 NAS 요구사항&lt;/h1&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;항목&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;최소&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;권장&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;CPU&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1코어 이상&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2코어&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;RAM&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;1GB&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2GB&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;저장공간&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;가중치 용량 + 여유&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;SSD 권장&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;OS&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Linux 가능해야 함&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Ubuntu/Debian&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;네트워크&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;로컬 접근 가능&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;고정 IP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;구성&#34;&gt;구성&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Nas Backup Server(192.168.1.236) 에 docker 로 설치&lt;/li&gt;&#xA;&lt;li&gt;192.168.1.236:5050 에 MLFlow Dashboard 접속가능&lt;/li&gt;&#xA;&lt;li&gt;docker 내용&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;version: &amp;#39;3&amp;#39;&#xA;services:&#xA;  mlflow:&#xA;    image: ghcr.io/mlflow/mlflow:v2.11.3&#xA;    ports:&#xA;      - &amp;#34;5050:5000&amp;#34;&#xA;    volumes:&#xA;      - /volume1/docker/mlflow/artifacts:/mlflow/artifacts&#xA;      - /volume1/docker/mlflow/db:/mlflow/db&#xA;    command: &amp;gt;&#xA;      mlflow server&#xA;      --host 0.0.0.0&#xA;      --port 5000&#xA;      --backend-store-uri sqlite:////mlflow/db/mlflow.db&#xA;      --default-artifact-root /mlflow/artifacts&#xA;      --serve-artifacts&#xA;    restart: unless-stopped&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;사용법&#34;&gt;사용법&lt;/h1&gt;&#xA;&lt;p&gt;코드에 추가 하여 프로그램 시작&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/python/pyinstaller/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/python/pyinstaller/</guid>
+				<description>&lt;p&gt;pyinstaller &amp;ndash;onefile &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows &amp;ndash;collect-submodules=windows main.py&lt;/p&gt;&#xA;&lt;p&gt;pyinstaller &amp;ndash;onefile &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows.main_window &amp;ndash;collect-submodules=windows main.py&lt;/p&gt;&#xA;&lt;p&gt;pyinstaller &amp;ndash;onedir &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows &amp;ndash;hidden-import=windows.main_window &amp;ndash;hidden-import=psutil &amp;ndash;collect-submodules=windows &amp;ndash;collect-all=psutil &amp;ndash;paths=. main.py&lt;/p&gt;&#xA;&lt;p&gt;PyInstaller &amp;ndash;clean &amp;ndash;onedir &amp;ndash;windowed &amp;ndash;icon assets/icon/logo.ico &amp;ndash;hidden-import=windows   &amp;ndash;hidden-import=windows.main_window &amp;ndash;hidden-import=psutil &amp;ndash;collect-submodules=windows   &amp;ndash;collect-all=psutil &amp;ndash;paths=. main.py&lt;/p&gt;&#xA;&lt;p&gt;문제가 결국 pyinstaller 가 설치가 안된게 문제였네 제기랄&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;아 여기 적어 놨구나&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;pyinstaller 가 .venv 에 없었&lt;/p&gt;&#xA;&lt;p&gt;python 으로 실행시키기&lt;/p&gt;&#xA;&lt;p&gt;&amp;ndash; 사이에 딱 한칸만 비우기&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; PyInstaller --clean --onefile --windowed --icon assets/icon/logo.ico --hidden-import=windows   --hidden-import=windows.main_window --hidden-import=psutil&#xA; --collect-submodules=windows   --collect-all=psutil --paths=. main.py --add-data C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\Spin_Tester.exe;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\&#xA; &#xA;PyInstaller --clean --onefile --windowed --icon assets/icon/logo.ico --hidden-import=windows --hidden-import=windows.main_window --hidden-import=psutil --collect-submodules=windows --collect-all=psutil --paths=. main.py --add-data &amp;#34;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\Spin_Tester.exe;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\&amp;#34;&#xA;&#xA;PyInstaller --clean --onefile --windowed --icon assets/icon/logo.ico --hidden-import=windows --hidden-import=windows.main_window --hidden-import=psutil --collect-submodules=windows --collect-all=psutil --paths=. main.py --add-data &amp;#34;C:\Users\digitron\Desktop\workspace\ignition_stabilizer\GUI\system\tool\Spin_Tester.exe;.&amp;#34; &#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/python/rule/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/python/rule/</guid>
+				<description>&lt;p&gt;레이아웃 구조는 Designer, 동적 크기 조정은 코드&amp;quot;**로 나누는 게 정석&lt;/p&gt;&#xA;&lt;p&gt;Designer에서 할 것&lt;/p&gt;&#xA;&lt;p&gt;레이아웃 배치 (QVBoxLayout, QHBoxLayout, QGridLayout, QSplitter 등)&#xA;sizePolicy 설정 (Expanding, Fixed, Preferred 등) — 이게 핵심인데, 이것만 제대로 잡아두면 창 리사이즈될 때 위젯들이 알아서 비율대로 늘어나고 줄어듦&#xA;minimumSize / maximumSize 같은 제약조건&#xA;고정된 배치 구조 (예: sena의 A~H 헥사곤 배치처럼 &amp;ldquo;이 위젯은 여기, 저 위젯은 저기&amp;quot;라는 구조 자체)&lt;/p&gt;&#xA;&lt;p&gt;이유는 간단해요. 레이아웃 구조를 코드로 짜면 나중에 위젯 하나 위치만 바꿔도 코드를 열어서 addWidget 호출 순서, row/col 인덱스 다 뒤져야 함. Designer는 드래그 앤 드롭으로 끝나고, .ui 파일이 XML이라 diff도 보기 편함.&#xA;코드로 할 것&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/python/setting/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/python/setting/</guid>
+				<description>&lt;p&gt;interpreter 추가 - edit configuration 수정하기&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/web/web/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/web/web/</guid>
+				<description>&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;포트&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;비고&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;5050&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;무난&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;5500&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;무난&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;8888&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Jupyter 관례지만 안 쓰면 OK&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;9000&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;무난&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/yocto/yocto/</link>
+				<pubDate>Wed, 09 Sep 2026 17:09:09 +0900</pubDate>
+				<guid>https://ijjeon1203.github.io/yocto/yocto/</guid>
+				<description>&lt;h1 id=&#34;구조&#34;&gt;구조&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Yocto Project&#xA;    ├── Poky          ← 레퍼런스 배포판 (빌드 시스템 포함)&#xA;    ├── BitBake       ← 빌드 엔진 (make 같은 것)&#xA;    ├── OpenEmbedded  ← 레시피 모음&#xA;    └── Layer         ← 기능별 모듈 단위&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;layer-구조&#34;&gt;layer 구조&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;met+a/              ← OpenEmbedded 기본 레이어&#xA;meta-poky/         ← Poky 배포판 레이어&#xA;meta-nxp/          ← NXP i.MX 보드 지원&#xA;meta-variscite/    ← Variscite 보드 커스텀&#xA;meta-myapp/        ← 내가 만드는 앱 레이어&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;용어설명&#xA;Recipe (.bb)패키지 빌드 방법 정의 파일&#xA;Layer   Recipe들의 묶음&#xA;BitBake 레시피 읽고 빌드하는 엔진&#xA;Image   최종 결과물 (부팅 가능한 OS 이미지)&#xA;conf/local.conf 빌드 설정 파일&#xA;MACHINE 타겟 보드 지정&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>개발자</title>
+				<link>https://ijjeon1203.github.io/developer/</link>
+				<pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/developer/</guid>
+				<description>&lt;p&gt;안녕하세요, 개발자 블로그입니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>영화</title>
+				<link>https://ijjeon1203.github.io/movie/</link>
+				<pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/movie/</guid>
+				<description>&lt;p&gt;영화 평가 글&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>책</title>
+				<link>https://ijjeon1203.github.io/book/</link>
+				<pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/book/</guid>
+				<description>&lt;p&gt;책 평가 글&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>테니스</title>
+				<link>https://ijjeon1203.github.io/tennis/</link>
+				<pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/tennis/</guid>
+				<description>&lt;p&gt;운동 관련 글: 테니스&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/mlflow/a.i%EC%9A%94%EC%95%BD/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/mlflow/a.i%EC%9A%94%EC%95%BD/</guid>
+				<description>&lt;h1 id=&#34;미사일-rl-프로젝트-세션-요약&#34;&gt;미사일 RL 프로젝트 세션 요약&lt;/h1&gt;&#xA;&lt;h2 id=&#34;프로젝트-구조&#34;&gt;프로젝트 구조&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;missile-rl/&#xA;├── config.yaml              ← 실험 설정 (이것만 수정)&#xA;├── train.py                 ← 학습 실행&#xA;├── play.py                  ← 시연 실행&#xA;├── rocket_tracking_sim.py   ← 게임 환경 (step() 마지막 줄만 수정)&#xA;└── checkpoints/             ← 자동 생성&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;인프라-구성&#34;&gt;인프라 구성&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GitLab        → 코드 버전관리 (config.yaml, train.py, play.py, rocket_tracking_sim.py)&#xA;Synology NAS  → MLflow 서버 (Docker) + 가중치 파일 저장&#xA;MLflow        → 코드↔가중치 연결 고리 (실험 추적)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;MLflow 서버&lt;/strong&gt;: &lt;code&gt;http://192.168.1.236:5050&lt;/code&gt;&#xA;&lt;strong&gt;NAS 경로&lt;/strong&gt;: &lt;code&gt;/volume1/docker/mlflow/&lt;/code&gt;&#xA;&lt;strong&gt;docker-compose&lt;/strong&gt;: &lt;code&gt;ghcr.io/mlflow/mlflow:v2.11.3&lt;/code&gt; 고정 버전 사용&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/chat_session_summary/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/chat_session_summary/</guid>
+				<description>&lt;h1 id=&#34;chatgpt-대화-요약&#34;&gt;ChatGPT 대화 요약&lt;/h1&gt;&#xA;&lt;p&gt;이 세션에서는 다음 내용을 다루었습니다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ubuntu에서 .bz2 파일 처리&lt;/li&gt;&#xA;&lt;li&gt;CIFS(SMB) 네트워크 공유 마운트&lt;/li&gt;&#xA;&lt;li&gt;mount: bad usage 원인&lt;/li&gt;&#xA;&lt;li&gt;특수문자(#, $, !)가 포함된 비밀번호 처리&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Unknown parameter &#39; vers&#39;&lt;/code&gt; 원인 (쉼표 뒤 공백)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;STATUS_LOGON_FAILURE&lt;/code&gt; 분석&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;mount error(13): Permission denied&lt;/code&gt; 원인&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;dmesg&lt;/code&gt; 로그 해석&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;smbclient&lt;/code&gt;를 이용한 인증 확인 방법&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;주요 결론: - &lt;code&gt;STATUS_LOGON_FAILURE&lt;/code&gt;는 인증(아이디/비밀번호/권한) 실패를&#xA;의미합니다. - &lt;code&gt;vers&lt;/code&gt; 앞 공백은 제거해야 합니다. - 비밀번호에 &lt;code&gt;!&lt;/code&gt;, &lt;code&gt;#&lt;/code&gt;,&#xA;&lt;code&gt;$&lt;/code&gt;가 포함된 경우 credentials 파일 사용을 권장합니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui-%EC%84%A4%EC%B9%98/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui-%EC%84%A4%EC%B9%98/</guid>
+				<description>&lt;p&gt;update&lt;/p&gt;&#xA;&lt;p&gt;sudo apt install ubuntu-desktop-minimal&lt;/p&gt;&#xA;&lt;p&gt;sudo apt install ubuntu-desktop-minimal 최소설치&lt;/p&gt;&#xA;&lt;p&gt;sudo apt install ubuntu-desktop 전체설치&lt;/p&gt;&#xA;&lt;p&gt;startx&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;x window를 실행&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;부팅시 다시 x window가 자동 실행되게 하기&#xA;sudo systemctl set-default graphical&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/gui/gui/</guid>
+				<description>&lt;p&gt;리눅스 서버에서 GUI(그래픽 사용자 인터페이스)를 사용하는 것은 일반적으로 서버 환경에서 필요하지 않지만, 특정 작업을 위해 GUI가 필요할 수 있습니다. 예를 들어, 서버 관리, 애플리케이션 개발, 또는 데스크탑 환경에서처럼 편리한 작업을 하려는 경우입니다. 서버에서 GUI를 설정하려면 몇 가지 선택지가 있습니다.&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-xfce&#34;&gt;1. &lt;strong&gt;Xfce&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;경량화&lt;/strong&gt;된 데스크탑 환경으로, 서버 리소스를 많이 사용하지 않으면서도 기본적인 GUI를 제공합니다.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;설치 명령&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install xfce4 xfce4-goodies&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;특징&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;가벼운 리소스 사용&lt;/li&gt;&#xA;&lt;li&gt;직관적인 인터페이스&lt;/li&gt;&#xA;&lt;li&gt;다양한 애플리케이션과 잘 통합됨&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-lxqt&#34;&gt;2. &lt;strong&gt;LXQt&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;또 다른 경량 데스크탑 환경으로, &lt;strong&gt;LXDE&lt;/strong&gt;의 후속 버전입니다. 매우 적은 시스템 자원을 사용하면서도 직관적인 GUI를 제공합니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/nmcli/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/nmcli/</guid>
+				<description>&lt;p&gt;nmcli&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;리눅스에서 NetworkManager를 커맨드라인으로 제어하는 도구&lt;/li&gt;&#xA;&lt;li&gt;GUI 없이 네트워크 연결(Wi-Fi, 이더넷, VPN 등)을 설정하고 관리&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 전체 네트워크 상태 확인&#xA;nmcli general status&#xA;&#xA;# 연결된 장치 목록&#xA;nmcli device status&#xA;&#xA;# Wi-Fi 목록 스캔&#xA;nmcli device wifi list&#xA;&#xA;# Wi-Fi 연결&#xA;nmcli device wifi connect &amp;#34;SSID이름&amp;#34; password &amp;#34;비밀번호&amp;#34;&#xA;&#xA;# 현재 연결 목록 확인&#xA;nmcli connection show&#xA;&#xA;# 특정 연결 활성화/비활성화&#xA;nmcli connection up &amp;#34;연결이름&amp;#34;&#xA;nmcli connection down &amp;#34;연결이름&amp;#34;&#xA;&#xA;# IP 정보 확인&#xA;nmcli device show eth0&#xA;&#xA;# 고정 IP 설정 (예시)&#xA;nmcli connection modify &amp;#34;연결이름&amp;#34; ipv4.addresses 192.168.1.100/24&#xA;nmcli connection modify &amp;#34;연결이름&amp;#34; ipv4.gateway 192.168.1.1&#xA;nmcli connection modify &amp;#34;연결이름&amp;#34; ipv4.dns 8.8.8.8&#xA;nmcli connection modify &amp;#34;연결이름&amp;#34; ipv4.method manual&#xA;nmcli connection up &amp;#34;연결이름&amp;#34;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/overview/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/overview/</guid>
+				<description>&lt;h1 id=&#34;리눅스&#34;&gt;리눅스&lt;/h1&gt;&#xA;&lt;p&gt;Ctrl + A   # 줄 맨 앞으로&#xA;Ctrl + E   # 줄 맨 뒤로&#xA;Ctrl + R   # 히스토리 검색 (최강)&#xA;Ctrl + L   # 화면 정리&#xA;Alt  + .   # 이전 명령어의 마지막 인자&lt;/p&gt;&#xA;&lt;h1 id=&#34;명령어&#34;&gt;명령어&lt;/h1&gt;&#xA;&lt;p&gt;ls -alh&#xA;cd&#xA;pwd&#xA;cp / mv / rm&#xA;grep&#xA;find&#xA;less&#xA;tail -f&#xA;chmod&#xA;chown&lt;/p&gt;&#xA;&lt;p&gt;man grep, grep &amp;ndash;help에 익숙해지&lt;/p&gt;&#xA;&lt;h1 id=&#34;쉘-환경&#34;&gt;쉘 환경&lt;/h1&gt;&#xA;&lt;p&gt;커스터마이징&lt;/p&gt;&#xA;&lt;p&gt;sudo apt install zsh&#xA;chsh -s $(which zsh)&lt;/p&gt;&#xA;&lt;h1 id=&#34;에러-해결-루틴-고정하기&#34;&gt;에러 해결 루틴 고정하기&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;❌ 에러 → 구글 → 복붙&lt;/li&gt;&#xA;&lt;li&gt;⭕ 에러 → 로그 → 재현 → 원인 분리&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;dmesg&#xA;journalctl -xe&#xA;journalctl -u 서비스명&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/scp/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/scp/</guid>
+				<description>&lt;h1 id=&#34;scp-로-파일-전송&#34;&gt;scp 로 파일 전송&lt;/h1&gt;&#xA;&lt;h2 id=&#34;예시&#34;&gt;예시&lt;/h2&gt;&#xA;&lt;p&gt;scp code_1.106.3-1764110883_arm64.deb &lt;a href=&#34;mailto:nvidia@192.168.1.179&#34;&gt;nvidia@192.168.1.179&lt;/a&gt;:~/Downloads&#xA;scp CORE_512.TGZ &lt;a href=&#34;mailto:root@192.168.1.179&#34;&gt;root@192.168.1.179&lt;/a&gt;:/tmp&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/todo/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/todo/</guid>
+				<description>&lt;p&gt;Linux 영상 재생 프로그램&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vivim/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vivim/</guid>
+				<description>&lt;h1 id=&#34;vi&#34;&gt;vi&lt;/h1&gt;&#xA;&lt;p&gt;set encoding&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;encoding 확인&lt;/li&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;v, y, p&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;3개의 키로, 텍스트를 복사하여 다른 곳에 붙이는 작업을 할 수 있습니다.&lt;/p&gt;&#xA;&lt;h3 id=&#34;텍스트-복사-붙이기-순서&#34;&gt;&lt;strong&gt;텍스트 복사 붙이기 순서&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;(1)&lt;/p&gt;&#xA;&lt;dl&gt;&#xA;&lt;dt&gt;&lt;strong&gt;v&lt;/strong&gt;&lt;/dt&gt;&#xA;&lt;dd&gt;&#xA;&lt;p&gt;Visual mode 로 진입 (현재 문서를 편집중이라면 Esc키를 누르고, v키를 눌러야 함)&lt;/p&gt;&#xA;&lt;/dd&gt;&#xA;&lt;/dl&gt;&#xA;&lt;p&gt;(2) 그런 후, 상하좌우 화살표키를 움직이면, 이제 선택 블록이 회색으로 잡힙니다. 복사할 부분을 선택합니다.&lt;/p&gt;&#xA;&lt;p&gt;(3)&lt;/p&gt;&#xA;&lt;dl&gt;&#xA;&lt;dt&gt;&lt;strong&gt;y&lt;/strong&gt;&lt;/dt&gt;&#xA;&lt;dd&gt;&#xA;&lt;p&gt;yank (복사; Copy) yank는 &amp;lsquo;홱 잡아당긴다&amp;rsquo;는 뜻&lt;/p&gt;&#xA;&lt;/dd&gt;&#xA;&lt;/dl&gt;&#xA;&lt;p&gt;(4) 문서를 스크롤하여, 복사된 텍스트를 붙어 넣을 곳으로 이동&lt;/p&gt;&#xA;&lt;p&gt;(5)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vi%EB%8B%A8%EC%B6%95%ED%82%A4/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/tool/vi%EB%8B%A8%EC%B6%95%ED%82%A4/</guid>
+				<description>&lt;p&gt;vi 단축키&#xA;명령모드 (esc 눌렀을때, vi 처음 들어갔을때)&#xA;파일의 끝으로 이동할때는 - G&#xA;한줄 잘라내기 - dd&#xA;세줄 잘라내기 - 3dd&#xA;붙여넣기 - p&#xA;한글자 삭제 - x&#xA;단어 삭제 - dw&#xA;실행취소! - u&#xA;줄의 맨 앞 - o&#xA;줄의 맨 뒤 - $&#xA;(G, $ 이거 개꿀)&#xA;마지막행 모드 (esc -&amp;gt; : 눌렀을때)&#xA;(명령어 뒤에 !를 붙이면 강제로 수행하니까, vi가 궁시렁 궁시렁 거리면 &amp;quot; ! &amp;ldquo;붙여서 실행)&#xA;저장만 : w&#xA;종료만 : q&#xA;저장 후 종료 : wq&#xA;라인 번호좀 보자 : set nu&#xA;커서 위치 뒤로 문자열좀 찾자 : ?문자열&#xA;커서 위치 앞으로 문자열좀 찾자 : /문자열&#xA;(set nu, wq! 개꿀)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/linux/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/linux/</guid>
+				<description>&lt;p&gt;ctrl alt delete&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;잠금&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;vm 입력후 tab키 두번 누르기&lt;/p&gt;&#xA;&lt;p&gt;붙여넣기&#xA;shift + insert&#xA;shift ctrl +v&lt;/p&gt;&#xA;&lt;h1 id=&#34;명령어&#34;&gt;명령어&lt;/h1&gt;&#xA;&lt;p&gt;ipa 명령어&lt;/p&gt;&#xA;&lt;p&gt;보드 버전 확인 명령어&#xA;do apt-cache show nvidia-l4t-co&lt;/p&gt;&#xA;&lt;p&gt;rm -rf [삭제할_폴더_경로]&lt;/p&gt;&#xA;&lt;p&gt;linux&#xA;여러 문장한번에?&lt;/p&gt;&#xA;&lt;p&gt;dmesg&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;dmesg -c&lt;/li&gt;&#xA;&lt;li&gt;이후 한번더하면 수정사항만 확인 가능&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;makefile 그냥 make 만 하면 댐&lt;/p&gt;&#xA;&lt;p&gt;lsmod&lt;/p&gt;&#xA;&lt;p&gt;vi /etc/systemd/digitron.sh&lt;/p&gt;&#xA;&lt;p&gt;uname&lt;/p&gt;&#xA;&lt;p&gt;uname -a&lt;/p&gt;&#xA;&lt;p&gt;uname -r&lt;/p&gt;&#xA;&lt;p&gt;sshfs &lt;a href=&#34;mailto:root@192.168.1.179&#34;&gt;root@192.168.1.179&lt;/a&gt;:/usr/src /mnt/nvd1&lt;/p&gt;&#xA;&lt;p&gt;bitbake fsl-image-gui&lt;/p&gt;&#xA;&lt;h1 id=&#34;linux-명령어-중&#34;&gt;linux 명령어 중&lt;/h1&gt;&#xA;&lt;p&gt;설치중 y , n , a : accept&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;dmesg 명령어&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu/</guid>
+				<description>&lt;h1 id=&#34;ubuntu&#34;&gt;Ubuntu&lt;/h1&gt;&#xA;&lt;h1 id=&#34;정의&#34;&gt;정의&lt;/h1&gt;&#xA;&lt;p&gt;우분투 LTS 의미 및 차이점 우분투에서 LTS는 Long Term Support의 약자입니다. 오랜 시간 동안 지원을 받을 수 있다고 해석할 수 있는데요. LTS가 붙은 버전은 출시일로 부터 최대 5년 까지 꾸준한 기능 및 보안 업데이트를 지원합니다&lt;/p&gt;&#xA;&lt;h1 id=&#34;종류&#34;&gt;종류&lt;/h1&gt;&#xA;&lt;p&gt;usb&lt;/p&gt;&#xA;&lt;p&gt;우분투에서 인식하니까 폴더가 또하나있네 ㅇㅇ&lt;/p&gt;&#xA;&lt;p&gt;ImportError: No module named &amp;rsquo;tkinter&#39;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;sudo apt-get install python3-tk&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Linux(Ubuntu)에서 apt-get 패키지를 다운로드하는 서버를 변경&lt;/p&gt;&#xA;&lt;p&gt;sources.list&#xA;파일 경로 및 열기&#xA;파일은 /etc/apt/에 위치&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ cd /etc/apt/&#xA;$ vim sources.list&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;기본 설정&#xA;기본적으로 지역을 한국으로 설정하시고 한국어로 언어를 설정하시면 /etc/apt/sources.list에 빨간색으로 &lt;a href=&#34;http://kr.archive.ubuntu.com/ubuntu/%EB%A1%9C&#34;&gt;http://kr.archive.ubuntu.com/ubuntu/로&lt;/a&gt; 나와있을겁니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_server/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_server/</guid>
+				<description>&lt;p&gt;Ubuntu server&lt;/p&gt;&#xA;&lt;p&gt;서버는 일반적으로&#xA;랙 마운트&#xA;타워의 두 가지 폼 팩터로 제공&lt;/p&gt;&#xA;&lt;p&gt;타워 서버는 기본적으로 데스크탑이지만 수명, 안정성 및 보안에 중점을 둔 부분이 종종 다릅니다. 예를 들어, 서버는 오류 코드 수정 (ECC) RAM을 사용합니다. 서버가 아닌 데스크톱은 그렇지 않습니다.&lt;/p&gt;&#xA;&lt;p&gt;또한 서버에는 모니터, 키보드 및 마우스와 같은 주변 장치가 반드시 포함되어 있지는 않습니다. 주변 장치없이 서버를 실행하는 것을 &amp;ldquo;헤드리스&amp;quot;설정이라고합니다. 서버용 소프트웨어에는 운영 체제, 서버 소프트웨어 (예 : 웹 사이트 호스팅 용 Apache, CUPS 인쇄 서버) 및 보안 소프트웨어가 포함됩니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_usb/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_usb/</guid>
+				<description>&lt;p&gt;우분투에서 인식하니까 폴더가 또하나있네 ㅇㅇ&lt;/p&gt;&#xA;&lt;p&gt;ImportError: No module named &amp;rsquo;tkinter&#39;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;sudo apt-get install python3-tk&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Linux(Ubuntu)에서 apt-get 패키지를 다운로드하는 서버를 변경&lt;/p&gt;&#xA;&lt;p&gt;sources.list&#xA;파일 경로 및 열기&#xA;파일은 /etc/apt/에 위치&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ cd /etc/apt/&#xA;$ vim sources.list&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;기본 설정&#xA;기본적으로 지역을 한국으로 설정하시고 한국어로 언어를 설정하시면 /etc/apt/sources.list에 빨간색으로 &lt;a href=&#34;http://kr.archive.ubuntu.com/ubuntu/&#34;&gt;http://kr.archive.ubuntu.com/ubuntu/&lt;/a&gt;로 나와있을겁니다.&lt;/p&gt;&#xA;&lt;p&gt;문제 혹은 에러&#xA;간혹 아래 나와 있는 문제들처럼 설치할 수 없다고 오류가 뜰 때가 있는데 저장소에서 해당패키지에 대한 정보를 가지고 있지 않거나 일시적으로 서버가 작동하지 않을 수도 있다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EB%B6%80%ED%8C%85/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EB%B6%80%ED%8C%85/</guid>
+				<description>&lt;h1 id=&#34;부팅-에러&#34;&gt;부팅 에러&lt;/h1&gt;&#xA;&lt;p&gt;원인&lt;/p&gt;&#xA;&lt;p&gt;현상&lt;/p&gt;&#xA;&lt;p&gt;해결&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;fsck /dev/sda1&lt;/li&gt;&#xA;&lt;li&gt;sda는 오류창에 명시되있음&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;다른해결&lt;/p&gt;&#xA;&lt;p&gt;우선 root 패스워드를 넣으면 single mode 로 들어갑니다. 여기서 fsck 를 이용해서 파티션들을 치료해주시고 재부팅하시면 됩니다. 만일 ext3를 쓰신다면&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;fsck -f ext3 -y /dev/sda2&#xA;fsck -f ext3 -y /dev/sda3&#xA;fsck -f ext3 -y /dev/sdb1&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%84%A4%EC%A0%95/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%84%A4%EC%A0%95/</guid>
+				<description>&lt;p&gt;#계정&lt;/p&gt;&#xA;&lt;p&gt;원격 들어갈 계정과 다름&lt;/p&gt;&#xA;&lt;p&gt;원격으로 들어간것&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;한글 입력안됨&#xA;&lt;ul&gt;&#xA;&lt;li&gt;텍스트 입력창이란 항목이 없음&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;ubuntu&lt;/p&gt;&#xA;&lt;p&gt;리눅스 운영체제에서 기본적으로 최고 관리 권한 계정인 root 계정을 활성화 시켜놓지 않습니다. 이유는 Windows 에서 Administrator 계정을 활성화 시키지 않는 이유와 비슷한데, 아무래도 보안상의 이유가 크겠죠. 윈도우즈야 일반 사용자가 많기 때문에 Windows 8.1 과 같은 클라이언트 버전에서는 최고 관리권한을 가져야 하는 일이 많은 반면, 리눅스의 경우는 일반 사용자보다 서버로 이용하기 위한 경우가 더 많기 때문에 root 계정에 대한 보안이 상당히 중요합니다. (물론, 윈도우 서버 버전에서도 마찬가지지요.)&#xA;관련글 : 개인서버 설치 세번째 - 윈도우 8/8.1 빠르고 편한 방법으로 관리자 계정 활성화하기&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%84%A4%EC%B9%98/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%84%A4%EC%B9%98/</guid>
+				<description>&lt;p&gt;우분투 16.04 /var/lib/dpkg/lock 잠금 파일을 얻을 수 없습니다 해결방법&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;reboot 로 해결&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;sudo apt-get upgrade&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ㅅㅂ 버전 안맞을때 취소방법?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;맥 OS X 에서 타임머신이 좋음&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;PPA를 포함하지 않은 간소화한 유틸 설치는 민트 리눅스 항목을 참고하십시오.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://optic.tistory.com/47&#34;&gt;http://optic.tistory.com/47&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;아래 내용을 터미널(ctrl+alt+t)에서 복사/붙여넣기 하십시오.&lt;/p&gt;&#xA;&lt;p&gt;sudo apt update &amp;amp;&amp;amp; sudo apt install -y chromium-browser chromium-browser-l10n gstreamer1.0-fluendo-mp3 gstreamer1.0-libav gstreamer1.0-packagekit gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly frei0r-plugins libmatroska6v5 unrar gdebi lame x265 clamtk ufw ffmpeg faad giflib-tools wavpack opus-tools p7zip p7zip-full p7zip-rar ppa-purge partitionmanager clamav libclamunrar7 pinball kpat kblocks kbreakout kmahjongg kmines kreversi gwenview autoconf automake git pitivi ghostscript fonts-noto-cjk fonts-noto-cjk-extra guake kolourpaint gnome-weather pdfshuffler redshift-gtk calibre audacity default-jre&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%9B%90%EA%B2%A9/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/ubuntu_%EC%9B%90%EA%B2%A9/</guid>
+				<description>&lt;p&gt;sudo apt-get install xrdp&#xA;sudo apt-get install xfce4&lt;/p&gt;&#xA;&lt;p&gt;/etc/xrdp/startwm.sh 파일 수정&lt;/p&gt;&#xA;&lt;p&gt;./etc/X1/Xession -&amp;gt; ./usr/bin/startxfce4 로 변경&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;실행안됨&lt;/li&gt;&#xA;&lt;li&gt;startfxce4로만 바꾸니 실행가능&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;service xrdp restart&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;로 xrdp 서비스 재실행&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;sudo로 실행하기&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;포트 변경 하고 싶으면 /etc/xrdp/xrdp.ini 파일로 port 부분을 원하는 포트변경&lt;/p&gt;&#xA;&lt;p&gt;xfce4&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;추가로 원격 데스트탑 환경 지원&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;왜 Tab key를 잘못 인식하는지 이유는 알 수 없지만 &amp;ldquo;동일 프로그램 간의 전환&amp;quot;은 잘 쓰지도 않는 기능이므로 해당 단축키를 삭제하면 간단히 해결 된다. (많이 사용하는 기능은 &amp;ldquo;여러 프로그램 간의 전환&amp;quot;으로 &amp;lt;Alt key + Tab key&amp;gt; 조합이다.)&#xA;xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/&amp;rsquo;&amp;lt;&amp;lsquo;Super&amp;rsquo;&amp;gt;&amp;lsquo;Tab -r 명령어나&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/%EB%AA%85%EB%A0%B9%EC%96%B4/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/%EB%AA%85%EB%A0%B9%EC%96%B4/</guid>
+				<description>&lt;p&gt;파일및디렉터리개요(파일관련명령어포함)&#xA;파일의종류&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;일반파일(ordinaryfile)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;파일 속성&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;표현 소유자 그룹 기타&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;명령어&#34;&gt;명령어&lt;/h3&gt;&#xA;&lt;p&gt;리눅스&#xA;리눅스나 유닉스에서는 df 라는 명령으로 현재 디스크의 남은 용량 등의 정보를 얻을 수 있습니다.&lt;/p&gt;&#xA;&lt;p&gt;메가바이트(MB)/기가바이트(GB) 단위로, 알아보기 쉽게 출력하기 위해서는&lt;/p&gt;&#xA;&lt;p&gt;df -h&lt;/p&gt;&#xA;&lt;p&gt;이렇게 -h 옵션을 붙입니다.&lt;/p&gt;&#xA;&lt;p&gt;그리고&#xA;df -h -T&#xA;이렇게 -T 옵션을 붙이면 파일 시스템의 종류까지 출력&lt;/p&gt;&#xA;&lt;p&gt;/dev/sda1 이 첫번째 하드 디스크 첫번째 파티션입니다. (스카시SCSI가 아닌 IDE 방식 하드의 경우에는 /dev/hda1)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;하드디스크 전체 Size(사이즈)는 7.6 기가바이트&lt;/li&gt;&#xA;&lt;li&gt;Used(사용한 용량)는 435메가이고&lt;/li&gt;&#xA;&lt;li&gt;Avail(사용 가능한 용량)은 6.8기가이고&lt;/li&gt;&#xA;&lt;li&gt;현재 6퍼센트 사용했습니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;cat(catenate)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/%EC%9A%B0%EB%B6%84%ED%88%AC%EC%BB%A4%EB%84%90/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/ubuntu/%EC%9A%B0%EB%B6%84%ED%88%AC%EC%BB%A4%EB%84%90/</guid>
+				<description>&lt;h1 id=&#34;리눅스-커널linux-kernel&#34;&gt;리눅스 커널(Linux kernel)&lt;/h1&gt;&#xA;&lt;p&gt;모놀리딕 유닉스 계열 컴퓨터 운영체제 커널이며 자유-오픈 소프트웨어&lt;/p&gt;&#xA;&lt;p&gt;커널을 무료로 배포하여 누구나(솔직히 아무나 못하지만) 커널을 수정하고 공부하여 더 나은 방향으로 개선시킬 수 있다는 점에서 크게 감명&lt;/p&gt;&#xA;&lt;h1 id=&#34;리눅스-커널-소스-다운&#34;&gt;리눅스 커널 소스 다운&lt;/h1&gt;&#xA;&lt;p&gt;git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git&lt;/p&gt;&#xA;&lt;p&gt;rc 라는 태그가 같이 붙어 있다면 이는 현재 개발 중인 unstable 버전이므로 rc 가 붙지 않은 가장 최신의 커널 버전을 찾길&lt;/p&gt;&#xA;&lt;p&gt;빌드에 필요한 커널 설정 파일을 생성해야 한다. make menuconfig 를 통해 생성하는 방법도 있지만 필자는 기존의 config 파일을 불러올 것&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/vi/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/vi/</guid>
+				<description>&lt;p&gt;gg       # 파일 맨 위로&#xA;vG       # 전체 선택&#xA;y        # 복사 (yank)&lt;/p&gt;&#xA;&lt;p&gt;한 줄로 하려면 노멀 모드에서:&#xA;gg yG&lt;/p&gt;&#xA;&lt;p&gt;붙여넣기는 p&lt;/p&gt;&#xA;&lt;p&gt;터미널에서 클립보드로 복사하려면 vim이 클립보드 지원이 있어야 해서 안 될 수도 있어요. 그럴 땐 그냥 터미널에서 마우스로 드래그 선택 후 Ctrl+Shift+C가 더 편해&lt;/p&gt;&#xA;&lt;p&gt;bashcat /mnt/work/var-mx95-yocto/&amp;lt;스크립트명&amp;gt;.sh&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EA%B4%80%EB%A0%A8%EA%B3%B5%EB%B6%80/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EA%B4%80%EB%A0%A8%EA%B3%B5%EB%B6%80/</guid>
+				<description>&lt;p&gt;혼자서 운영체제를 만드는 것은 도전적이지만 충분히 가능합니다. 많은 사람들이 개인 프로젝트로 운영체제를 만들었고, 그 과정에서 많은 것을 배울 수 있습니다. 그러나 혼자서 운영체제를 개발하기 위해서는 다음과 같은 단계를 고려해야 합니다:&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-기본-지식-확보--운영체제의-기초-프로세스-관리-메모리-관리-파일-시스템-드라이버-등-운영체제의-기본-개념을-이해해야-합니다--프로그래밍-언어-cc-어셈블리어-같은-언어에-능숙해야-합니다-대부분의-운영체제는-이러한-언어로-작성됩니다&#34;&gt;&lt;strong&gt;1. 기본 지식 확보&lt;/strong&gt;- &lt;strong&gt;운영체제의 기초&lt;/strong&gt;: 프로세스 관리, 메모리 관리, 파일 시스템, 드라이버 등 운영체제의 기본 개념을 이해해야 합니다.- &lt;strong&gt;프로그래밍 언어&lt;/strong&gt;: C/C++, 어셈블리어 같은 언어에 능숙해야 합니다. 대부분의 운영체제는 이러한 언어로 작성됩니다.&lt;/h3&gt;&#xA;&lt;h3 id=&#34;2-개발-환경-설정--개발-도구-컴파일러-링커-디버거-등의-개발-도구를-설정합니다-gcc와-같은-크로스-컴파일러가-필요할-수-있습니다--에뮬레이터-qemu-bochs-등-운영체제-개발을-위한-에뮬레이터를-사용하여-실물-하드웨어-없이도-테스트할-수-있습니다&#34;&gt;&lt;strong&gt;2. 개발 환경 설정&lt;/strong&gt;- &lt;strong&gt;개발 도구&lt;/strong&gt;: 컴파일러, 링커, 디버거 등의 개발 도구를 설정합니다. GCC와 같은 크로스 컴파일러가 필요할 수 있습니다.- &lt;strong&gt;에뮬레이터&lt;/strong&gt;: QEMU, Bochs 등 운영체제 개발을 위한 에뮬레이터를 사용하여 실물 하드웨어 없이도 테스트할 수 있습니다.&lt;/h3&gt;&#xA;&lt;h3 id=&#34;3-프로젝트-계획--목표-설정-개발할-운영체제의-기능과-범위를-정의합니다-기본적인-커널-기능부터-시작할-수-있습니다--스케줄링-프로젝트를-작은-단위로-나누어-단계별로-진행합니다-예를-들어-부트로더-기본-커널-메모리-관리-파일-시스템-등을-순차적으로-개발합니다&#34;&gt;&lt;strong&gt;3. 프로젝트 계획&lt;/strong&gt;- &lt;strong&gt;목표 설정&lt;/strong&gt;: 개발할 운영체제의 기능과 범위를 정의합니다. 기본적인 커널 기능부터 시작할 수 있습니다.- &lt;strong&gt;스케줄링&lt;/strong&gt;: 프로젝트를 작은 단위로 나누어 단계별로 진행합니다. 예를 들어, 부트로더, 기본 커널, 메모리 관리, 파일 시스템 등을 순차적으로 개발합니다.&lt;/h3&gt;&#xA;&lt;h3 id=&#34;4-개발-단계--부트로더-작성-운영체제를-부팅하기-위한-부트로더를-개발합니다--커널-개발-프로세스-관리-메모리-관리-입출력-관리-등을-포함하는-커널을-구현합니다--드라이버-하드웨어와의-상호작용을-위해-필요한-드라이버를-작성합니다--파일-시스템-파일을-읽고-쓰기-위한-파일-시스템을-구현합니다&#34;&gt;&lt;strong&gt;4. 개발 단계&lt;/strong&gt;- &lt;strong&gt;부트로더 작성&lt;/strong&gt;: 운영체제를 부팅하기 위한 부트로더를 개발합니다.- &lt;strong&gt;커널 개발&lt;/strong&gt;: 프로세스 관리, 메모리 관리, 입출력 관리 등을 포함하는 커널을 구현합니다.- &lt;strong&gt;드라이버&lt;/strong&gt;: 하드웨어와의 상호작용을 위해 필요한 드라이버를 작성합니다.- &lt;strong&gt;파일 시스템&lt;/strong&gt;: 파일을 읽고 쓰기 위한 파일 시스템을 구현합니다.&lt;/h3&gt;&#xA;&lt;h3 id=&#34;5-테스트-및-디버깅--에뮬레이터-및-가상-머신-개발한-운영체제를-에뮬레이터나-가상-머신에서-테스트하여-버그를-수정합니다--실제-하드웨어-충분히-안정화된-후-실제-하드웨어에서-테스트해-볼-수-있습니다&#34;&gt;&lt;strong&gt;5. 테스트 및 디버깅&lt;/strong&gt;- &lt;strong&gt;에뮬레이터 및 가상 머신&lt;/strong&gt;: 개발한 운영체제를 에뮬레이터나 가상 머신에서 테스트하여 버그를 수정합니다.- &lt;strong&gt;실제 하드웨어&lt;/strong&gt;: 충분히 안정화된 후 실제 하드웨어에서 테스트해 볼 수 있습니다.&lt;/h3&gt;&#xA;&lt;h3 id=&#34;6-학습-자료-및-커뮤니티-활용--자료-operating-systems-design-and-implementation-andrew-s-tanenbaum과-같은-교재를-참고하세요--커뮤니티-운영체제-개발-관련-포럼이나-온라인-커뮤니티에서-도움을-받을-수-있습니다&#34;&gt;&lt;strong&gt;6. 학습 자료 및 커뮤니티 활용&lt;/strong&gt;- &lt;strong&gt;자료&lt;/strong&gt;: &amp;ldquo;Operating Systems: Design and Implementation&amp;rdquo; (Andrew S. Tanenbaum)과 같은 교재를 참고하세요.- &lt;strong&gt;커뮤니티&lt;/strong&gt;: 운영체제 개발 관련 포럼이나 온라인 커뮤니티에서 도움을 받을 수 있습니다.&lt;/h3&gt;&#xA;&lt;h3 id=&#34;7-오픈-소스-프로젝트-참고--리눅스-linux-커널을-연구하여-많은-아이디어와-코드를-참고할-수-있습니다--미니-운영체제-osdev와-같은-오픈-소스-미니-운영체제-프로젝트를-살펴보는-것도-유용합니다&#34;&gt;&lt;strong&gt;7. 오픈 소스 프로젝트 참고&lt;/strong&gt;- &lt;strong&gt;리눅스&lt;/strong&gt;: Linux 커널을 연구하여 많은 아이디어와 코드를 참고할 수 있습니다.- &lt;strong&gt;미니 운영체제&lt;/strong&gt;: &amp;ldquo;OSDev&amp;quot;와 같은 오픈 소스 미니 운영체제 프로젝트를 살펴보는 것도 유용합니다.&lt;/h3&gt;&#xA;&lt;p&gt;혼자서 운영체제를 만드는 것은 큰 도전이지만, 학습과 성취감을 느낄 수 있는 흥미로운 경험이 될 것입니다. 자신의 수준에 맞게 점진적으로 개발을 진행해 나가세요.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EA%B5%AC%EC%A1%B0/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EA%B5%AC%EC%A1%B0/</guid>
+				<description>&lt;h1 id=&#34;리눅스-구조&#34;&gt;리눅스 구조&lt;/h1&gt;&#xA;&lt;h1 id=&#34;etc&#34;&gt;etc&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;systemd : 리눅스의 초기화 시스템 또는 데몬시스템&lt;/li&gt;&#xA;&lt;li&gt;이전에는 system5&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;boot&#34;&gt;boot&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;컴퓨터가 켜질 때 가장 먼저 읽히는 곳&lt;/li&gt;&#xA;&lt;li&gt;새로 빌드한 커널 이미지나 DTB(Device Tree Blob) 파일을 여기에 복사하여 시스템에 반영&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;usr-unix-system-resources&#34;&gt;usr (Unix System Resources)&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;프로그램의 창고(사용자가 설치한 대부분의 프로그램 정보)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;/usr/bin: 일반 사용자가 실행하는 대부분의 명령어(python, gcc 등).&lt;/p&gt;&#xA;&lt;p&gt;/usr/lib: 프로그램 실행에 필요한 공유 라이브러리.&lt;/p&gt;&#xA;&lt;p&gt;/usr/local: 사용자가 소스 코드를 직접 컴파일해서 설치할 때 사용하는 공간.&lt;/p&gt;&#xA;&lt;h1 id=&#34;외부-연결&#34;&gt;외부 연결&lt;/h1&gt;&#xA;&lt;p&gt;/mnt: 관리자가 수동으로 파일 시스템을 마운트할 때 쓰는 임시 공간입니다. (예: mount /dev/sdb1 /mnt)&#xA;/media: USB나 외장하드를 꽂았을 때 OS가 자동으로 인식해서 연결해주는 곳입니다. (예: /media/user/usb_name)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BD%94%EB%B0%9C%EC%A6%88/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BD%94%EB%B0%9C%EC%A6%88/</guid>
+				<description>&lt;h1 id=&#34;리눅스-코발즈&#34;&gt;리눅스 코발즈&lt;/h1&gt;&#xA;&lt;p&gt;커널을 C++로 짜는 것은 멍청한 생각&lt;/p&gt;&#xA;&lt;p&gt;C++ 프로그래머들을 접근하지 못하게 한 것만으로도 C를 선택할 이유가 충분&lt;/p&gt;&#xA;&lt;p&gt;효과적이고, 시스템 수준이며 이식성 높으신 C++는 C에서 가능한 모든 것들로부터 너 자신을 얽맬 뿐&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;그것들이 동작하지 않을 때의 무한한 고통 (STL 그리고 특히 Boost가 이식성이 좋고 안정적이라고 하는 사람들은 웃기지도 않는 개소리를 하는것이다.)&lt;/li&gt;&#xA;&lt;li&gt;2년 뒤에 몇몇 추상화가 그다지 효과적이지 않지만 모든 코드가 그 주변의 멋진 객체 모델들에 완전히 매여 있고, 프로그램을 처음부터 다시 짜지 않는 이상 절대로 고칠수 없다는 것을 깨달았을때처럼 비효율적이고 추상적인 프로그래밍 모델&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;프로젝트의 언어를 C에 국한시킨다면, 사람들이 프로젝트를 망치지 못하게 할 뿐만 아니라 바보같은 &amp;ldquo;객체 모델&amp;rdquo; 헛짓거리로 모든걸 망쳐버리지 않는데다가 저수준 문제들을 실제로 이해하는 많은 프로그래머들을 얻을수 있게&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4/</guid>
+				<description>&lt;h1 id=&#34;리눅스&#34;&gt;리눅스&lt;/h1&gt;&#xA;&lt;p&gt;나무위키&lt;/p&gt;&#xA;&lt;p&gt;OS 커널의 일종인 리눅스 커널&#xA;리눅스 커널을 사용하는 운영체제&lt;/p&gt;&#xA;&lt;p&gt;오픈 소스 소프트웨어&lt;/p&gt;&#xA;&lt;p&gt;관련책&#xA;에릭 레이먼드의 &amp;ldquo;시장과 성당&lt;/p&gt;&#xA;&lt;p&gt;GNU 프로젝트가 리눅스 커널에 관심을 가졌고, 리눅스 커널과 GNU 유틸리티가 결합하면서 비교적 완전한 운영체제&lt;/p&gt;&#xA;&lt;p&gt;기존 소프트웨어개발은 산업시대 모델을 그대로 따라서 풀타임 프로 개발자들에 의해서 중앙집중적으로 관리하고 만들어짐&#xA;1990년대 초 리누스 토발즈에 의해서 개발&#xA;인터넷을 이용한 다수의 개발자의 참여로 발전&#xA;가벼움,유연함, 공개를 무기로 인터넷에서 선전&#xA;linux는 unix 철학과 기술을 그대로 계승하고 있음&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%A2%85%EB%A5%98/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%A2%85%EB%A5%98/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://servermon.tistory.com/347&#34;&gt;https://servermon.tistory.com/347&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;데비안&#34;&gt;데비안&lt;/h1&gt;&#xA;&lt;p&gt;자유컴퓨터 운영체제&lt;/p&gt;&#xA;&lt;p&gt;특징&#xA;패키지 설치 및 업그레이드의 단순함&#xA;패키지매니저 apt업데이트 방식을 이용하면 소프트웨어의 설치나 업데이트에서 다른 패키지와의 의존성 확인, 보안관련 업데이트&lt;/p&gt;&#xA;&lt;h1 id=&#34;이름의-유래&#34;&gt;이름의 유래&lt;/h1&gt;&#xA;&lt;p&gt;데비안 프로젝트의 창시자인 이안머독과 그의 부인 데브라&lt;/p&gt;&#xA;&lt;p&gt;다양한 하드웨어&lt;/p&gt;&#xA;&lt;p&gt;네트워크결합 스토리지부터 전화기, 노트북 데스크탑 및 서버&lt;/p&gt;&#xA;&lt;h1 id=&#34;redhat&#34;&gt;RedHat&lt;/h1&gt;&#xA;&lt;p&gt;현재 기업용 배포판인 레드햇 엔터프라이즈 리눅스 기반으로 하는 지원 및 교육&lt;/p&gt;&#xA;&lt;h1 id=&#34;oracle-linux&#34;&gt;Oracle linux&lt;/h1&gt;&#xA;&lt;p&gt;UEK ( Unbreakable Enterprise Kernel)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Oracle Engineered systems 에 최적화된 커널&lt;/li&gt;&#xA;&lt;li&gt;Oracle Database RAC 구성을 위한 Oracle Clusterware가 기본으로 포함되어 있으며 Oracle Database나 Oracle Business Application등 Oracle 소프트웨어 이미사용하고있거나 사용하려는 기업에 적합한 배포본&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;fedora-linux&#34;&gt;fedora linux&lt;/h1&gt;&#xA;&lt;p&gt;프로젝트 목적&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/</guid>
+				<description>&lt;h1 id=&#34;linux-명령어&#34;&gt;Linux 명령어&lt;/h1&gt;&#xA;&lt;h1 id=&#34;명령어&#34;&gt;명령어&lt;/h1&gt;&#xA;&lt;p&gt;sudo : super user uo&lt;/p&gt;&#xA;&lt;h1 id=&#34;sudo-su--&#34;&gt;sudo su -&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;루트 사용자 변경&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;ubuntu 비밀번호 변경&lt;/p&gt;&#xA;&lt;p&gt;sudo passwd&lt;/p&gt;&#xA;&lt;h1 id=&#34;사진캡처&#34;&gt;사진캡처&lt;/h1&gt;&#xA;&lt;p&gt;단축키&#xA;Ubuntu에서는 예전 윈도우용과  스크린샷키가 동일하게 적용된다.&lt;/p&gt;&#xA;&lt;p&gt;전체 화면 캡쳐 :Print Screen&#xA;윈도우창 화면 캡쳐 : Alt + Print Screen&lt;/p&gt;&#xA;&lt;h1 id=&#34;스크린샷&#34;&gt;스크린샷&lt;/h1&gt;&#xA;&lt;p&gt;또한 스크린샷 프로그램이 기본적으로 제공되는데, 위에 간단하게 소개드린 단축키를 사용해도 결국 &amp;ldquo;스크린샷&amp;rdquo; 프로그램으로 실행된다.&lt;/p&gt;&#xA;&lt;p&gt;프로그램을 직접 실행하면 몇 가지 이점이 있다.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ldquo;다음 시간이 지난 후에 찍기&amp;rdquo; : 시스템 메뉴가 활성화된 상태에서는 단축키를 통한 캡쳐가 되지 않는다.&#xA;5초 뒤에 찍기로 설정 하고 잽싸게 시스템 메뉴를 누르고 기다리면 화면 캡쳐가 가능하다.&#xA;&amp;ldquo;잡을 영역선택&amp;rdquo; : 원하는 일부 영역만 선택하여 화면 캡쳐할 수 있다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/ip/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/ip/</guid>
+				<description>&lt;h1 id=&#34;linux-ip-수동-설정방법&#34;&gt;linux ip 수동 설정방법&lt;/h1&gt;&#xA;&lt;p&gt;sudo nmcli connection modify &amp;ldquo;Wired connection 2&amp;rdquo; ipv4.addresses 192.168.1.29/24 ipv4.method manual&#xA;sudo nmcli connection up &amp;ldquo;Wired connection 2&amp;rdquo;&lt;/p&gt;&#xA;&lt;h1&gt;&lt;/h1&gt;&#xA;&lt;p&gt;nmcli connection show &amp;ldquo;Wired connection 1&amp;rdquo; | grep autoconnect&lt;/p&gt;&#xA;&lt;p&gt;nmcli connection show &amp;ldquo;Wired connection 2&amp;rdquo; | grep autoconnect&lt;/p&gt;&#xA;&lt;p&gt;nmcli connection show &amp;ldquo;Wired connection 3&amp;rdquo; | grep autoconnect&lt;/p&gt;&#xA;&lt;p&gt;sudo nmcli connection modify &amp;ldquo;Wired connection 2&amp;rdquo; connection.autoconnect yes&lt;/p&gt;&#xA;&lt;p&gt;30 기준으로 똑같이 설정하고 해결 됨&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/%EC%8B%A4%ED%96%89/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/%EC%8B%A4%ED%96%89/</guid>
+				<description>&lt;p&gt;&amp;amp;&#xA;이렇게 하면 한 터미널에서 여러 프로세스가 동시에 실행&lt;/p&gt;&#xA;&lt;p&gt;1번작업 백그라운드로&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bg %1&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;전면(Foreground)으로&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;fg %1&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kill %1&lt;/p&gt;&#xA;&lt;p&gt;kill 12345&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;pid로&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%B6%80%ED%8C%85/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%B6%80%ED%8C%85/</guid>
+				<description>&lt;p&gt;11:21:38.644 11:21:58.993&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;전체 20초 정도&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;uboot 300mm&#xA;kernal&#xA;demon service&lt;/p&gt;&#xA;&lt;h1 id=&#34;uboot&#34;&gt;uboot&lt;/h1&gt;&#xA;&lt;p&gt;cpu rom , bootrom&lt;/p&gt;&#xA;&lt;p&gt;bootrom&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;sd,emmc, 등 확인&lt;/li&gt;&#xA;&lt;li&gt;emmc 첫번째 코드 를 메모리에 올려서 메모리에서 실행&#xA;메모리 는 cache 램 / on-chip 메모리 - oc ram&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;kernal&#34;&gt;kernal&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;log 전&lt;/li&gt;&#xA;&lt;li&gt;[2026-06-26 11:21:41.578] Starting kernel &amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;[2026-06-26 11:21:49.509] [    7.030438] EXT4-fs (mmcblk0p1): re-mounted 955f0a99-6263-422c-95ac-697f19ecb029.&#xA;[2026-06-26 11:21:49.509]          Starting Load udev Rules from C[    7.045910] systemd[1]: Starting Coldplug All udev Devices&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;여기까지 커널 부팅&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%82%AC%EC%9A%A9%EB%B2%95/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%82%AC%EC%9A%A9%EB%B2%95/</guid>
+				<description>&lt;h1 id=&#34;사용기&#34;&gt;사용기&lt;/h1&gt;&#xA;&lt;p&gt;np로 저장하기 전에 취소했으니 저장 안된것?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%82%AD%EC%A0%9C/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%82%AD%EC%A0%9C/</guid>
+				<description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 홈 디렉토리 휴지통&#xA;du -sh ~/.local/share/Trash/&#xA;rm -rf ~/.local/share/Trash/*&#xA;&#xA;# 혹시 /mnt/work 마운트 포인트에도 휴지통이 있을 수 있어요&#xA;du -sh /mnt/work/.Trash-*/&#xA;rm -rf /mnt/work/.Trash-*/&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;먼저 du -sh로 용량 확인하고 지우는 게 안전&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98/</guid>
+				<description>&lt;h1 id=&#34;아키텍처&#34;&gt;아키텍처&lt;/h1&gt;&#xA;&lt;p&gt;ALSA&lt;/p&gt;&#xA;&lt;p&gt;Advanced Linux Sound Architecture&#xA;고급 리눅스 사운드 아키텍처&lt;/p&gt;&#xA;&lt;p&gt;리눅스에서 사운드 카드 드라이버를 위한 API을 제공하는 커널 모듈. Pulseaudio 같은 사용자 모드에서 작동하는 사운드 서버나 API들이 ALSA를 통하여 동작한다.&lt;/p&gt;&#xA;&lt;p&gt;리눅스에서 오디오을 입출력하는 구조를 간단하게 나타낸 표이다.&lt;/p&gt;&#xA;&lt;p&gt;사용자 모드&#xA;응용 프로그램&#xA;사운드 서버&lt;/p&gt;&#xA;&lt;p&gt;커널 모드&#xA;ALSA&#xA;리눅스 커널&lt;/p&gt;&#xA;&lt;p&gt;하드웨어&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%95%EC%B6%95/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%95%EC%B6%95/</guid>
+				<description>&lt;p&gt;&lt;code&gt;.tgz&lt;/code&gt; 또는 &lt;code&gt;.tar.gz&lt;/code&gt; 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.&lt;/p&gt;&#xA;&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -tzf 파일명.tgz&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;예시:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -tzf backup.tgz&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;자세한-정보-포함&#34;&gt;자세한 정보 포함&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -tvzf backup.tgz&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;출력 예:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;drwxr-xr-x root/root         0 2026-06-24 10:00 project/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-r--r-- root/root      1024 2026-06-24 10:01 project/main.c&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-r--r-- root/root       512 2026-06-24 10:01 project/Makefile&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;특정-파일-검색&#34;&gt;특정 파일 검색&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -tzf backup.tgz | grep Makefile&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;파일-개수-확인&#34;&gt;파일 개수 확인&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -tzf backup.tgz | wc -l&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;용량-큰-파일-찾기&#34;&gt;용량 큰 파일 찾기&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -tvzf backup.tgz | sort -k3 -n&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Jetson이나 일반 Linux에서라면 &lt;code&gt;tar -tzf 파일명.tgz&lt;/code&gt;만으로 내부 디렉터리 구조를 확인하는 경우가 가장 많습니다.&#xA;네, 압축 안에 있는 특정 파일이나 폴더만 골라서 풀 수 있습니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%9E%84%EB%B2%A0%EB%94%94%EB%93%9C-%EB%A6%AC%EB%88%85%EC%8A%A4/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%9E%84%EB%B2%A0%EB%94%94%EB%93%9C-%EB%A6%AC%EB%88%85%EC%8A%A4/</guid>
+				<description>&lt;p&gt;임베디드 Linux 개발&lt;/p&gt;&#xA;&lt;h1 id=&#34;요소&#34;&gt;요소&lt;/h1&gt;&#xA;&lt;p&gt;하드웨어: 하드웨어 플랫폼은 임베디드 Linux가 작동하는 곳입니다. 이러한 하드웨어 플랫폼은 처리 능력, 메모리, 스토리지 및 인터페이스와 같은 필수 기능을 제공하여 주변 장치 및 외부 장치와 원활하게 통합할 수 있습니다.&lt;/p&gt;&#xA;&lt;p&gt;리눅스 커널: 리눅스 커널 리눅스 커널 은 임베디드 Linux 시스템의 핵심 구성 요소입니다. 프로세스 관리, 메모리 관리, 장치 드라이버, 네트워킹 및 파일 시스템을 비롯한 필수 운영 체제 서비스를 제공합니다. 커널은 하드웨어와 직접 상호 작용하고 시스템의 리소스를 관리합니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%A0%88%EC%A0%84%EB%AA%A8%EB%93%9C/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%A0%88%EC%A0%84%EB%AA%A8%EB%93%9C/</guid>
+				<description>&lt;p&gt;digitron@digitron-virtual-machine:~/Desktop$ xfconf-query -c xfce4-power-manager -lv&#xA;/xfce4-power-manager/blank-on-ac                       0&#xA;/xfce4-power-manager/blank-on-battery                  10&#xA;/xfce4-power-manager/dpms-enabled                      false&#xA;/xfce4-power-manager/dpms-on-ac-off                    0&#xA;/xfce4-power-manager/dpms-on-ac-sleep                  0&#xA;/xfce4-power-manager/dpms-on-battery-off               30&#xA;/xfce4-power-manager/dpms-on-battery-sleep             15&#xA;/xfce4-power-manager/inactivity-on-ac                  14&#xA;/xfce4-power-manager/inactivity-sleep-mode-on-ac       1&#xA;/xfce4-power-manager/inactivity-sleep-mode-on-battery  1&#xA;/xfce4-power-manager/lock-screen-suspend-hibernate     false&#xA;/xfce4-power-manager/logind-handle-lid-switch          false&#xA;/xfce4-power-manager/power-button-action               3&#xA;/xfce4-power-manager/show-panel-label                  0&#xA;/xfce4-power-manager/show-tray-icon                    false&lt;/p&gt;&#xA;&lt;p&gt;xfconf-query -c xfce4-power-manager -lv&lt;/p&gt;&#xA;&lt;p&gt;다음처럼 나오면 됩니다.&lt;/p&gt;&#xA;&lt;p&gt;/xfce4-power-manager/inactivity-on-ac  0&lt;/p&gt;&#xA;&lt;p&gt;GUI에서도 변경 가능&#xA;Settings → Power Manager → System&#xA;System sleep mode → Never&#xA;When inactive for → Never&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%8B%A4%ED%96%89/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%8B%A4%ED%96%89/</guid>
+				<description>&lt;p&gt;꼭 테라텀을 3개 띄울 필요는 없습니다.&lt;/p&gt;&#xA;&lt;p&gt;상황에 따라 방법이 다릅니다.&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-백그라운드-실행-&#34;&gt;1. 백그라운드 실행 (&lt;code&gt;&amp;amp;&lt;/code&gt;)&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./program1 &amp;amp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./program2 &amp;amp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./program3 &amp;amp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이렇게 하면 한 터미널에서 여러 프로세스가 동시에 실행됩니다.&lt;/p&gt;&#xA;&lt;p&gt;실행 중 확인:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;jobs&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;또는&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps -ef | grep program&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h3 id=&#34;2-다른-터미널-사용&#34;&gt;2. 다른 터미널 사용&lt;/h3&gt;&#xA;&lt;p&gt;테라텀을 여러 개 띄워서 각각 접속하는 것도 가능합니다.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;TeraTerm #1 → program1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;TeraTerm #2 → program2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;TeraTerm #3 → program3&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;가장 단순한 방법입니다.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;3-screen-사용-서버-작업-시-추천&#34;&gt;3. screen 사용 (서버 작업 시 추천)&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;screen -S server1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./program1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;새 세션:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%99%95%EC%9D%B8/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%ED%99%95%EC%9D%B8/</guid>
+				<description>&lt;p&gt;du&#xA;디렉토리 크기 계산할 때 파일 수가 많으면 엄청 오래 걸려요.&#xA;Yocto 빌드 디렉토리는 파일이 수백만 개라 10~20분 걸리는 경우도 있음&#xA;Docker 실행 중이어도 du 속도랑은 무관해요. 순전히 파일 수가 많아서 그런 거예요.&#xA;Yocto 빌드 디렉토리는 파일이 수백만 개 있어서 du가 하나하나 다 읽어야 함&#xA;Docker가 켜져 있든 꺼져 있든 똑같이 오래 걸립&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EC%97%AC%ED%96%89/%EC%9D%BC%EB%B3%B8/%EA%B3%84%ED%9A%8D/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EC%97%AC%ED%96%89/%EC%9D%BC%EB%B3%B8/%EA%B3%84%ED%9A%8D/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EC%97%AC%ED%96%89/%EC%9D%BC%EB%B3%B8/%EC%9D%BC%EB%B3%B8%EC%97%AC%ED%96%89/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EC%97%AC%ED%96%89/%EC%9D%BC%EB%B3%B8/%EC%9D%BC%EB%B3%B8%EC%97%AC%ED%96%89/</guid>
+				<description>&lt;p&gt;식당&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;이차란라멘&lt;/li&gt;&#xA;&lt;li&gt;페퍼런치&lt;/li&gt;&#xA;&lt;li&gt;이치미젠&#xA;구로몬 시장&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;도톤보리&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;타꼬야기&#xA;피로회복제 율ㄴ켈&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;연계 신사이바시&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;다이소&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;GU&lt;/p&gt;&#xA;&lt;p&gt;신세카이 거리&#xA;하루카스 야경&lt;/p&gt;&#xA;&lt;p&gt;오사카성&lt;/p&gt;&#xA;&lt;h1 id=&#34;쇼핑&#34;&gt;쇼핑&lt;/h1&gt;&#xA;&lt;p&gt;돈키호테&lt;/p&gt;&#xA;&lt;p&gt;신바이찌?&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;asics&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;양주&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;산토리, 진빔(복숭아 pitch)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;헤네시&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;약&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EC%97%AC%ED%96%89/%EC%9D%BC%EB%B3%B8/%ED%9B%84%EA%B8%B0/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EC%97%AC%ED%96%89/%EC%9D%BC%EB%B3%B8/%ED%9B%84%EA%B8%B0/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>https://ijjeon1203.github.io/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/</guid>
+				<description>&lt;h1 id=&#34;정규표현식&#34;&gt;정규표현식&lt;/h1&gt;&#xA;&lt;p&gt;정규표현식&lt;/p&gt;&#xA;&lt;p&gt;캐럿(caret) 기호 ^와 달러 기호 $는 정규식에서 특별한 뜻을 지닙니다. 두 기호를 &amp;lsquo;앵커(anchor)&amp;lsquo;라고 합니다.&lt;/p&gt;&#xA;&lt;p&gt;캐럿 기호 ^는 텍스트의 시작, 달러 기호 $는 텍스트의 끝을 나타냅니다.&lt;/p&gt;&#xA;&lt;p&gt;Meta 문자&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;내부적으로 특정의미를 가지는 문자&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;대소문자&lt;/p&gt;&#xA;&lt;p&gt;여러가지 조건&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;| 사용&#xA;한줄에서 하나만&#xA;한줄에서 여러개&#xA;전체에서 여러개 잡기&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;정규 표현식에서 tab&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f85149&#34;&gt;정규&lt;/span&gt; &lt;span style=&#34;color:#f85149&#34;&gt;표현식에서&lt;/span&gt; tab&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff7b72&#34;&gt;static&lt;/span&gt;&#x9;&#x9;a&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;리터럴-문자&#34;&gt;리터럴 문자&lt;/h3&gt;&#xA;&lt;p&gt;모든 영문자와 숫자는 그 문자 그대로 정규 표현식에서 매치된다. 알파벳이 아닌 문자들은 역슬래시로 시작하는 이스케이프 문자열을 통해 지원&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

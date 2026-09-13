@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1 class="page-title">{{ partial "func/title.html" . }}</h1>
+    <p class="page-sub">{{ len .RegularPagesRecursive }} posts</p>
+  </div>
+</section>
+
+<div class="container list-body">
+  {{ with .Content }}<div class="prose list-intro">{{ . }}</div>{{ end }}
+
+  {{ with .Sections }}
+  <div class="chip-row">
+    <span class="chip-label">Sub</span>
+    {{ range . }}<a class="chip" href="{{ .RelPermalink }}">{{ .Title }} <em>{{ len .RegularPagesRecursive }}</em></a>{{ end }}
+  </div>
+  {{ end }}
+
+  <div class="post-list">
+    {{ range .RegularPagesRecursive.ByDate.Reverse }}{{ partial "post-row.html" . }}{{ end }}
+  </div>
+</div>
+{{ end }}

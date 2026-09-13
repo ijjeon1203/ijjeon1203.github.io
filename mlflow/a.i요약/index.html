@@ -1,150 +1,78 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title> </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="미사일 RL 프로젝트 세션 요약
-프로젝트 구조
-missile-rl/
-├── config.yaml              ← 실험 설정 (이것만 수정)
-├── train.py                 ← 학습 실행
-├── play.py                  ← 시연 실행
-├── rocket_tracking_sim.py   ← 게임 환경 (step() 마지막 줄만 수정)
-└── checkpoints/             ← 자동 생성
-
-인프라 구성
-GitLab        → 코드 버전관리 (config.yaml, train.py, play.py, rocket_tracking_sim.py)
-Synology NAS  → MLflow 서버 (Docker) &#43; 가중치 파일 저장
-MLflow        → 코드↔가중치 연결 고리 (실험 추적)
-MLflow 서버: http://192.168.1.236:5050
-NAS 경로: /volume1/docker/mlflow/
-docker-compose: ghcr.io/mlflow/mlflow:v2.11.3 고정 버전 사용">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>a.i요약 · JJunney&#39;s Blog</title>
+    <meta name="description" content="미사일 RL 프로젝트 세션 요약 프로젝트 구조 missile-rl/ ├── config.yaml ← 실험 설정 (이것만 수정) ├── train.py ← 학습 실행 ├── play.py ← 시연 실행 ├── rocket_tracking_sim.py ← 게임 환경 (step() 마지막 줄 …">
+    <meta name="theme-color" content="#0a0a0b">
     <meta name="generator" content="Hugo 0.166.0">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ijjeon1203.github.io/mlflow/a.i%EC%9A%94%EC%95%BD/">
     
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
-
-
-
-
-    
-
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="https://ijjeon1203.github.io/mlflow/a.i%EC%9A%94%EC%95%BD/">
-    
-
-    <meta property="og:url" content="https://ijjeon1203.github.io/mlflow/a.i%EC%9A%94%EC%95%BD/">
-	<meta property="og:site_name" content=" ">
-	<meta property="og:title" content=" ">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="/css/site.css"><meta property="og:url" content="https://ijjeon1203.github.io/mlflow/a.i%EC%9A%94%EC%95%BD/">
+	<meta property="og:site_name" content="JJunney&#39;s Blog">
+	<meta property="og:title" content="JJunney&#39;s Blog">
 	<meta property="og:description" content="미사일 RL 프로젝트 세션 요약 프로젝트 구조 missile-rl/ ├── config.yaml ← 실험 설정 (이것만 수정) ├── train.py ← 학습 실행 ├── play.py ← 시연 실행 ├── rocket_tracking_sim.py ← 게임 환경 (step() 마지막 줄만 수정) └── checkpoints/ ← 자동 생성 인프라 구성 GitLab → 코드 버전관리 (config.yaml, train.py, play.py, rocket_tracking_sim.py) Synology NAS → MLflow 서버 (Docker) &#43; 가중치 파일 저장 MLflow → 코드↔가중치 연결 고리 (실험 추적) MLflow 서버: http://192.168.1.236:5050 NAS 경로: /volume1/docker/mlflow/ docker-compose: ghcr.io/mlflow/mlflow:v2.11.3 고정 버전 사용">
-	<meta property="og:locale" content="en_us">
+	<meta property="og:locale" content="ko_kr">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="mlflow">
 
-	<meta itemprop="name" content=" ">
-	<meta itemprop="description" content="미사일 RL 프로젝트 세션 요약 프로젝트 구조 missile-rl/ ├── config.yaml ← 실험 설정 (이것만 수정) ├── train.py ← 학습 실행 ├── play.py ← 시연 실행 ├── rocket_tracking_sim.py ← 게임 환경 (step() 마지막 줄만 수정) └── checkpoints/ ← 자동 생성 인프라 구성 GitLab → 코드 버전관리 (config.yaml, train.py, play.py, rocket_tracking_sim.py) Synology NAS → MLflow 서버 (Docker) &#43; 가중치 파일 저장 MLflow → 코드↔가중치 연결 고리 (실험 추적) MLflow 서버: http://192.168.1.236:5050 NAS 경로: /volume1/docker/mlflow/ docker-compose: ghcr.io/mlflow/mlflow:v2.11.3 고정 버전 사용">
-	<meta itemprop="wordCount" content="346">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content=" ">
+	<meta name="twitter:title" content="JJunney&#39;s Blog">
 	<meta name="twitter:description" content="미사일 RL 프로젝트 세션 요약 프로젝트 구조 missile-rl/ ├── config.yaml ← 실험 설정 (이것만 수정) ├── train.py ← 학습 실행 ├── play.py ← 시연 실행 ├── rocket_tracking_sim.py ← 게임 환경 (step() 마지막 줄만 수정) └── checkpoints/ ← 자동 생성 인프라 구성 GitLab → 코드 버전관리 (config.yaml, train.py, play.py, rocket_tracking_sim.py) Synology NAS → MLflow 서버 (Docker) &#43; 가중치 파일 저장 MLflow → 코드↔가중치 연결 고리 (실험 추적) MLflow 서버: http://192.168.1.236:5050 NAS 경로: /volume1/docker/mlflow/ docker-compose: ghcr.io/mlflow/mlflow:v2.11.3 고정 버전 사용">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-         
-      
+</head>
+  <body class="">
+    <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">JJunney&#39;s Blog</span>
     </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
-              2
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
-              3
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
-              4
-            </a>
-          </li>
-          
-        </ul>
-      
-      <div class="ananke-socials"></div>
-
-    </div>
+    <nav class="nav" aria-label="섹션">
+      <a class="nav-link is-active" href="/mlflow/">MLFlow</a>
+      <a class="nav-link" href="/python/">Python</a>
+      <a class="nav-link" href="/web/">Web</a>
+      <a class="nav-link" href="/yocto/">Yocto</a>
+      <a class="nav-link" href="/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/">개발일지</a>
+      <a class="nav-link" href="/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+      <a class="nav-link" href="/%EC%97%AC%ED%96%89/">여행</a>
+      <a class="nav-link" href="/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/">정규표현식</a>
+    </nav>
+    <a class="icon-link" href="https://github.com/ijjeon1203" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+    </a>
   </div>
+</header>
+
+    <main id="main">
+      
+<article class="article">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="/">Home</a>
+  <span aria-hidden="true">/</span><a href="/mlflow/">MLFlow</a>
 </nav>
 
+      <h1 class="page-title">a.i요약</h1>
+      <div class="article-meta">
+        
+        <span>2분 읽기</span>
+        
+      </div>
     </div>
   </header>
 
-
-
-    <main class="pb7" role="main">
-      
-  
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        MLFlows
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1"></h1>
-      
-      
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="미사일-rl-프로젝트-세션-요약">미사일 RL 프로젝트 세션 요약</h1>
+  <div class="container article-layout has-toc">
+    <div class="prose">
+      <h1 id="미사일-rl-프로젝트-세션-요약">미사일 RL 프로젝트 세션 요약</h1>
 <h2 id="프로젝트-구조">프로젝트 구조</h2>
 <pre tabindex="0"><code>missile-rl/
 ├── config.yaml              ← 실험 설정 (이것만 수정)
@@ -171,50 +99,50 @@ __pycache__/
 .venv/
 </code></pre><hr>
 <h2 id="configyaml-최종-구조">config.yaml 최종 구조</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">train</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">algo</span>:          <span style="color:#e6db74">&#34;PPO&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">policy</span>:        <span style="color:#e6db74">&#34;MlpPolicy&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">learning_rate</span>: <span style="color:#ae81ff">0.001</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">gamma</span>:         <span style="color:#ae81ff">0.99</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">activation_fn</span>: <span style="color:#e6db74">&#34;ReLU&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">device</span>:        <span style="color:#e6db74">&#34;cuda&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">num_cpu</span>:       <span style="color:#ae81ff">8</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">timesteps</span>:     <span style="color:#ae81ff">10000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">network</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pi</span>: [<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">vf</span>: [<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">boost_time</span>:   <span style="color:#ae81ff">5.0</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">init_pitch</span>:   <span style="color:#ae81ff">30.0</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rocket_speed</span>: <span style="color:#ae81ff">150.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">checkpoint</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">freq</span>:       <span style="color:#ae81ff">10000</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">save_dir</span>:   <span style="color:#e6db74">&#34;./checkpoints&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">model_name</span>: <span style="color:#e6db74">&#34;trained_3d_rocket&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">mlflow</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tracking_uri</span>: <span style="color:#e6db74">&#34;http://192.168.1.236:5050&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">experiment</span>:   <span style="color:#e6db74">&#34;missile-rl&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">play</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">episodes</span>:  <span style="color:#ae81ff">20</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">use_nas</span>:   <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">run_id</span>:    <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">artifact</span>:  <span style="color:#e6db74">&#34;final_model/trained_3d_rocket.zip&#34;</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">train</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">algo</span>:<span style="color:#6e7681">          </span><span style="color:#a5d6ff">&#34;PPO&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">policy</span>:<span style="color:#6e7681">        </span><span style="color:#a5d6ff">&#34;MlpPolicy&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">learning_rate</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">0.001</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">gamma</span>:<span style="color:#6e7681">         </span><span style="color:#a5d6ff">0.99</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">activation_fn</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;ReLU&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">device</span>:<span style="color:#6e7681">        </span><span style="color:#a5d6ff">&#34;cuda&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">num_cpu</span>:<span style="color:#6e7681">       </span><span style="color:#a5d6ff">8</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">timesteps</span>:<span style="color:#6e7681">     </span><span style="color:#a5d6ff">10000</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">network</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">pi</span>:<span style="color:#6e7681"> </span>[<span style="color:#a5d6ff">128</span>,<span style="color:#6e7681"> </span><span style="color:#a5d6ff">128</span>]<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">vf</span>:<span style="color:#6e7681"> </span>[<span style="color:#a5d6ff">256</span>,<span style="color:#6e7681"> </span><span style="color:#a5d6ff">256</span>]<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">env</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">boost_time</span>:<span style="color:#6e7681">   </span><span style="color:#a5d6ff">5.0</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">init_pitch</span>:<span style="color:#6e7681">   </span><span style="color:#a5d6ff">30.0</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">rocket_speed</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">150.0</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">checkpoint</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">freq</span>:<span style="color:#6e7681">       </span><span style="color:#a5d6ff">10000</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">save_dir</span>:<span style="color:#6e7681">   </span><span style="color:#a5d6ff">&#34;./checkpoints&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">model_name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;trained_3d_rocket&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">mlflow</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">tracking_uri</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;http://192.168.1.236:5050&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">experiment</span>:<span style="color:#6e7681">   </span><span style="color:#a5d6ff">&#34;missile-rl&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">play</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">episodes</span>:<span style="color:#6e7681">  </span><span style="color:#a5d6ff">20</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">use_nas</span>:<span style="color:#6e7681">   </span><span style="color:#79c0ff">false</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">run_id</span>:<span style="color:#6e7681">    </span><span style="color:#a5d6ff">&#34;&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">artifact</span>:<span style="color:#6e7681">  </span><span style="color:#a5d6ff">&#34;final_model/trained_3d_rocket.zip&#34;</span><span style="color:#6e7681">
+</span></span></span></code></pre></div><hr>
 <h2 id="rocket_tracking_simpy-수정사항">rocket_tracking_sim.py 수정사항</h2>
 <p><code>step()</code> 함수 마지막 줄만 교체:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 기존</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> next_state, float(reward), terminated, truncated, {}
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 기존</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">return</span> next_state, float(reward), terminated, truncated, {}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 수정 후</span>
-</span></span><span style="display:flex;"><span>info <span style="color:#f92672">=</span> {}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mission_result <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
-</span></span><span style="display:flex;"><span>    info[<span style="color:#e6db74">&#34;mission_status&#34;</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mission_result[<span style="color:#e6db74">&#34;status&#34;</span>]
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> next_state, float(reward), terminated, truncated, info
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 수정 후</span>
+</span></span><span style="display:flex;"><span>info <span style="color:#ff7b72;font-weight:bold">=</span> {}
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> self<span style="color:#ff7b72;font-weight:bold">.</span>mission_result <span style="color:#ff7b72;font-weight:bold">is</span> <span style="color:#ff7b72;font-weight:bold">not</span> <span style="color:#79c0ff">None</span>:
+</span></span><span style="display:flex;"><span>    info[<span style="color:#a5d6ff">&#34;mission_status&#34;</span>] <span style="color:#ff7b72;font-weight:bold">=</span> self<span style="color:#ff7b72;font-weight:bold">.</span>mission_result[<span style="color:#a5d6ff">&#34;status&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">return</span> next_state, float(reward), terminated, truncated, info
 </span></span></code></pre></div><hr>
 <h2 id="워크플로우">워크플로우</h2>
 <pre tabindex="0"><code>1. config.yaml 수정
@@ -269,33 +197,49 @@ NAS artifacts/{run_id}/     → 모든 실험 영구 보존 (run_id별 폴더)
 <li><code>play.py</code>에서 <code>use_nas</code> config 연동 코드 미완성 (다음 세션에서 이어서)</li>
 <li><code>train.py</code> argparse 완전 제거 확인 필요</li>
 </ul>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
+
     </div>
+    
+    <aside class="toc" aria-label="목차">
+      <p class="toc-title">On this page</p>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#미사일-rl-프로젝트-세션-요약">미사일 RL 프로젝트 세션 요약</a>
+      <ul>
+        <li><a href="#프로젝트-구조">프로젝트 구조</a></li>
+        <li><a href="#인프라-구성">인프라 구성</a></li>
+        <li><a href="#gitignore">.gitignore</a></li>
+        <li><a href="#configyaml-최종-구조">config.yaml 최종 구조</a></li>
+        <li><a href="#rocket_tracking_simpy-수정사항">rocket_tracking_sim.py 수정사항</a></li>
+        <li><a href="#워크플로우">워크플로우</a></li>
+        <li><a href="#trainpy-핵심-기능">train.py 핵심 기능</a></li>
+        <li><a href="#playpy-핵심-기능">play.py 핵심 기능</a></li>
+        <li><a href="#nas-artifacts-구조">NAS artifacts 구조</a></li>
+        <li><a href="#zip-파일-생명주기">zip 파일 생명주기</a></li>
+        <li><a href="#미완료-사항">미완료 사항</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    
+  </div>
 
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
-  </article>
+  
+  <nav class="container pager" aria-label="이전/다음 글">
+    <a class="pager-link" href="/mlflow/user_guide/"><span>&larr; 이전 글</span><strong>user_guide</strong></a>
+    
+  </nav>
+  
+</article>
 
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
-      &copy; 2025 
-    </a>
-    <div>
-      <a href="https://twitter.com/username">Twitter</a>
-      <a href="https://github.com/username">GitHub</a>
+    <footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; 2026 JJunney&#39;s Blog <span class="dot-sep">/</span> Built with Hugo</p>
+    <div class="footer-links">
+      <a href="https://github.com/ijjeon1203" target="_blank" rel="noopener">GitHub</a>
+      <a href="/index.xml">RSS</a>
     </div>
   </div>
 </footer>

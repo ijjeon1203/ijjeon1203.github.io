@@ -1,0 +1,14 @@
+{{- /* 글 목록 한 줄: 섹션 / 제목 / 요약 / 날짜 */ -}}
+<a class="post-row" href="{{ .RelPermalink }}">
+  <div class="post-row-main">
+    <span class="post-row-section">{{ .CurrentSection.Title }}</span>
+    <h3 class="post-row-title">{{ partial "func/title.html" . }}</h3>
+    {{- with .Summary | plainify | strings.TrimSpace }}
+    <p class="post-row-summary">{{ . | htmlUnescape | truncate 110 }}</p>
+    {{- end }}
+  </div>
+  <div class="post-row-meta">
+    {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
+    <span class="post-row-arrow" aria-hidden="true">&rarr;</span>
+  </div>
+</a>

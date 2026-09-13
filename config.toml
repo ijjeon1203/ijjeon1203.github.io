@@ -1,29 +1,22 @@
 theme = "ananke"
 baseURL = "https://ijjeon1203.github.io/"
-languageCode = "en-us"
-title = " "
+languageCode = "ko-kr"
+title = "JJunney's Blog"
+enableGitInfo = true
+pluralizeListTitles = false
 
 [params]
-headerBackground = "/images/g.jpg"
+github = "ijjeon1203"
+description = "리눅스 · 임베디드 · MLOps · Python 공부 기록"
 
-[menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    identifier = "about"
-    name = "2"
-    url = "/about/"
-    weight = 2
-  [[menu.main]]
-    identifier = "blog"
-    name = "3"
-    url = "/post/"
-    weight = 3
-  [[menu.main]]
-    identifier = "contact"
-    name = "4"
-    url = "/contact/"
-    weight = 4
+# front matter에 date가 없는 글은 git 커밋 날짜를 사용
+[frontmatter]
+date = ["date", "publishDate", ":git"]
+lastmod = [":git", "lastmod", "date"]
+
+[markup]
+  [markup.highlight]
+    style = "github-dark"
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3

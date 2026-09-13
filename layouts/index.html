@@ -1,57 +1,78 @@
 {{ define "main" }}
-<link rel="stylesheet" href="/css/mainpage.css">
+{{- $posts := site.RegularPages.ByDate.Reverse }}
+{{- $sections := site.Sections.ByTitle }}
 
-<div class="custom-homepage">
-
-  <!-- 왼쪽: 목차 -->
-  <nav class="sidebar">
-    <button class="toc-toggle" onclick="toggleTOC()">목차 보기/숨기기</button>
-    <div class="toc-content">
-      <h2>목차</h2>
-      <ul>
-        {{ with site.GetPage "developer" }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-        {{ end }}
-
-        <li>운동
-          <ul>
-            {{ with site.GetPage "tennis" }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            {{ end }}
-          </ul>
-        </li>
-
-        <li>평가
-          <ul>
-            {{ with site.GetPage "book" }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            {{ end }}
-            {{ with site.GetPage "movie" }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            {{ end }}
-          </ul>
-        </li>
-      </ul>
-
-
-    </div>
-  </nav>
-
-  <!-- 가운데: 메인 이미지 -->
-  <div class="hero-image">
-    <img src="/images/g.jpg" alt="메인 사진">
-    <img src="/images/dog.png" alt="추가 이미지">      <!-- GitHub 레포 목록 -->
-      <div class="github-repos">
-        {{ partial "github-repos.html" . }}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Dev notes &amp; archive</p>
+      <h1 class="hero-title">기록하고,<br>정리하고,<br><span class="accent">다시 꺼내 쓰는</span> 곳.</h1>
+      <p class="hero-lead">리눅스 · 임베디드 · MLOps · Python을 공부하며 남긴 메모와 삽질 기록.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#recent">최근 글 보기</a>
+        <a class="btn btn-ghost" href="https://github.com/{{ site.Params.github }}" target="_blank" rel="noopener">GitHub &nearr;</a>
       </div>
+      <dl class="stats">
+        <div><dt>Posts</dt><dd>{{ len site.RegularPages }}</dd></div>
+        <div><dt>Sections</dt><dd>{{ len $sections }}</dd></div>
+        {{ with index $posts 0 }}<div><dt>Updated</dt><dd>{{ .Date.Format "01.02" }}</dd></div>{{ end }}
+      </dl>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="avatar-ring">
+        <img src="{{ "images/dog.png" | relURL }}" alt="" width="600" height="338">
+      </div>
+    </div>
   </div>
+</section>
 
-</div>
+<section class="block">
+  <div class="container">
+    <div class="block-head">
+      <h2 class="block-title"><span class="block-index">01</span>Sections</h2>
+    </div>
+    <div class="section-grid">
+      {{- range $i, $s := $sections }}
+      {{- $pages := $s.RegularPagesRecursive }}
+      <a class="section-card" href="{{ $s.RelPermalink }}">
+        <span class="section-card-no">{{ printf "%02d" (add $i 1) }}</span>
+        <h3 class="section-card-title">{{ $s.Title }}</h3>
+        <p class="section-card-count">{{ len $pages }} posts</p>
+        {{ with index $pages.ByDate.Reverse 0 }}<p class="section-card-latest">{{ partial "func/title.html" . }}</p>{{ end }}
+        <span class="section-card-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      {{- end }}
+    </div>
 
-<script>
-function toggleTOC() {
-  const toc = document.querySelector('.toc-content');
-  toc.style.display = (toc.style.display === 'block') ? 'none' : 'block';
-}
-</script>
+    {{- $life := slice }}
+    {{- range slice "developer" "tennis" "book" "movie" }}{{ with site.GetPage . }}{{ $life = $life | append . }}{{ end }}{{ end }}
+    {{- with $life }}
+    <div class="chip-row">
+      <span class="chip-label">Life</span>
+      {{ range . }}<a class="chip" href="{{ .RelPermalink }}">{{ partial "func/title.html" . }}</a>{{ end }}
+    </div>
+    {{- end }}
+  </div>
+</section>
+
+<section class="block" id="recent">
+  <div class="container">
+    <div class="block-head">
+      <h2 class="block-title"><span class="block-index">02</span>Recent</h2>
+    </div>
+    <div class="post-list">
+      {{ range first 8 $posts }}{{ partial "post-row.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <div class="block-head">
+      <h2 class="block-title"><span class="block-index">03</span>Repositories</h2>
+      <a class="block-more" href="https://github.com/{{ site.Params.github }}?tab=repositories" target="_blank" rel="noopener">전체 보기 &nearr;</a>
+    </div>
+    {{ partial "github-repos.html" . }}
+  </div>
+</section>
 {{ end }}
