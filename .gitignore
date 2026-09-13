@@ -4,9 +4,12 @@ Thumbs.db
 *.log
 
 # Hugo 특정 (핵심)
-/public/            # 빌드 결과물 (배포 시 생성)
-/resources/_gen/    # 이미지 처리 및 자산 캐시
-.hugo_cache/        # Hugo 캐시 데이터
+# 빌드 결과물 (배포 시 생성)
+/public/
+# 이미지 처리 및 자산 캐시
+/resources/_gen/
+# Hugo 캐시 데이터
+.hugo_cache/
 .hugo_build.lock
 
 # IDE & Editor

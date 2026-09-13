@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title> </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content=".tgz 또는 .tar.gz 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.
+Linux
+tar -tzf 파일명.tgz
+예시:
+tar -tzf backup.tgz
+자세한 정보 포함
+tar -tvzf backup.tgz
+출력 예:
+drwxr-xr-x root/root         0 2026-06-24 10:00 project/
+-rw-r--r-- root/root      1024 2026-06-24 10:01 project/main.c
+-rw-r--r-- root/root       512 2026-06-24 10:01 project/Makefile
+특정 파일 검색
+tar -tzf backup.tgz | grep Makefile
+파일 개수 확인
+tar -tzf backup.tgz | wc -l
+용량 큰 파일 찾기
+tar -tvzf backup.tgz | sort -k3 -n
+Jetson이나 일반 Linux에서라면 tar -tzf 파일명.tgz만으로 내부 디렉터리 구조를 확인하는 경우가 가장 많습니다.
+네, 압축 안에 있는 특정 파일이나 폴더만 골라서 풀 수 있습니다.">
+    <meta name="generator" content="Hugo 0.166.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%95%EC%B6%95/">
+    
+
+    <meta property="og:url" content="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EC%95%95%EC%B6%95/">
+	<meta property="og:site_name" content=" ">
+	<meta property="og:title" content=" ">
+	<meta property="og:description" content=".tgz 또는 .tar.gz 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.
+Linux tar -tzf 파일명.tgz 예시:
+tar -tzf backup.tgz 자세한 정보 포함 tar -tvzf backup.tgz 출력 예:
+drwxr-xr-x root/root 0 2026-06-24 10:00 project/ -rw-r--r-- root/root 1024 2026-06-24 10:01 project/main.c -rw-r--r-- root/root 512 2026-06-24 10:01 project/Makefile 특정 파일 검색 tar -tzf backup.tgz | grep Makefile 파일 개수 확인 tar -tzf backup.tgz | wc -l 용량 큰 파일 찾기 tar -tvzf backup.tgz | sort -k3 -n Jetson이나 일반 Linux에서라면 tar -tzf 파일명.tgz만으로 내부 디렉터리 구조를 확인하는 경우가 가장 많습니다. 네, 압축 안에 있는 특정 파일이나 폴더만 골라서 풀 수 있습니다.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="리눅스">
+
+	<meta itemprop="name" content=" ">
+	<meta itemprop="description" content=".tgz 또는 .tar.gz 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.
+Linux tar -tzf 파일명.tgz 예시:
+tar -tzf backup.tgz 자세한 정보 포함 tar -tvzf backup.tgz 출력 예:
+drwxr-xr-x root/root 0 2026-06-24 10:00 project/ -rw-r--r-- root/root 1024 2026-06-24 10:01 project/main.c -rw-r--r-- root/root 512 2026-06-24 10:01 project/Makefile 특정 파일 검색 tar -tzf backup.tgz | grep Makefile 파일 개수 확인 tar -tzf backup.tgz | wc -l 용량 큰 파일 찾기 tar -tvzf backup.tgz | sort -k3 -n Jetson이나 일반 Linux에서라면 tar -tzf 파일명.tgz만으로 내부 디렉터리 구조를 확인하는 경우가 가장 많습니다. 네, 압축 안에 있는 특정 파일이나 폴더만 골라서 풀 수 있습니다.">
+	<meta itemprop="wordCount" content="530">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content=" ">
+	<meta name="twitter:description" content=".tgz 또는 .tar.gz 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.
+Linux tar -tzf 파일명.tgz 예시:
+tar -tzf backup.tgz 자세한 정보 포함 tar -tvzf backup.tgz 출력 예:
+drwxr-xr-x root/root 0 2026-06-24 10:00 project/ -rw-r--r-- root/root 1024 2026-06-24 10:01 project/main.c -rw-r--r-- root/root 512 2026-06-24 10:01 project/Makefile 특정 파일 검색 tar -tzf backup.tgz | grep Makefile 파일 개수 확인 tar -tzf backup.tgz | wc -l 용량 큰 파일 찾기 tar -tvzf backup.tgz | sort -k3 -n Jetson이나 일반 Linux에서라면 tar -tzf 파일명.tgz만으로 내부 디렉터리 구조를 확인하는 경우가 가장 많습니다. 네, 압축 안에 있는 특정 파일이나 폴더만 골라서 풀 수 있습니다.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+         
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
+              2
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
+              3
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
+              4
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        리눅스s
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><code>.tgz</code> 또는 <code>.tar.gz</code> 파일을 압축 해제하지 않고 내부 목록만 확인할 수 있습니다.</p>
+<h3 id="linux">Linux</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf 파일명.tgz
+</span></span></code></pre></div><p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf backup.tgz
+</span></span></code></pre></div><h3 id="자세한-정보-포함">자세한 정보 포함</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tvzf backup.tgz
+</span></span></code></pre></div><p>출력 예:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>drwxr-xr-x root/root         0 2026-06-24 10:00 project/
+</span></span><span style="display:flex;"><span>-rw-r--r-- root/root      1024 2026-06-24 10:01 project/main.c
+</span></span><span style="display:flex;"><span>-rw-r--r-- root/root       512 2026-06-24 10:01 project/Makefile
+</span></span></code></pre></div><h3 id="특정-파일-검색">특정 파일 검색</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf backup.tgz | grep Makefile
+</span></span></code></pre></div><h3 id="파일-개수-확인">파일 개수 확인</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf backup.tgz | wc -l
+</span></span></code></pre></div><h3 id="용량-큰-파일-찾기">용량 큰 파일 찾기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tvzf backup.tgz | sort -k3 -n
+</span></span></code></pre></div><p>Jetson이나 일반 Linux에서라면 <code>tar -tzf 파일명.tgz</code>만으로 내부 디렉터리 구조를 확인하는 경우가 가장 많습니다.
+네, 압축 안에 있는 특정 파일이나 폴더만 골라서 풀 수 있습니다.</p>
+<p>먼저 내부 목록 확인:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf archive.tgz
+</span></span></code></pre></div><p>예를 들어 결과가:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project/
+</span></span><span style="display:flex;"><span>project/main.c
+</span></span><span style="display:flex;"><span>project/src/test.c
+</span></span><span style="display:flex;"><span>project/Makefile
+</span></span></code></pre></div><p>라면,</p>
+<h3 id="특정-파일만-압축-해제">특정 파일만 압축 해제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xzvf archive.tgz project/sidebar.c
+</span></span></code></pre></div><h3 id="특정-폴더만-압축-해제">특정 폴더만 압축 해제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xzvf archive.tgz project/src/
+</span></span></code></pre></div><h3 id="현재-디렉토리가-아닌-다른-위치에-풀기">현재 디렉토리가 아닌 다른 위치에 풀기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xzvf archive.tgz -C /tmp project/sidebar.c
+</span></span></code></pre></div><h3 id="와일드카드-사용-gnu-tar">와일드카드 사용 (GNU tar)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xzvf archive.tgz --wildcards <span style="color:#e6db74">&#34;*.c&#34;</span>
+</span></span></code></pre></div><p>또는</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xzvf archive.tgz --wildcards <span style="color:#e6db74">&#34;*/Makefile&#34;</span>
+</span></span></code></pre></div><p>만약 파일명이 정확히 기억 안 나면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf archive.tgz | grep 파일명
+</span></span></code></pre></div><p>으로 먼저 찾은 뒤 그 경로를 그대로 <code>tar -xzvf</code> 뒤에 붙이면 됩니다.</p>
+<p>네, 가능합니다.</p>
+<p>예를 들어:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/home/user/work/a.tar
+</span></span></code></pre></div><p>가 있을 때,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/home/user/work/a/
+</span></span></code></pre></div><p>디렉터리를 만들고 그 안에 압축을 풀고 싶다면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>dirname a.tar<span style="color:#66d9ef">)</span><span style="color:#e6db74">/</span><span style="color:#66d9ef">$(</span>basename a.tar .tar<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>tar -xvf a.tar -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename a.tar .tar<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>좀 더 간단히 현재 디렉터리 기준이라면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p a
+</span></span><span style="display:flex;"><span>tar -xvf a.tar -C a
+</span></span></code></pre></div><p><code>.tgz</code>나 <code>.tar.gz</code>까지 고려하면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a.tar.gz&#34;</span>
+</span></span><span style="display:flex;"><span>dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> .tar.gz<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">&#34;</span>$dir<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>tar -xzvf <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -C <span style="color:#e6db74">&#34;</span>$dir<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>범용적으로 처리하려면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a.tgz&#34;</span>
+</span></span><span style="display:flex;"><span>dir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>file%%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">&#34;</span>$dir<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>tar -xvf <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -C <span style="color:#e6db74">&#34;</span>$dir<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h3 id="주의">주의</h3>
+<p>압축 파일 내부가 이미:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>a/
+</span></span><span style="display:flex;"><span> ├─ src/
+</span></span><span style="display:flex;"><span> └─ Makefile
+</span></span></code></pre></div><p>형태라면</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir a
+</span></span><span style="display:flex;"><span>tar -xvf a.tar -C a
+</span></span></code></pre></div><p>결과가:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>a/
+</span></span><span style="display:flex;"><span> └─ a/
+</span></span><span style="display:flex;"><span>     ├─ src/
+</span></span><span style="display:flex;"><span>     └─ Makefile
+</span></span></code></pre></div><p>처럼 <code>a/a</code>가 될 수 있습니다.</p>
+<p>그래서 먼저 확인하는 습관이 좋습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tf a.tar | head
+</span></span></code></pre></div><p>첫 줄이 <code>a/</code> 같은 최상위 디렉터리면 그냥 풀고,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>src/
+</span></span><span style="display:flex;"><span>Makefile
+</span></span><span style="display:flex;"><span>README.md
+</span></span></code></pre></div><p>처럼 바로 파일이 나오면 별도 디렉터리를 만들어서 <code>-C</code>로 푸는 것이 깔끔합니다.</p>
+<p>폴더를 <code>.tgz</code>(=<code>.tar.gz</code>)로 압축하는 방법입니다.</p>
+<p>예를 들어 <code>project</code> 폴더를 압축하려면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -czvf project.tgz project/
+</span></span></code></pre></div><p>옵션 의미:</p>
+<ul>
+<li><code>c</code> : 새 tar 생성(Create)</li>
+<li><code>z</code> : gzip 압축</li>
+<li><code>v</code> : 진행 내용 출력(Verbose)</li>
+<li><code>f</code> : 파일명 지정(File)</li>
+</ul>
+<p>결과:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project.tgz
+</span></span></code></pre></div><p>생성됨.</p>
+<h3 id="현재-디렉터리의-폴더-압축">현재 디렉터리의 폴더 압축</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -czvf backup.tgz my_folder/
+</span></span></code></pre></div><h3 id="여러-파일폴더-함께-압축">여러 파일/폴더 함께 압축</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -czvf source.tgz src/ include/ Makefile README.md
+</span></span></code></pre></div><h3 id="진행-내용-없이-압축">진행 내용 없이 압축</h3>
+<p>실무에서는 보통 <code>v</code>를 빼고 사용합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -czf project.tgz project/
+</span></span></code></pre></div><h3 id="압축-내용-확인">압축 내용 확인</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tzf project.tgz
+</span></span></code></pre></div><h3 id="압축-해제">압축 해제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xzf project.tgz
+</span></span></code></pre></div><p>만약 <strong>폴더 자체는 제외하고 내부 파일들만 압축</strong>하고 싶다면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd project
+</span></span><span style="display:flex;"><span>tar -czf ../project.tgz .
+</span></span></code></pre></div><p>그러면 압축을 풀었을 때 <code>project/</code> 폴더가 생성되지 않고 파일들이 바로 풀립니다. 이 차이는 배포용 패키지를 만들 때 꽤 중요합니다.</p>
+<p><code>.tar</code> 파일 압축 해제는 다음과 같습니다.</p>
+<h3 id="기본-압축-해제">기본 압축 해제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf a.tar
+</span></span></code></pre></div><p>옵션:</p>
+<ul>
+<li><code>x</code> : 압축 해제(eXtract)</li>
+<li><code>v</code> : 진행 내용 출력</li>
+<li><code>f</code> : 파일 지정</li>
+</ul>
+<h3 id="특정-폴더에-압축-해제">특정 폴더에 압축 해제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p a
+</span></span><span style="display:flex;"><span>tar -xvf a.tar -C a
+</span></span></code></pre></div><h3 id="내부-목록만-확인">내부 목록만 확인</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -tf a.tar
+</span></span></code></pre></div><h3 id="특정-파일만-압축-해제-1">특정 파일만 압축 해제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf a.tar path/to/file
+</span></span></code></pre></div><hr>
+<p>참고로 확장자별 명령은 다음과 같습니다.</p>
+<table>
+	<thead>
+			<tr>
+					<th>파일 형식</th>
+					<th>압축 해제</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>.tar</code></td>
+					<td><code>tar -xvf file.tar</code></td>
+			</tr>
+			<tr>
+					<td><code>.tar.gz</code>, <code>.tgz</code></td>
+					<td><code>tar -xzvf file.tgz</code></td>
+			</tr>
+			<tr>
+					<td><code>.tar.bz2</code></td>
+					<td><code>tar -xjvf file.tar.bz2</code></td>
+			</tr>
+			<tr>
+					<td><code>.tar.xz</code></td>
+					<td><code>tar -xJvf file.tar.xz</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>요즘 GNU tar는 자동 감지를 지원해서 아래처럼 써도 대부분 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf file.tgz
+</span></span><span style="display:flex;"><span>tar -xvf file.tar.gz
+</span></span><span style="display:flex;"><span>tar -xvf file.tar.xz
+</span></span></code></pre></div><p>그래도 호환성을 위해 <code>.tgz</code>는 <code>-xzf</code>를 많이 사용합니다.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
+      &copy; 2025 
+    </a>
+    <div>
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://github.com/username">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+ubuntu shutter 프로그램 사용법
+
+sudo apt-get install shutter
+
+
+다음처럼 세가지 패키지를 설치한 후 Shutter를 재시작해주면 편집 버튼이 활성화 됩니다. 
+
+( https://itsfoss.com/shutter-edit-button-disabled/ )
+
+
+
+
+1. 다음 링크에 있는 패키지를 다운로드한 후
+
+
+
+https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas-common_1.0.0-1_all.deb
+
+
+
+
+더블 클릭하면 다음처럼 설치 화면이 보입니다.   설치 버튼을 클릭하여 설치를 합니다. 
+
+
+
+
+
+
+
+
+
+
+
+
+2. 다음 두 개의 링크에 있는 파일도 다운로드 후,  더블클릭하여 설치를 진행합니다. 
+
+
+
+https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas3_1.0.0-1_amd64.deb
+
+
+
+https://launchpad.net/ubuntu/+archive/primary/+files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
+
+
+
+
+3.이제  Shutter를 강제 종료합니다. 
+
+
+
+sudo killall -9 shutter
+
+
+
+
+4. 다시 실행하여 캡처해보면 편집 버튼이 활성화 되어 있습니다. 

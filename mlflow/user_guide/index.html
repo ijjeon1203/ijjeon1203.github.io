@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title> </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="목표
+어떤 코드(commit)로 학습했는지
+어떤 하이퍼파라미터로 학습했는지
+학습 결과 (reward가 얼마나 나왔는지)
+MLflow 서버로 쓸 때 NAS 요구사항
+
+	
+			
+					항목
+					최소
+					권장
+			
+	
+	
+			
+					CPU
+					1코어 이상
+					2코어
+			
+			
+					RAM
+					1GB
+					2GB
+			
+			
+					저장공간
+					가중치 용량 &#43; 여유
+					SSD 권장
+			
+			
+					OS
+					Linux 가능해야 함
+					Ubuntu/Debian
+			
+			
+					네트워크
+					로컬 접근 가능
+					고정 IP
+			
+	
+
+구성
+
+Nas Backup Server(192.168.1.236) 에 docker 로 설치
+192.168.1.236:5050 에 MLFlow Dashboard 접속가능
+docker 내용
+
+version: &#39;3&#39;
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.11.3
+    ports:
+      - &#34;5050:5000&#34;
+    volumes:
+      - /volume1/docker/mlflow/artifacts:/mlflow/artifacts
+      - /volume1/docker/mlflow/db:/mlflow/db
+    command: &gt;
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:////mlflow/db/mlflow.db
+      --default-artifact-root /mlflow/artifacts
+      --serve-artifacts
+    restart: unless-stopped
+사용법
+코드에 추가 하여 프로그램 시작">
+    <meta name="generator" content="Hugo 0.166.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://ijjeon1203.github.io/mlflow/user_guide/">
+    
+
+    <meta property="og:url" content="https://ijjeon1203.github.io/mlflow/user_guide/">
+	<meta property="og:site_name" content=" ">
+	<meta property="og:title" content=" ">
+	<meta property="og:description" content="목표 어떤 코드(commit)로 학습했는지 어떤 하이퍼파라미터로 학습했는지 학습 결과 (reward가 얼마나 나왔는지)
+MLflow 서버로 쓸 때 NAS 요구사항 항목 최소 권장 CPU 1코어 이상 2코어 RAM 1GB 2GB 저장공간 가중치 용량 &#43; 여유 SSD 권장 OS Linux 가능해야 함 Ubuntu/Debian 네트워크 로컬 접근 가능 고정 IP 구성 Nas Backup Server(192.168.1.236) 에 docker 로 설치 192.168.1.236:5050 에 MLFlow Dashboard 접속가능 docker 내용 version: &#39;3&#39; services: mlflow: image: ghcr.io/mlflow/mlflow:v2.11.3 ports: - &#34;5050:5000&#34; volumes: - /volume1/docker/mlflow/artifacts:/mlflow/artifacts - /volume1/docker/mlflow/db:/mlflow/db command: &gt; mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/db/mlflow.db --default-artifact-root /mlflow/artifacts --serve-artifacts restart: unless-stopped 사용법 코드에 추가 하여 프로그램 시작">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="mlflow">
+
+	<meta itemprop="name" content=" ">
+	<meta itemprop="description" content="목표 어떤 코드(commit)로 학습했는지 어떤 하이퍼파라미터로 학습했는지 학습 결과 (reward가 얼마나 나왔는지)
+MLflow 서버로 쓸 때 NAS 요구사항 항목 최소 권장 CPU 1코어 이상 2코어 RAM 1GB 2GB 저장공간 가중치 용량 &#43; 여유 SSD 권장 OS Linux 가능해야 함 Ubuntu/Debian 네트워크 로컬 접근 가능 고정 IP 구성 Nas Backup Server(192.168.1.236) 에 docker 로 설치 192.168.1.236:5050 에 MLFlow Dashboard 접속가능 docker 내용 version: &#39;3&#39; services: mlflow: image: ghcr.io/mlflow/mlflow:v2.11.3 ports: - &#34;5050:5000&#34; volumes: - /volume1/docker/mlflow/artifacts:/mlflow/artifacts - /volume1/docker/mlflow/db:/mlflow/db command: &gt; mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/db/mlflow.db --default-artifact-root /mlflow/artifacts --serve-artifacts restart: unless-stopped 사용법 코드에 추가 하여 프로그램 시작">
+	<meta itemprop="wordCount" content="175">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content=" ">
+	<meta name="twitter:description" content="목표 어떤 코드(commit)로 학습했는지 어떤 하이퍼파라미터로 학습했는지 학습 결과 (reward가 얼마나 나왔는지)
+MLflow 서버로 쓸 때 NAS 요구사항 항목 최소 권장 CPU 1코어 이상 2코어 RAM 1GB 2GB 저장공간 가중치 용량 &#43; 여유 SSD 권장 OS Linux 가능해야 함 Ubuntu/Debian 네트워크 로컬 접근 가능 고정 IP 구성 Nas Backup Server(192.168.1.236) 에 docker 로 설치 192.168.1.236:5050 에 MLFlow Dashboard 접속가능 docker 내용 version: &#39;3&#39; services: mlflow: image: ghcr.io/mlflow/mlflow:v2.11.3 ports: - &#34;5050:5000&#34; volumes: - /volume1/docker/mlflow/artifacts:/mlflow/artifacts - /volume1/docker/mlflow/db:/mlflow/db command: &gt; mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/db/mlflow.db --default-artifact-root /mlflow/artifacts --serve-artifacts restart: unless-stopped 사용법 코드에 추가 하여 프로그램 시작">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+         
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
+              2
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
+              3
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
+              4
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        MLFlows
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="목표">목표</h1>
+<p>어떤 코드(commit)로 학습했는지
+어떤 하이퍼파라미터로 학습했는지
+학습 결과 (reward가 얼마나 나왔는지)</p>
+<h1 id="mlflow-서버로-쓸-때-nas-요구사항">MLflow 서버로 쓸 때 NAS 요구사항</h1>
+<table>
+	<thead>
+			<tr>
+					<th>항목</th>
+					<th>최소</th>
+					<th>권장</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CPU</td>
+					<td>1코어 이상</td>
+					<td>2코어</td>
+			</tr>
+			<tr>
+					<td>RAM</td>
+					<td><strong>1GB</strong></td>
+					<td>2GB</td>
+			</tr>
+			<tr>
+					<td>저장공간</td>
+					<td>가중치 용량 + 여유</td>
+					<td>SSD 권장</td>
+			</tr>
+			<tr>
+					<td>OS</td>
+					<td>Linux 가능해야 함</td>
+					<td>Ubuntu/Debian</td>
+			</tr>
+			<tr>
+					<td>네트워크</td>
+					<td>로컬 접근 가능</td>
+					<td>고정 IP</td>
+			</tr>
+	</tbody>
+</table>
+<h1 id="구성">구성</h1>
+<ul>
+<li>Nas Backup Server(192.168.1.236) 에 docker 로 설치</li>
+<li>192.168.1.236:5050 에 MLFlow Dashboard 접속가능</li>
+<li>docker 내용</li>
+</ul>
+<pre tabindex="0"><code>version: &#39;3&#39;
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.11.3
+    ports:
+      - &#34;5050:5000&#34;
+    volumes:
+      - /volume1/docker/mlflow/artifacts:/mlflow/artifacts
+      - /volume1/docker/mlflow/db:/mlflow/db
+    command: &gt;
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:////mlflow/db/mlflow.db
+      --default-artifact-root /mlflow/artifacts
+      --serve-artifacts
+    restart: unless-stopped
+</code></pre><h1 id="사용법">사용법</h1>
+<p>코드에 추가 하여 프로그램 시작</p>
+<ul>
+<li>학습 종료시 ? 대시보드에 올라감</li>
+<li>에피소드 종료 시 결과? 강제종료는?</li>
+</ul>
+<p>──────────────────────────────
+개발자가 코드 수정
+↓
+git commit (수동)
+↓
+python train.py 실행
+↓
+학습 진행 (체크포인트 NAS 자동 저장)
+↓
+학습 후
+↓
+commit hash 자동 캡처 → MLflow에 태깅</p>
+<pre><code>↓
+</code></pre>
+<p>MLflow 대시보드에서 확인:
+├── git_commit: a3f9c2b  ← 이 코드로
+├── lr: 0.001            ← 이 설정으로
+└── artifacts/           ← 이 가중치 나옴</p>
+<p>──────────────────────────────</p>
+<p>대시 보드에서 비교</p>
+<ol>
+<li>missile-rl 실험 클릭</li>
+<li>여러 run 체크박스 선택</li>
+<li>Compare 버튼</li>
+<li>reward 커브 나란히 비교</li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
+      &copy; 2025 
+    </a>
+    <div>
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://github.com/username">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

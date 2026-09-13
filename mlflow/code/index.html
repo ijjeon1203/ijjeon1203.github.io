@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title> </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) # mlflow url 주소 
+mlflow.set_experiment(&#34;model-1&#34;) # 실험 이름 설정
+mlflow.start_run()        # 실행 시작
+mlflow.log_params()       # 하이퍼파라미터 기록
+mlflow.log_metrics()      # 학습 결과 기록
+mlflow.log_artifact()     # 가중치 파일 기록
+예제
+def main():
+    mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;)
+    mlflow.set_experiment(&#34;model-1&#34;)
+
+    # ✅ 여기서 run 시작
+    with mlflow.start_run(run_name=f&#34;ppo_{args.timesteps}steps&#34;):
+        
+        # ✅ 하이퍼파라미터 기록
+        mlflow.log_params({
+            &#34;algo&#34;: &#34;PPO&#34;,
+            &#34;policy&#34;: &#34;MlpPolicy&#34;,
+            &#34;learning_rate&#34;: 0.001,
+            &#34;gamma&#34;: 0.99,
+            &#34;num_cpu&#34;: 8,
+            &#34;timesteps&#34;: args.timesteps,
+            &#34;pi_arch&#34;: &#34;[128, 128]&#34;,
+            &#34;vf_arch&#34;: &#34;[256, 256]&#34;,
+            &#34;activation&#34;: &#34;ReLU&#34;,
+            &#34;boost_time&#34;: 5.0,
+            &#34;init_pitch&#34;: 30.0,
+        })
+
+        # 기존 모델 로드 or 신규 생성 코드 그대로...
+        
+        # ✅ 학습 콜백으로 메트릭 기록 (아래 설명 참고)
+        model.learn(
+            total_timesteps=args.timesteps,
+            reset_num_timesteps=False,
+            callback=MLflowCallback()  # ✅ 추가
+        )
+        
+        # ✅ 가중치 저장 후 MLflow에도 업로드
+        model.save(model_filename)
+        mlflow.log_artifact(f&#34;{model_filename}.zip&#34;)
+        print(&#34;💾 학습 완료 및 MLflow 기록 완료!&#34;)
+콜백 클래스
+class MLflowCallback(BaseCallback):
+    def __init__(self, log_interval=1000):
+        super().__init__()
+        self.log_interval = log_interval
+
+    def _on_step(self) -&gt; bool:
+        if self.n_calls % self.log_interval == 0:
+            # SB3가 자동으로 계산하는 메트릭 가져오기
+            if len(self.model.ep_info_buffer) &gt; 0:
+                ep_rewards = [ep[&#34;r&#34;] for ep in self.model.ep_info_buffer]
+                ep_lens = [ep[&#34;l&#34;] for ep in self.model.ep_info_buffer]
+                mlflow.log_metrics({
+                    &#34;mean_reward&#34;: sum(ep_rewards) / len(ep_rewards),
+                    &#34;mean_ep_length&#34;: sum(ep_lens) / len(ep_lens),
+                }, step=self.num_timesteps)
+        return True
+테스트 가이드라인
+1단계 - 기준 실험 (Baseline) 잡기">
+    <meta name="generator" content="Hugo 0.166.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://ijjeon1203.github.io/mlflow/code/">
+    
+
+    <meta property="og:url" content="https://ijjeon1203.github.io/mlflow/code/">
+	<meta property="og:site_name" content=" ">
+	<meta property="og:title" content=" ">
+	<meta property="og:description" content="mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) # mlflow url 주소 mlflow.set_experiment(&#34;model-1&#34;) # 실험 이름 설정 mlflow.start_run() # 실행 시작 mlflow.log_params() # 하이퍼파라미터 기록 mlflow.log_metrics() # 학습 결과 기록 mlflow.log_artifact() # 가중치 파일 기록 예제 def main(): mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) mlflow.set_experiment(&#34;model-1&#34;) # ✅ 여기서 run 시작 with mlflow.start_run(run_name=f&#34;ppo_{args.timesteps}steps&#34;): # ✅ 하이퍼파라미터 기록 mlflow.log_params({ &#34;algo&#34;: &#34;PPO&#34;, &#34;policy&#34;: &#34;MlpPolicy&#34;, &#34;learning_rate&#34;: 0.001, &#34;gamma&#34;: 0.99, &#34;num_cpu&#34;: 8, &#34;timesteps&#34;: args.timesteps, &#34;pi_arch&#34;: &#34;[128, 128]&#34;, &#34;vf_arch&#34;: &#34;[256, 256]&#34;, &#34;activation&#34;: &#34;ReLU&#34;, &#34;boost_time&#34;: 5.0, &#34;init_pitch&#34;: 30.0, }) # 기존 모델 로드 or 신규 생성 코드 그대로... # ✅ 학습 콜백으로 메트릭 기록 (아래 설명 참고) model.learn( total_timesteps=args.timesteps, reset_num_timesteps=False, callback=MLflowCallback() # ✅ 추가 ) # ✅ 가중치 저장 후 MLflow에도 업로드 model.save(model_filename) mlflow.log_artifact(f&#34;{model_filename}.zip&#34;) print(&#34;💾 학습 완료 및 MLflow 기록 완료!&#34;) 콜백 클래스 class MLflowCallback(BaseCallback): def __init__(self, log_interval=1000): super().__init__() self.log_interval = log_interval def _on_step(self) -&gt; bool: if self.n_calls % self.log_interval == 0: # SB3가 자동으로 계산하는 메트릭 가져오기 if len(self.model.ep_info_buffer) &gt; 0: ep_rewards = [ep[&#34;r&#34;] for ep in self.model.ep_info_buffer] ep_lens = [ep[&#34;l&#34;] for ep in self.model.ep_info_buffer] mlflow.log_metrics({ &#34;mean_reward&#34;: sum(ep_rewards) / len(ep_rewards), &#34;mean_ep_length&#34;: sum(ep_lens) / len(ep_lens), }, step=self.num_timesteps) return True 테스트 가이드라인 1단계 - 기준 실험 (Baseline) 잡기">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="mlflow">
+
+	<meta itemprop="name" content=" ">
+	<meta itemprop="description" content="mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) # mlflow url 주소 mlflow.set_experiment(&#34;model-1&#34;) # 실험 이름 설정 mlflow.start_run() # 실행 시작 mlflow.log_params() # 하이퍼파라미터 기록 mlflow.log_metrics() # 학습 결과 기록 mlflow.log_artifact() # 가중치 파일 기록 예제 def main(): mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) mlflow.set_experiment(&#34;model-1&#34;) # ✅ 여기서 run 시작 with mlflow.start_run(run_name=f&#34;ppo_{args.timesteps}steps&#34;): # ✅ 하이퍼파라미터 기록 mlflow.log_params({ &#34;algo&#34;: &#34;PPO&#34;, &#34;policy&#34;: &#34;MlpPolicy&#34;, &#34;learning_rate&#34;: 0.001, &#34;gamma&#34;: 0.99, &#34;num_cpu&#34;: 8, &#34;timesteps&#34;: args.timesteps, &#34;pi_arch&#34;: &#34;[128, 128]&#34;, &#34;vf_arch&#34;: &#34;[256, 256]&#34;, &#34;activation&#34;: &#34;ReLU&#34;, &#34;boost_time&#34;: 5.0, &#34;init_pitch&#34;: 30.0, }) # 기존 모델 로드 or 신규 생성 코드 그대로... # ✅ 학습 콜백으로 메트릭 기록 (아래 설명 참고) model.learn( total_timesteps=args.timesteps, reset_num_timesteps=False, callback=MLflowCallback() # ✅ 추가 ) # ✅ 가중치 저장 후 MLflow에도 업로드 model.save(model_filename) mlflow.log_artifact(f&#34;{model_filename}.zip&#34;) print(&#34;💾 학습 완료 및 MLflow 기록 완료!&#34;) 콜백 클래스 class MLflowCallback(BaseCallback): def __init__(self, log_interval=1000): super().__init__() self.log_interval = log_interval def _on_step(self) -&gt; bool: if self.n_calls % self.log_interval == 0: # SB3가 자동으로 계산하는 메트릭 가져오기 if len(self.model.ep_info_buffer) &gt; 0: ep_rewards = [ep[&#34;r&#34;] for ep in self.model.ep_info_buffer] ep_lens = [ep[&#34;l&#34;] for ep in self.model.ep_info_buffer] mlflow.log_metrics({ &#34;mean_reward&#34;: sum(ep_rewards) / len(ep_rewards), &#34;mean_ep_length&#34;: sum(ep_lens) / len(ep_lens), }, step=self.num_timesteps) return True 테스트 가이드라인 1단계 - 기준 실험 (Baseline) 잡기">
+	<meta itemprop="wordCount" content="706">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content=" ">
+	<meta name="twitter:description" content="mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) # mlflow url 주소 mlflow.set_experiment(&#34;model-1&#34;) # 실험 이름 설정 mlflow.start_run() # 실행 시작 mlflow.log_params() # 하이퍼파라미터 기록 mlflow.log_metrics() # 학습 결과 기록 mlflow.log_artifact() # 가중치 파일 기록 예제 def main(): mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) mlflow.set_experiment(&#34;model-1&#34;) # ✅ 여기서 run 시작 with mlflow.start_run(run_name=f&#34;ppo_{args.timesteps}steps&#34;): # ✅ 하이퍼파라미터 기록 mlflow.log_params({ &#34;algo&#34;: &#34;PPO&#34;, &#34;policy&#34;: &#34;MlpPolicy&#34;, &#34;learning_rate&#34;: 0.001, &#34;gamma&#34;: 0.99, &#34;num_cpu&#34;: 8, &#34;timesteps&#34;: args.timesteps, &#34;pi_arch&#34;: &#34;[128, 128]&#34;, &#34;vf_arch&#34;: &#34;[256, 256]&#34;, &#34;activation&#34;: &#34;ReLU&#34;, &#34;boost_time&#34;: 5.0, &#34;init_pitch&#34;: 30.0, }) # 기존 모델 로드 or 신규 생성 코드 그대로... # ✅ 학습 콜백으로 메트릭 기록 (아래 설명 참고) model.learn( total_timesteps=args.timesteps, reset_num_timesteps=False, callback=MLflowCallback() # ✅ 추가 ) # ✅ 가중치 저장 후 MLflow에도 업로드 model.save(model_filename) mlflow.log_artifact(f&#34;{model_filename}.zip&#34;) print(&#34;💾 학습 완료 및 MLflow 기록 완료!&#34;) 콜백 클래스 class MLflowCallback(BaseCallback): def __init__(self, log_interval=1000): super().__init__() self.log_interval = log_interval def _on_step(self) -&gt; bool: if self.n_calls % self.log_interval == 0: # SB3가 자동으로 계산하는 메트릭 가져오기 if len(self.model.ep_info_buffer) &gt; 0: ep_rewards = [ep[&#34;r&#34;] for ep in self.model.ep_info_buffer] ep_lens = [ep[&#34;l&#34;] for ep in self.model.ep_info_buffer] mlflow.log_metrics({ &#34;mean_reward&#34;: sum(ep_rewards) / len(ep_rewards), &#34;mean_ep_length&#34;: sum(ep_lens) / len(ep_lens), }, step=self.num_timesteps) return True 테스트 가이드라인 1단계 - 기준 실험 (Baseline) 잡기">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+         
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
+              2
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
+              3
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
+              4
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        MLFlows
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><pre tabindex="0"><code>mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;) # mlflow url 주소 
+mlflow.set_experiment(&#34;model-1&#34;) # 실험 이름 설정
+mlflow.start_run()        # 실행 시작
+mlflow.log_params()       # 하이퍼파라미터 기록
+mlflow.log_metrics()      # 학습 결과 기록
+mlflow.log_artifact()     # 가중치 파일 기록
+</code></pre><h1 id="예제">예제</h1>
+<pre tabindex="0"><code>def main():
+    mlflow.set_tracking_uri(&#34;http://192.168.1.236:5050&#34;)
+    mlflow.set_experiment(&#34;model-1&#34;)
+
+    # ✅ 여기서 run 시작
+    with mlflow.start_run(run_name=f&#34;ppo_{args.timesteps}steps&#34;):
+        
+        # ✅ 하이퍼파라미터 기록
+        mlflow.log_params({
+            &#34;algo&#34;: &#34;PPO&#34;,
+            &#34;policy&#34;: &#34;MlpPolicy&#34;,
+            &#34;learning_rate&#34;: 0.001,
+            &#34;gamma&#34;: 0.99,
+            &#34;num_cpu&#34;: 8,
+            &#34;timesteps&#34;: args.timesteps,
+            &#34;pi_arch&#34;: &#34;[128, 128]&#34;,
+            &#34;vf_arch&#34;: &#34;[256, 256]&#34;,
+            &#34;activation&#34;: &#34;ReLU&#34;,
+            &#34;boost_time&#34;: 5.0,
+            &#34;init_pitch&#34;: 30.0,
+        })
+
+        # 기존 모델 로드 or 신규 생성 코드 그대로...
+        
+        # ✅ 학습 콜백으로 메트릭 기록 (아래 설명 참고)
+        model.learn(
+            total_timesteps=args.timesteps,
+            reset_num_timesteps=False,
+            callback=MLflowCallback()  # ✅ 추가
+        )
+        
+        # ✅ 가중치 저장 후 MLflow에도 업로드
+        model.save(model_filename)
+        mlflow.log_artifact(f&#34;{model_filename}.zip&#34;)
+        print(&#34;💾 학습 완료 및 MLflow 기록 완료!&#34;)
+</code></pre><h1 id="콜백-클래스">콜백 클래스</h1>
+<pre tabindex="0"><code>class MLflowCallback(BaseCallback):
+    def __init__(self, log_interval=1000):
+        super().__init__()
+        self.log_interval = log_interval
+
+    def _on_step(self) -&gt; bool:
+        if self.n_calls % self.log_interval == 0:
+            # SB3가 자동으로 계산하는 메트릭 가져오기
+            if len(self.model.ep_info_buffer) &gt; 0:
+                ep_rewards = [ep[&#34;r&#34;] for ep in self.model.ep_info_buffer]
+                ep_lens = [ep[&#34;l&#34;] for ep in self.model.ep_info_buffer]
+                mlflow.log_metrics({
+                    &#34;mean_reward&#34;: sum(ep_rewards) / len(ep_rewards),
+                    &#34;mean_ep_length&#34;: sum(ep_lens) / len(ep_lens),
+                }, step=self.num_timesteps)
+        return True
+</code></pre><h1 id="테스트-가이드라인">테스트 가이드라인</h1>
+<p><strong>1단계 - 기준 실험 (Baseline) 잡기</strong></p>
+<pre tabindex="0"><code>실험명: ppo_baseline
+timesteps: 50,000
+현재 설정 그대로 돌리기
+→ 대시보드에서 mean_reward 추이 확인
+→ 수렴하는지 / 발산하는지 파악
+</code></pre><p><strong>2단계 - 하이퍼파라미터 하나씩만 바꾸기</strong></p>
+<pre tabindex="0"><code>실험 2: learning_rate 0.001 → 3e-4
+실험 3: pi_arch [128,128] → [256,256]
+실험 4: num_cpu 8 → 4
+→ baseline 대비 mean_reward 비교
+</code></pre><p><strong>3단계 - 대시보드에서 비교</strong></p>
+<pre tabindex="0"><code>http://192.168.1.236:5050
+→ missile-rl 실험 클릭
+→ 여러 run 체크박스 선택
+→ Compare 버튼
+→ reward 커브 나란히 비교
+</code></pre><p><strong>4단계 - 좋은 가중치로 시연</strong></p>
+<pre tabindex="0"><code>대시보드에서 reward 높은 run 선택
+→ Artifacts 탭에서 .zip 경로 확인
+→ play.py에서 해당 경로로 로드
+→ render_mode=&#34;human&#34; 으로 시연
+</code></pre><hr>
+<p><strong>미션 결과도 기록하면 더 좋아요</strong></p>
+<p><code>rocket_tracking_sim.py</code>의 <code>step()</code> 마지막에 <code>mission_result</code>가 있으니, 에피소드 종료 시 결과도 MLflow에 기록할 수 있어요:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 콜백에서 에피소드 종료 감지</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> terminated <span style="color:#f92672">or</span> truncated:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> env<span style="color:#f92672">.</span>mission_result:
+</span></span><span style="display:flex;"><span>        status <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>mission_result[<span style="color:#e6db74">&#34;status&#34;</span>]
+</span></span><span style="display:flex;"><span>        mlflow<span style="color:#f92672">.</span>log_metric(<span style="color:#e6db74">&#34;hit_rate&#34;</span>, <span style="color:#ae81ff">1.0</span> <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;HIT&#34;</span> <span style="color:#f92672">in</span> status <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0.0</span>, 
+</span></span><span style="display:flex;"><span>                         step<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>num_timesteps)
+</span></span></code></pre></div><h1 id="실제-구성">실제 구성</h1>
+<p>rocket_tracking_sim.py  →  환경 (게임 규칙, 물리, 렌더링)
+train.py                →  학습 (모델 생성, 학습 루프, 결과 기록)</p>
+<p>MLflow는 &ldquo;학습 실험을 추적&rdquo; 하는 도구</p>
+<p>❌ 문제점</p>
+<ul>
+<li>환경을 다른 프로젝트에서 재사용할 때 MLflow가 딸려옴</li>
+<li>환경이 학습 추적 도구에 의존하게 됨 (관심사 분리 위반)</li>
+<li>SubprocVecEnv로 병렬 실행할 때 각 프로세스마다
+MLflow 연결 시도 → 충돌 가능성</li>
+</ul>
+<h1 id="저장">저장</h1>
+<pre tabindex="0"><code>Git Commit (코드)
+    → 개발자가 수동으로 하는 것
+    → 학습 전에 코드 확정하고 커밋
+    → 자동이 아님!
+
+NAS 가중치 저장 (MLflow)
+    → 학습 중/후 자동으로 올라감
+    → 10000스텝마다 체크포인트
+    → 학습 완료 시 최종 저장
+</code></pre><h2 id="가중치-저장">가중치 저장</h2>
+<pre tabindex="0"><code>학습 완료
+    ↓
+로컬 PC에 .zip 저장
+    ↓
+MLflow가 NAS로 복사
+    ↓
+NAS /volume1/docker/mlflow/artifacts/ 에 보관
+</code></pre><pre tabindex="0"><code># train.py
+model.learn(total_timesteps=args.timesteps)  # 학습 완료 후
+
+model.save(model_filename)  # ← 여기서 로컬 PC에 저장, trained_3d_rocket.zip 생성
+
+mlflow.log_artifact(f&#34;{model_filename}.zip&#34;)  # ← 여기서 NAS로 업로드
+</code></pre><h2 id="중간-체크포인트-저장">중간 체크포인트 저장</h2>
+<pre tabindex="0"><code>from stable_baselines3.common.callbacks import CheckpointCallback
+
+checkpoint_callback = CheckpointCallback(
+    save_freq=10000,          # 1만 스텝마다
+    save_path=&#34;./checkpoints/&#34;,
+    name_prefix=&#34;rocket_ckpt&#34;
+)
+
+model.learn(
+    total_timesteps=args.timesteps,
+    callback=[checkpoint_callback, MLflowCallback()]
+)
+
+# 학습 완료 후 체크포인트 폴더 전체를 NAS에 업로드
+mlflow.log_artifacts(&#34;./checkpoints/&#34;, artifact_path=&#34;checkpoints&#34;)
+</code></pre><h2 id="저장구조">저장구조</h2>
+<pre tabindex="0"><code>artifacts/
+├── checkpoints/
+│   ├── rocket_ckpt_10000_steps.zip
+│   ├── rocket_ckpt_20000_steps.zip
+│   └── rocket_ckpt_30000_steps.zip
+└── trained_3d_rocket.zip  ← 최종
+</code></pre><h2 id="commit">commit</h2>
+<pre tabindex="0"><code># train.py 맨 위에
+import subprocess
+
+def check_git_clean():
+    dirty = subprocess.check_output(
+        [&#34;git&#34;, &#34;status&#34;, &#34;--porcelain&#34;]
+    ).decode().strip()
+    
+    if dirty:
+        print(&#34;🚨 커밋 안 된 변경사항이 있어요!&#34;)
+        print(dirty)
+        answer = input(&#34;그래도 학습 시작할까요? (y/n): &#34;)
+        if answer != &#34;y&#34;:
+            exit()
+    
+    commit = subprocess.check_output(
+        [&#34;git&#34;, &#34;rev-parse&#34;, &#34;HEAD&#34;]
+    ).decode().strip()
+    return commit
+
+def main():
+    commit_hash = check_git_clean()  # ← 학습 전 체크
+    
+    with mlflow.start_run():
+        mlflow.set_tag(&#34;git_commit&#34;, commit_hash)  # ← NAS 기록에 커밋 연결
+        # 학습 진행...
+</code></pre><p><strong>위험한 시나리오</strong></p>
+<ol>
+<li>코드 수정 (커밋 안 함)</li>
+<li>학습 돌림</li>
+<li>가중치 NAS에 저장됨</li>
+<li>나중에 &ldquo;이 가중치 어떤 코드로 만든 거지?&rdquo; → 모름!</li>
+<li>방어코드 추가 !!</li>
+</ol>
+<h1 id="저장-데이터-흐름">저장 데이터 흐름</h1>
+<p>MLflow가 commit hash를 가중치에 태깅해서 나중에 추적할 수 있게</p>
+<pre tabindex="0"><code>[학습 전] ──────────────────────────────
+개발자가 코드 수정
+    ↓
+git commit (수동)
+    ↓
+python train.py 실행
+    ↓
+commit hash 자동 캡처 → MLflow에 태깅
+
+[학습 중] ──────────────────────────────
+10000스텝마다
+    ↓
+체크포인트 → NAS 자동 저장
+(MLflow run에 commit hash가 붙어있음)
+
+[학습 후] ──────────────────────────────
+최종 가중치 → NAS 자동 저장
+MLflow 대시보드에서 확인:
+    ├── git_commit: a3f9c2b  ← 이 코드로
+    ├── lr: 0.001            ← 이 설정으로
+    └── artifacts/           ← 이 가중치 나옴
+</code></pre><h1 id="mlflow는-run마다-고유-id를-자동-생성">MLflow는 run마다 고유 ID를 자동 생성</h1>
+<ul>
+<li>run_name이 같아도 run_id가 다르니까 덮어쓰기 걱정 없음</li>
+</ul>
+<pre tabindex="0"><code>NAS /volume1/docker/mlflow/artifacts/
+└── {experiment_id}/
+    └── {run_id}/          ← run마다 고유 폴더 자동 생성
+        ├── final_model/
+        │   └── trained_3d_rocket.zip
+        └── checkpoints/
+            ├── rocket_ckpt_10000_steps.zip
+            └── rocket_ckpt_20000_steps.zip
+</code></pre><h1 id="mlflowcallback--체크포인트마다-nas-자동-업로드">MLflowCallback : 체크포인트마다 NAS 자동 업로드</h1>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
+      &copy; 2025 
+    </a>
+    <div>
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://github.com/username">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

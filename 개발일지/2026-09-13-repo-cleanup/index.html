@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>저장소 정리: SvelteKit/Sveltepress 잔재 제거 |  </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="배경
+저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로
+전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.
+
+node_modules/ 가 통째로 git에 커밋되어 있었음 (17,996개 파일)
+정작 그걸 설치했을 package.json은 저장소 어디에도 없음 (테마 서브모듈 내부 제외)
+.svelte-kit/, .sveltepress/, src/routes/&#43;page.md 도 같은 이유로 잔재로 남아있었음
+.git 디렉토리가 132MB까지 불어난 주 원인이었음
+
+작업 내역
+
+
+.gitignore 정비
+
+처음엔 node_modules/, .svelte-kit/, .sveltepress/ 등을 ignore 규칙으로
+추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는
+저장소에서 사라지지 않는다는 점을 확인함
+논의 후 &ldquo;무시&quot;가 아니라 &ldquo;완전 삭제&quot;로 방향을 바꿈
+Hugo가 빌드 때마다 재생성하는 .hugo_build.lock, /public/,
+/resources/_gen/, .hugo_cache/ 만 계속 ignore 대상으로 유지
+
+
+
+죽은 산출물 삭제 (git rm -r)">
+    <meta name="generator" content="Hugo 0.166.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2026-09-13-repo-cleanup/">
+    
+
+    <meta property="og:url" content="https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2026-09-13-repo-cleanup/">
+	<meta property="og:site_name" content=" ">
+	<meta property="og:title" content="저장소 정리: SvelteKit/Sveltepress 잔재 제거">
+	<meta property="og:description" content="배경 저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로 전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.
+node_modules/ 가 통째로 git에 커밋되어 있었음 (17,996개 파일) 정작 그걸 설치했을 package.json은 저장소 어디에도 없음 (테마 서브모듈 내부 제외) .svelte-kit/, .sveltepress/, src/routes/&#43;page.md 도 같은 이유로 잔재로 남아있었음 .git 디렉토리가 132MB까지 불어난 주 원인이었음 작업 내역 .gitignore 정비
+처음엔 node_modules/, .svelte-kit/, .sveltepress/ 등을 ignore 규칙으로 추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는 저장소에서 사라지지 않는다는 점을 확인함 논의 후 “무시&#34;가 아니라 “완전 삭제&#34;로 방향을 바꿈 Hugo가 빌드 때마다 재생성하는 .hugo_build.lock, /public/, /resources/_gen/, .hugo_cache/ 만 계속 ignore 대상으로 유지 죽은 산출물 삭제 (git rm -r)">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="개발일지">
+		<meta property="article:published_time" content="2026-09-13T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-09-13T00:00:00+00:00">
+
+	<meta itemprop="name" content="저장소 정리: SvelteKit/Sveltepress 잔재 제거">
+	<meta itemprop="description" content="배경 저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로 전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.
+node_modules/ 가 통째로 git에 커밋되어 있었음 (17,996개 파일) 정작 그걸 설치했을 package.json은 저장소 어디에도 없음 (테마 서브모듈 내부 제외) .svelte-kit/, .sveltepress/, src/routes/&#43;page.md 도 같은 이유로 잔재로 남아있었음 .git 디렉토리가 132MB까지 불어난 주 원인이었음 작업 내역 .gitignore 정비
+처음엔 node_modules/, .svelte-kit/, .sveltepress/ 등을 ignore 규칙으로 추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는 저장소에서 사라지지 않는다는 점을 확인함 논의 후 “무시&#34;가 아니라 “완전 삭제&#34;로 방향을 바꿈 Hugo가 빌드 때마다 재생성하는 .hugo_build.lock, /public/, /resources/_gen/, .hugo_cache/ 만 계속 ignore 대상으로 유지 죽은 산출물 삭제 (git rm -r)">
+	<meta itemprop="datePublished" content="2026-09-13T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-09-13T00:00:00+00:00">
+	<meta itemprop="wordCount" content="191">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="저장소 정리: SvelteKit/Sveltepress 잔재 제거">
+	<meta name="twitter:description" content="배경 저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로 전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.
+node_modules/ 가 통째로 git에 커밋되어 있었음 (17,996개 파일) 정작 그걸 설치했을 package.json은 저장소 어디에도 없음 (테마 서브모듈 내부 제외) .svelte-kit/, .sveltepress/, src/routes/&#43;page.md 도 같은 이유로 잔재로 남아있었음 .git 디렉토리가 132MB까지 불어난 주 원인이었음 작업 내역 .gitignore 정비
+처음엔 node_modules/, .svelte-kit/, .sveltepress/ 등을 ignore 규칙으로 추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는 저장소에서 사라지지 않는다는 점을 확인함 논의 후 “무시&#34;가 아니라 “완전 삭제&#34;로 방향을 바꿈 Hugo가 빌드 때마다 재생성하는 .hugo_build.lock, /public/, /resources/_gen/, .hugo_cache/ 만 계속 ignore 대상으로 유지 죽은 산출물 삭제 (git rm -r)">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+         
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
+              2
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
+              3
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
+              4
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        개발일지s
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">저장소 정리: SvelteKit/Sveltepress 잔재 제거</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-09-13T00:00:00Z">September 13, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="배경">배경</h2>
+<p>저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로
+전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.</p>
+<ul>
+<li><code>node_modules/</code> 가 통째로 git에 커밋되어 있었음 (17,996개 파일)</li>
+<li>정작 그걸 설치했을 <code>package.json</code>은 저장소 어디에도 없음 (테마 서브모듈 내부 제외)</li>
+<li><code>.svelte-kit/</code>, <code>.sveltepress/</code>, <code>src/routes/+page.md</code> 도 같은 이유로 잔재로 남아있었음</li>
+<li><code>.git</code> 디렉토리가 132MB까지 불어난 주 원인이었음</li>
+</ul>
+<h2 id="작업-내역">작업 내역</h2>
+<ol>
+<li>
+<p><strong><code>.gitignore</code> 정비</strong></p>
+<ul>
+<li>처음엔 <code>node_modules/</code>, <code>.svelte-kit/</code>, <code>.sveltepress/</code> 등을 ignore 규칙으로
+추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는
+저장소에서 사라지지 않는다는 점을 확인함</li>
+<li>논의 후 &ldquo;무시&quot;가 아니라 &ldquo;완전 삭제&quot;로 방향을 바꿈</li>
+<li>Hugo가 빌드 때마다 재생성하는 <code>.hugo_build.lock</code>, <code>/public/</code>,
+<code>/resources/_gen/</code>, <code>.hugo_cache/</code> 만 계속 ignore 대상으로 유지</li>
+</ul>
+</li>
+<li>
+<p><strong>죽은 산출물 삭제</strong> (<code>git rm -r</code>)</p>
+<ul>
+<li><code>node_modules/</code></li>
+<li><code>.svelte-kit/</code></li>
+<li><code>.sveltepress/</code></li>
+<li><code>src/</code> (구 SvelteKit 라우트, <code>src/routes/+page.md</code>)</li>
+<li>총 18,011개 파일 삭제, 커밋 <code>cd3b59cb</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="남은-이슈">남은 이슈</h2>
+<ul>
+<li><code>git rm</code>은 워킹 트리/인덱스만 정리할 뿐, 과거 커밋 히스토리에는 삭제된
+파일들의 objects가 그대로 남아있어 <code>.git</code> 용량(132MB)은 줄어들지 않음</li>
+<li>진짜로 저장소 용량을 줄이려면 <code>git filter-repo</code> 등으로 히스토리 자체를
+재작성해야 하는데, 이는 파괴적인 작업(강제 푸시 필요, 협업자 영향)이라
+별도로 상의 후 진행하기로 함</li>
+<li>그 외 발견된 정리 후보 (아직 미착수)
+<ul>
+<li><code>public/</code> 폴더와 루트의 빌드 산출물(<code>book/</code>, <code>movie/</code>, <code>temmis/</code> 등)이
+중복 저장되고 있음</li>
+<li><code>temmis/</code>는 <code>tennis/</code>의 오타로 보이는 중복 디렉토리</li>
+<li><code>config.toml</code>의 <code>title</code>이 공백, 메뉴 이름이 <code>&quot;2&quot;</code>, <code>&quot;3&quot;</code>, <code>&quot;4&quot;</code>로만 되어 있음</li>
+</ul>
+</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
+      &copy; 2025 
+    </a>
+    <div>
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://github.com/username">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

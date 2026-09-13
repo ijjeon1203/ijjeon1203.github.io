@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title> </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Linux 명령어
+명령어
+sudo : super user uo
+sudo su -
+
+루트 사용자 변경
+
+ubuntu 비밀번호 변경
+sudo passwd
+사진캡처
+단축키
+Ubuntu에서는 예전 윈도우용과  스크린샷키가 동일하게 적용된다.
+전체 화면 캡쳐 :Print Screen
+윈도우창 화면 캡쳐 : Alt &#43; Print Screen
+스크린샷
+또한 스크린샷 프로그램이 기본적으로 제공되는데, 위에 간단하게 소개드린 단축키를 사용해도 결국 &ldquo;스크린샷&rdquo; 프로그램으로 실행된다.
+프로그램을 직접 실행하면 몇 가지 이점이 있다.
+&ldquo;다음 시간이 지난 후에 찍기&rdquo; : 시스템 메뉴가 활성화된 상태에서는 단축키를 통한 캡쳐가 되지 않는다.
+5초 뒤에 찍기로 설정 하고 잽싸게 시스템 메뉴를 누르고 기다리면 화면 캡쳐가 가능하다.
+&ldquo;잡을 영역선택&rdquo; : 원하는 일부 영역만 선택하여 화면 캡쳐할 수 있다.">
+    <meta name="generator" content="Hugo 0.166.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.2438bcafd7af9675c426d1a4afcd16cfff18e4e10f401071e45b5ccd3be40a0d.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/">
+    
+
+    <meta property="og:url" content="https://ijjeon1203.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4/%EB%AA%85%EB%A0%B9%EC%96%B4/">
+	<meta property="og:site_name" content=" ">
+	<meta property="og:title" content=" ">
+	<meta property="og:description" content="Linux 명령어 명령어 sudo : super user uo
+sudo su - 루트 사용자 변경 ubuntu 비밀번호 변경
+sudo passwd
+사진캡처 단축키 Ubuntu에서는 예전 윈도우용과 스크린샷키가 동일하게 적용된다.
+전체 화면 캡쳐 :Print Screen 윈도우창 화면 캡쳐 : Alt &#43; Print Screen
+스크린샷 또한 스크린샷 프로그램이 기본적으로 제공되는데, 위에 간단하게 소개드린 단축키를 사용해도 결국 “스크린샷” 프로그램으로 실행된다.
+프로그램을 직접 실행하면 몇 가지 이점이 있다.
+“다음 시간이 지난 후에 찍기” : 시스템 메뉴가 활성화된 상태에서는 단축키를 통한 캡쳐가 되지 않는다. 5초 뒤에 찍기로 설정 하고 잽싸게 시스템 메뉴를 누르고 기다리면 화면 캡쳐가 가능하다. “잡을 영역선택” : 원하는 일부 영역만 선택하여 화면 캡쳐할 수 있다.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="리눅스">
+
+	<meta itemprop="name" content=" ">
+	<meta itemprop="description" content="Linux 명령어 명령어 sudo : super user uo
+sudo su - 루트 사용자 변경 ubuntu 비밀번호 변경
+sudo passwd
+사진캡처 단축키 Ubuntu에서는 예전 윈도우용과 스크린샷키가 동일하게 적용된다.
+전체 화면 캡쳐 :Print Screen 윈도우창 화면 캡쳐 : Alt &#43; Print Screen
+스크린샷 또한 스크린샷 프로그램이 기본적으로 제공되는데, 위에 간단하게 소개드린 단축키를 사용해도 결국 “스크린샷” 프로그램으로 실행된다.
+프로그램을 직접 실행하면 몇 가지 이점이 있다.
+“다음 시간이 지난 후에 찍기” : 시스템 메뉴가 활성화된 상태에서는 단축키를 통한 캡쳐가 되지 않는다. 5초 뒤에 찍기로 설정 하고 잽싸게 시스템 메뉴를 누르고 기다리면 화면 캡쳐가 가능하다. “잡을 영역선택” : 원하는 일부 영역만 선택하여 화면 캡쳐할 수 있다.">
+	<meta itemprop="wordCount" content="2737">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content=" ">
+	<meta name="twitter:description" content="Linux 명령어 명령어 sudo : super user uo
+sudo su - 루트 사용자 변경 ubuntu 비밀번호 변경
+sudo passwd
+사진캡처 단축키 Ubuntu에서는 예전 윈도우용과 스크린샷키가 동일하게 적용된다.
+전체 화면 캡쳐 :Print Screen 윈도우창 화면 캡쳐 : Alt &#43; Print Screen
+스크린샷 또한 스크린샷 프로그램이 기본적으로 제공되는데, 위에 간단하게 소개드린 단축키를 사용해도 결국 “스크린샷” 프로그램으로 실행된다.
+프로그램을 직접 실행하면 몇 가지 이점이 있다.
+“다음 시간이 지난 후에 찍기” : 시스템 메뉴가 활성화된 상태에서는 단축키를 통한 캡쳐가 되지 않는다. 5초 뒤에 찍기로 설정 하고 잽싸게 시스템 메뉴를 누르고 기다리면 화면 캡쳐가 가능하다. “잡을 영역선택” : 원하는 일부 영역만 선택하여 화면 캡쳐할 수 있다.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+         
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="2 page">
+              2
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/post/" title="3 page">
+              3
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/contact/" title="4 page">
+              4
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        리눅스s
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="linux-명령어">Linux 명령어</h1>
+<h1 id="명령어">명령어</h1>
+<p>sudo : super user uo</p>
+<h1 id="sudo-su--">sudo su -</h1>
+<ul>
+<li>루트 사용자 변경</li>
+</ul>
+<p>ubuntu 비밀번호 변경</p>
+<p>sudo passwd</p>
+<h1 id="사진캡처">사진캡처</h1>
+<p>단축키
+Ubuntu에서는 예전 윈도우용과  스크린샷키가 동일하게 적용된다.</p>
+<p>전체 화면 캡쳐 :Print Screen
+윈도우창 화면 캡쳐 : Alt + Print Screen</p>
+<h1 id="스크린샷">스크린샷</h1>
+<p>또한 스크린샷 프로그램이 기본적으로 제공되는데, 위에 간단하게 소개드린 단축키를 사용해도 결국 &ldquo;스크린샷&rdquo; 프로그램으로 실행된다.</p>
+<p>프로그램을 직접 실행하면 몇 가지 이점이 있다.</p>
+<p>&ldquo;다음 시간이 지난 후에 찍기&rdquo; : 시스템 메뉴가 활성화된 상태에서는 단축키를 통한 캡쳐가 되지 않는다.
+5초 뒤에 찍기로 설정 하고 잽싸게 시스템 메뉴를 누르고 기다리면 화면 캡쳐가 가능하다.
+&ldquo;잡을 영역선택&rdquo; : 원하는 일부 영역만 선택하여 화면 캡쳐할 수 있다.</p>
+<p>출처: <a href="https://www.morenice.kr/108">https://www.morenice.kr/108</a> [morenice&rsquo;s blog]</p>
+<h1 id="ubuntu-파일복사">ubuntu 파일복사</h1>
+<ul>
+<li>복사중이면 꺼지면 안되지?</li>
+</ul>
+<h1 id="ubuntu-동영상">ubuntu 동영상</h1>
+<p>Error
+unknown file extension .mp4 matplotlib</p>
+<hr>
+<h1 id="41-디렉토리-명령어">4.1 디렉토리 명령어</h1>
+<p>mkdir, rmdir - 디렉터리를 만들거나, 디렉토리를 삭제함
+rmdir file1 file2를 통해 여러 폴더를 삭제, rmdir -p filename을 통해 하위 폴더까지 삭제
+cd - 현재 위치를 다른 디렉터리로 바꿈
+cd/test -&gt; test 디렉터리로 이동, cd .. -&gt; 상위 디렉토리로 이동, cd -&gt; home 디렉토리로 이동</p>
+<p><strong>pwd</strong></p>
+<p>설명 : 현재 작업 디렉토리를 절대 경로 명으로 출력한다.</p>
+<p>pwd - 현재 디렉토리의 경로를 알려줍니다.</p>
+<p><strong>ls [옵션] [파일명]</strong></p>
+<p>ls - 현재 디렉터리의 구성 요소를 알려줍니다.
+설명 : 윈도우 도스창의 &lsquo;dir&rsquo; 명령과 같은 명령으로, 현재 디렉토리 내의 파일과 디렉토리에 대한 정보를 출력해준다. [옵션]에는 -로 시작하여 아래와 같은 옵션을 지정할 수 있으며 두 개 이상의 옵션을 동시에 지정할 수 있다. [파일명]에는 파일명이나 디렉토리명을 지정할 수 있다.</p>
+<p>옵션-a 디렉토리 내의 모든파일(.으로 시작되는 파일 포함)을 출력-i 파일의 아이노드(inode)번호를 출력-h 파일의 크기를 쉬운 단위로 표시(k: 킬로바이트, m: 메가바이트)-l 파일의 다양한 정보를 함께 출력(소유자 정보, 권한 정보, 크기, 날짜)-m 파일을 쉼표로 구분하여 가로로 출력-s kb 단위의파일크기를 출력-t 파일을 최근에 생성된 시간순으로 출력-F 파일의 형태와 함께 출력한다(&rsquo;*&rsquo; : tlfgodvkdlf, &lsquo;@&rsquo; : 심볼릭링크, &lsquo;/&rsquo; : 디렉토리)-R 서브 디렉토리의 내용을 포함하여 출력(즉 하위 디렉토리 내용을 모두 출력)-S 파일을 크기순으로 출력&ndash;help 도움말 출력</p>
+<p><strong>cd [디렉토리명]</strong></p>
+<p>설명 : cd(change directory) 작업 디렉토리를 바꾼다.</p>
+<p>옵션cd [엔터] 홈 디렉토리로 이동cd ~ 또는 cd ~/ 홈 디렉토리로 이동cd ~userid userid의 홈 디렉토리로 이동cd ~/path/path2 홈 디렉토리 아래 path/paht2로 이동cd - 바로 앞에 작업한 디렉토리로 이동cd directory 지정한 directory로 옮겨진다cd / root directory로 옮겨진다.cd .. 현재 작업 directory의 parent directory로 옮겨진다.</p>
+<p>작업하고 있는 경로를 기억시킨 뒤 나주에 다시 그 경로로 돌아오려면, &lsquo;pushd /겨로/&rsquo;(현재 경로 기억 예 : pushd .) 하여 경로를 기억시킨 뒤 popd라는 명령을 주면 기억한 경로로 돌아간다. 이 명령은 한 번만 쓸 수 있다.</p>
+<p><strong>cp [옵션] [원본파일명] [목적 파일명 / 디렉토리명]</strong></p>
+<p>설명 : 도스창의 &lsquo;copy&rsquo;명령과 같은 명령으로 하나 이상의 원본 파일을 목적 파일이나 디렉토리로 복사한다. [원본 파일명]에는 하나 이상의 파일명을 지정할 수 있고 [목적 파일명 / 디렉토리명]에는 복사될 목적 파일명이나 복사된 파일이 위치할 목적 디렉토리를 지정할 수 있다. [옵션]에는 아래와 같은 옵션을 지정할 수 있다.</p>
+<p>옵션-i 파일 복사시 동일 파일명이 있을시에 사용자에게 덮어 쓸 것인지를 물어봄-f 동일파일명 발생시에도 모두 강제적으로 복사함-p 원본 파일의 시간 및 소유 권한 보존-r 포함된 자식 디렉토리까지 모두 복사</p>
+<p><strong>mkdir [옵션] [파일명]</strong></p>
+<p>설명 : 새로운 디렉토리를 만든다. write permission이 허용되어야만 directory를 만들 수 있다.</p>
+<p>옵션-p 만들고자하는 디렉토리의 상위 디렉토리가 없는 경우 상위 디렉토리까지 같이 만든다.</p>
+<p><strong>rmdir [옵션] [파일명]</strong></p>
+<ul>
+<li>폴더삭제</li>
+<li></li>
+</ul>
+<p>설명 : 디렉토리를 제거하기 위한 명령어, whrite permission이 허용되어야만 directory를 제거할수 있다.</p>
+<p>옵션-p 제거된 디렉토리에 대한 메시지가 표시됨-s 제거된 디렉토리에 대한 메시지가 표시되지 않음.(Default)</p>
+<p><strong>more [파일명]</strong></p>
+<p>설명 : 한 화면씩 보기. 유닉스에서 커다란 텍스트 파일을 보는 것이나 많은 수의 파일과 서브디렉토리를 포함하는 디렉토리의 리스트를 보이게 하는 것은 아주 빠른 속도로 화면이 넘어가게 한다. 이럴 경우에 more나 pg 명령을 사용하여서 한 하면씩 보이게 할 수 있다. more filename을 입력하면 filename으로 지정한 파일을 한번에 한 화면에 해당하는 양 만큼씩 보여준다. 또한 출력을 more 명령으로 파이프(redirect) 시킬 수도 있다. 예를 들면 ls -al |more 는 ls 명령의 출력을 more로 보내어서 리스팅을 한 페이지씩 보이게 한다. more를 사용해서 파일을 살펴보는 일반적인 방법은 다음과 같다.</p>
+<p>옵션스페이스, Ctrl-D 다음 한 화면을 보여줌엔터 누를 때마다 화면의 아래쪽에 한 줄씩 더 보여줌q more 정지h 도움말/expr expression 검색</p>
+<p><strong>rm [옵션] [파일명]</strong></p>
+<p>설명 : rm(remove) 파일(디렉토리)을 삭제한다. 삭제하고자 하는 디렉토리에 파일이나 부 디렉토리가 없어야만 삭제가 가능하다.</p>
+<p>옵션-f 디렉토리 안의 파일을 삭제할 때 사용자에게 확인을 요구하지 않음-r 인수 list 에서 지정한 디렉토리 혹은 그 아래의 subdirectory를 삭제-i whrite permission 이 없는 파일의 삭제를 위해 대화식으로 확인-p 디렉토리 dir-name과 비어있는 부모 디렉토리를 사용자가 제거할 수 있으며, 전체 경로명이 삭제 되거나 어떤 이유로 인해 경로명의 일부가 남은것과 무관하게 표준출력에 메세지가 출력됨-s -p 선택항목 지정시 표준오류에 출력되는 메시지를 삭제</p>
+<p><strong>mv [옵션] [파일명]</strong></p>
+<p>설명 : mv 명령은 파일의 위치를 바꾸거나 이름을 바꾸는데 사용을 한다. mv 명령은 이미 존재하는 파일을 덮어쓰기를 한다. &lsquo;mv file1 file2&rsquo;라고 입력을 하는 것은 file1의 이름을 file2라고 바꾼다. 만약 file2 라는 파일이 이미 존재한다면 file1의 내용물로 교체가 된다. 파일을 한 디렉토리에서 다른 디렉토리로 옮기기 위하여서는 경로를 함께 입력하여 주면 된다. 같은 이름의 파일이 이미 존재하여서 그것을 덮어쓰기를 하지 않으려면 -i 옵션을 사용하면 된다. 한번에 여러 개의 파이을 옮길수도 있다. 마지막이 파일들을 옮겨 넣고자 하는 디렉토리이기만 하면 되는 것이다. 예를 들면 &lsquo;mv profit sales.txt wrksht repotrs&rsquo;라고 하면 profit sales.txt wrksht를 모두 reports 디렉토리로 이동시킨다.</p>
+<p>옵션-f 대상 파일이 존재할 대 새로운 파일로 대체-i 대상파일이 있을 때 확인 후 작업-f 파일의 이동 과정을 보여준다.</p>
+<p><strong>find [옵션] [파일명]</strong></p>
+<p>설명 : 이제는 find라는 명령어를 알아보자. find라는 명령어는 매우 융통성이 있고 강력한 명령어이다. 파일을 이름, 수정날짜, 소유주, 허가 등을 기준으로 하여 검색하게 해준다.</p>
+<p>옵션-name filename filename과 일치하는 파일을 찾음(*,? 또는 and가 사용될 수 있으며 이들은 따옴표 안에 표시를 하거나 백슬래시를 앞에 주고 사용함)-print 현재의 경로 이름을 표시</p>
+<p><strong>grep [옵션] [패턴] [파일명]</strong></p>
+<p>설명 : grep 명령을 사용하면 파일 내부에 있는 텍스트의 내용으로 파일을 찾을 수 있다. 지정한 문자들을 포함하는 행을 찾을 때마다 그 행을 화면에 표시한다. 만약 grep 하나 이상의 파일을 검색중이라면 그 문자들이 있는 파일의 이름을 표시한다.</p>
+<p>옵션-c 파일 내에서 패턴과 일치하는 줄의 총수를 구한다.-h 여러 개의 파일을 검색할 때, 출력에 파일명이 나타나는 것을 방지한다.-i 대, 소문자를 구별하지 않는다-n 일치하는 줄의 줄 번호도 같이 출력한다-v 패턴과 일치하지 않는 줄만 출력한다</p>
+<p><strong>head [-카운트] [파일명]</strong></p>
+<p>설명 : 파일의 첫 부분부터 카운트로 정한 숫자만큼의 줄 수를 보여주는 명령으로 카운트 징정을 안 하면 디폴트로 10이 된다.</p>
+<p><strong>tail [-카운트] [파일명]</strong></p>
+<p>설명 : 파일의 카운트로 정한 숫자만큼의 끝 부분 줄 수를 보여주는 명령으로 카운트를 지정을 안하면 디폴트로 10이 된다.</p>
+<p><strong>mount [-t 파일시스템] [장치명] [마운트디렉토리]</strong></p>
+<p>설명 : 각 운영체제나 혹은 CDROM같은 경우에는 저마다 자신의 파일 시스템을 사용하고 있다. 마운트라는 것은 특정 디렉토리에 자신이 원하는 파일 시스템을 연결하여 리눅스에서 볼 수 있는 명령이다.</p>
+<p>리눅스의 파일 시스템 : ext2, ext3, ext4</p>
+<p>윈도우 파일 시스템 : vfat, ntfs</p>
+<p>CDROM의 파일 시스템 : ISO9660</p>
+<p><strong>du</strong></p>
+<p>설명 : 사용자 자신의 디스크 사용 상황을 보고해 준다.(단위=Block)</p>
+<p><strong>cat [파일명]</strong></p>
+<p>설명 : 파일의 내용을 보거나 표준입력(키보드)으로 입력된 문자들을 파일로 저장할 때 쓰는 명령이다.</p>
+<p><strong>diff</strong></p>
+<p>설명 : diff(differential file comparator) 두개의 파일이 일치되도록 변경시키기 위한 정보를 제공해 줌.</p>
+<p><strong>rpm  [옵션] [파일명] &lt;&ndash; rpm명령어는 redhat 배포본 관련 패키지 명령어입니다.</strong></p>
+<p>설명 : 패키지를 설치 및 업그레이드</p>
+<p>옵션-i, -U 설치 및 업그레이드 옵션-e 패키지의 제거-q 패키지 질의-V 패키지 검증</p>
+<p>만약 시스템에 설치되어 있는 패키지를 설치하려 한다면 -i 옵션을 -U 옵션을 써야한다.</p>
+<p>만약 rpm -e rpm 명령을 실해하면 rpm 은 사라지기 때문에 절대로 하지 말아야 한다.</p>
+<p>만약 지웠다면</p>
+<p><a href="http://yesyo.com/mintbbs/bbs/www.rpm.org">www.rpm.org</a></p>
+<p>에 가서 rpm 소스를 가져다 설치하는 수밖에 없다.</p>
+<p><strong>gzip [옵션] [파일명]</strong></p>
+<p>설명 : 리눅스에서 사용하는 압축 프로그램으로 속도 면에서나 압축률 면에서나 상당히 좋은 프로그램이다.</p>
+<p>옵션-d 압축을 해제하는 옵션-f 압축을 하거나 해제할 때 같은 이름의 파일이 존재할 경우 덮어쓰기를 한다.-l 압축파일의 정보를 보여 준다.-r 압축 대상의 디렉토리까지 압축을 수행한다.</p>
+<p>하나의 파일밖에 압축을 못한다.</p>
+<p><strong>tar [옵션] [파일명]</strong></p>
+<p>설명 : tar 명령어는 여러 파일을 하나로 묶는데 사용한다. tar는 파일을 압축하지 않지만 gzip와 같이 쓰면 매우 효과적이다.</p>
+<p>옵션c 새로운 tar파일의 생성x 기존의 tar파일을 푸는데 사용u 업데이트를 위한 옵션t tar파일을 푸는 것이 아니라 내용을 보는 옵션v 파일을 묶거나 풀때의 작업을 보여주는 옵션z gzip를 이용해 tar.gz 혹은 .tgz로 묶인 파일을 풀 때 사용하는 옵션</p>
+<p><strong>more [-ncdflspu] [+줄번호] [파일이름(들)]</strong></p>
+<p>설명 : 한 화면씩 출력을 보여주는 유틸리티로 한 번에 전체적으로 볼수 없는 파일은 이것을 사용하여 스크롤을 제어할 수 있다.</p>
+<p>옵션-n 여기서 n은 숫자를 의미하며, 숫자는 출력 윈도우의 행수를 지정한다.-c 위에서부터 한 행씩 지운 후 한 행씩 출력한다. 보통은 화면 전체를 지운후 각 행을 출력하기 시작한다. 특정한 터미널을 위해 사용-d 스페이스나 q 키를 누르라는 프롬프트를 출력-f 화명의 행이 아닌 논리적인 행 수를 계산한다. 보통은 긴 칼럼의 행은 화면에서 행바꿈을 하여 새로운 행으로 계산된다. -f 옵션을 사용하면 이러한 행은 계산하지 않는다.-s 여러개의 빈 공백행은 하나로 취급한다.-p 스크롤하지 않는다. 대신 화면을 지우고 출력한다.-u 밑줄 치기를 금지 한다.</p>
+<p>return 한줄만 스크롤</p>
+<p>D 빈 페이지만 뒤로 이동</p>
+<p>space 한 페이지만 뒤로 이동</p>
+<p>B 한 페이지 앞으로 이동</p>
+<p>H 도움말을 제공</p>
+<p>V vi 에디터를 부름</p>
+<p>Q 종료</p>
+<p><strong>touch [-amc] [MMDDhhmmYY] [파일명]</strong></p>
+<p>설명 : 파일의 액세스 시간이나 갱신 시간을 수정</p>
+<p>옵션-a 파일의 액세스 시간을 바꿈-m 파일의 갱신 시간을 바꿈-c 파일명이 존재하지 않는다면 새로운 파일을 만들지 않음YY 연도DD 날짜hh 시간mm 분</p>
+<p>touch 는 기본적으로 파일의 날짜와 시간 정보를 변경하는 명렁어입니다.</p>
+<p>사용법</p>
+<ol>
+<li>크기가 0 인 비어있는 파일 생성</li>
+</ol>
+<p>touch 생성될 파일 이름</p>
+<ol start="2">
+<li>시스템 현재 시간으로 파일 시간 정보 수정</li>
+</ol>
+<p>touch -c 수정 될 파일이름</p>
+<ol start="3">
+<li>특정 파일의 시간 정보 변경</li>
+</ol>
+<p>touch -t YYYYMMDDhhmm 변경될 파일 이름</p>
+<ol start="4">
+<li>A 파일의 시간 정보를 B 파일에 동일하게 적용</li>
+</ol>
+<p>touch -r A파일이름 B파일이름</p>
+<p><strong>fdisk [-l] [-v] [-s partition] [device]</strong></p>
+<p>설명 : 디스크의 파티션을 변경한다.</p>
+<p>옵션-l 파티션 테이블의 목록을 출력-v fdisk 버전 출력-s partition DOS 파티션이 아니라면 해당 파티션의 크기를 출력device device 에는 몇번째 하드디스크를 파티션 할것인지 알려주어야 한다. 아래는 리눅스에서 각각의 디바이스들에 대한 이름이다.</p>
+<p>첫번째 설치된 하드 드라이브 : fdisk /dev/hda
+두번째 설치된 하드 드라이브 : fdisk /dev/hdb
+SCSI의 첫번째 하드 드라이브 : fdisk /dev/sda
+SCSI의 두번째 하드 드라이브 : fdisk /dev/sdb</p>
+<p>&rsquo;m&rsquo; 명령어로 도움말을 볼수 있다.</p>
+<p><strong>ps</strong></p>
+<p>설명 : 현재 자신의 리눅스 서버에서 어떤 프로세스들이 활동하고 있는지 살펴보고자 할떄 &lsquo;ps&rsquo; 명령을 사용하는 것이 일반적이다. ps 명령을 사용하면 현재 자신이 실행한 프로세스의 목록을 살펴볼수 있으며, &lsquo;-aux&rsquo; 옵션을 사용하면 시스템에서 동작중인 모든 프로세스를 살필수 있다.</p>
+<p>사용키<!-- raw HTML omitted --> 상황 즉시 갱신<!-- raw HTML omitted --> 갱신 시간 지정(초 단위)CPU 사용률 기준으로 정렬<!-- raw HTML omitted --> 메모리 사용률 기준으로 정렬<!-- raw HTML omitted --> 지정한 사용자의 프로세스만 나타남<!-- raw HTML omitted --> 지정한 프로세스 kill<!-- raw HTML omitted --> 도움말</p>
+<p><strong>passwd [옵션] [계정]</strong></p>
+<p>설명 : 사용자 계정의 패스워드를 등록하거나 변경시키는 경우 이용되는 명령어이며 특히 슈퍼유저는 다른 유저의 패스워드도 변경할수 있다.</p>
+<p>옵션-l 사용자의 계정에 lock을 건다.-d 사용자의 계정에 패스워드를 해체. 즉 패스워드 없이 로그인이 가능해 진다.</p>
+<p><strong>chmod [옵션] [파일명, 디렉토리]</strong></p>
+<p>설명 : 파일의 권한을 바꾸는 명령어</p>
+<p>옵션-R 서브디렉토리까지 모든 파일의 권한을 바꾼다.</p>
+<p><strong>chgrp [옵션]</strong></p>
+<p>설명 : 파일의 그룹을 바꾸는 명령어</p>
+<p>옵션-R 서브디렉토리까지 모든 파일의 그룹을 바꾼다.</p>
+<p><strong>chown [옵션] [파일명]</strong></p>
+<p>설명 : 파일의 소유자를 바꾸는 명령어</p>
+<p>옵션-R 서브디렉토리까지 모든 파일의 소유자를 바꾼다.</p>
+<p><strong>jobs</strong></p>
+<p>설명 : 현재 진행중인 작업들을 출력</p>
+<p>옵션-l 현재 작업하고 있는 디렉토리와 프로세스 그룹 ID를 출력</p>
+<p><strong>fg</strong></p>
+<p>설명 : 작업을 전명 작업으로 변환하는 것으로 전면 작업이란 모니터에 실행되는 모습을 사용자에 직접 보이며 작업하는 것을 말한다.</p>
+<p><strong>bg</strong></p>
+<p>설명 : 작업을 후면 작업으로 전화하는 것으로, 후면 작업이란 전면 작업과는 반대로 사용자의 눈에는 실행되는 모습을 보이지 않으면서도 실제로는 일을 하는 것을 말한다. 백그라운드 작업은 &ldquo;명령어 &amp;&ldquo;로 명령어 다음에 &ldquo;&amp;&rdquo; 표시를 붙여서 후면 작업으로 전환할 수 있도록 되어 있다.</p>
+<p><strong>date [yymmddhhmm [ss] ]</strong></p>
+<p>설명 : date는 위아 같이 주어진 인수가 없다면 현재 시스템의 시간과 날짜를 출력한다. 만약 주어지는 인자가 있다면 그에 따라서 시스템의 시간과 날짜를 변경한다.yy는 연도를 나타내는 두 숫자이며, mm은 월을 나타낸다. 그리고 dd는 날짜, hh는 24시간 단위로 표현되는 시견이며, mm은 분을 의미한다. 끝의 ss는 초를 의마하는 부분으로 명시하지 않아도 상관없는 부분이다.</p>
+<p><strong>cal [-jy] [ [달] 연도]</strong></p>
+<p>설명 : 서기 원년부터 9999년까지의 달력을 볼 수 있다.인수를 하나만 준다면 그 숫자는 연도를 의미하는 것으로 간주된다. 두 개의 숫자를 준다면 앞의 것을 월, 그 다음은 연도를 의미한다.</p>
+<p>옵션-j 1월 1일 부터 날짜 수를 계산하는 julian 날짜를 표시-y 올해의 달력을 표시</p>
+<p><strong>kill [-signalID] PID</strong></p>
+<p>설명 : kill 명령은 프로세서를 죽이는 데에 사용된다. 그래서 이 유틸리티의 이름도 kill이 되었다.</p>
+<p>옵션-signalID 프로세서에게 보낼 시그널을 지정한다. 시그널은 번호로 지정될 도 있고 시그널 이름으로 지정될 수도 있다.-l 시그널 종류를 나열한다. 시그널의 종류는 시그널 번호 순서대로 이름으로 나열된다.</p>
+<p><strong>finger [-slpm] [사용자]</strong></p>
+<p>설명 : 시스템 상의 사용자들에 대한 정보를 보여준다.인수로 아무 것도 주어지지 않으면, finger는 현재 시스템에 로그인되어 있는 사용자들을 보여준다.</p>
+<p>옵션-s 사용자의 로그온 이름, 실제 이름, 터미널 이름, 로그온 시간 등등을 보여줌-l -s 옵션 정보에 몇 가지를 추가하여, 여러 줄에 걸쳐서 보여줌-p -l 옵션 정보에서 .plan과 .project 파일을 보이지 않는다.</p>
+<p><strong>su [-] [사용자ID][인수]</strong></p>
+<p>설명 : 다른 사용자 계정으로 서브 쉘을 생성하는 것으로, 잠시동안 다른 사용자 계정으로 작업할 필요가 있을때 사용한다.</p>
+<p>많은 사람들이 su가 &lsquo;super user&rsquo;를 의미하는 말로 생각하지만, 사실은 &lsquo;substitute user&rsquo;를 의미하는 말이다.</p>
+<p>옵션- 하이픈(-)을 사용하면 새로운 쉘로 로그인할 때 자신의 로그인 과정을 수행한다. 옵션이 주어지지 않으면 새로운 쉘은 단지 쉘 역할을 수행할 뿐이다.</p>
+<p><strong>shutdown [옵션] 시간 [메세지]</strong></p>
+<p>설명 : 시스템을 종료할 때 일반적으로 사용되는 명령어</p>
+<p>옵션-t n t 옵션 뒤에 n초를 명시해서, 경고 메시지를 보낸후 n초 후에 kill 시그널을 보냄-h shutdown시 halt를 실행-r 시스템 종료를 완료하고 나서 다시 부팅 과정을 수행(리부팅)-c 이미 예약되어 있는 shutdown을 취소-k 모든 동작을 제대로 수행하지만 시스템을 종료할 시간이 되면 아무것도 하지 않음. ksms &lsquo;just kidding&rsquo;의 의미</p>
+<p>리눅스
+리눅스나 유닉스에서는 df 라는 명령으로 현재 디스크의 남은 용량 등의 정보를 얻을 수 있습니다.</p>
+<p>메가바이트(MB)/기가바이트(GB) 단위로, 알아보기 쉽게 출력하기 위해서는</p>
+<p>df -h</p>
+<p>이렇게 -h 옵션을 붙입니다.</p>
+<p>그리고
+df -h -T
+이렇게 -T 옵션을 붙이면 파일 시스템의 종류까지 출력</p>
+<p>/dev/sda1 이 첫번째 하드 디스크 첫번째 파티션입니다. (스카시SCSI가 아닌 IDE 방식 하드의 경우에는 /dev/hda1)</p>
+<ul>
+<li>하드디스크 전체 Size(사이즈)는 7.6 기가바이트</li>
+<li>Used(사용한 용량)는 435메가이고</li>
+<li>Avail(사용 가능한 용량)은 6.8기가이고</li>
+<li>현재 6퍼센트 사용했습니다.</li>
+</ul>
+<p>4.2 파일 명령어</p>
+<p>vi filename - 파일을 만들거나 수정함
+i - input mode
+esc - command mode
+:wq - write and quit
+cat - 파일의 콘텐츠를 설명 (출력)
+cp - 파일을 복제함
+cp file.txt newfile.txt
+mv - 파일의 이름을 변경하거나 경로를 바꿈
+mv filename filename -&gt; rename
+mv filename directory -&gt; move
+ls -al - 숨겨진 파일들까지 포함하여 자세한 설정까지 보여줌
+rm finame - 파일을 삭제함
+rm -r directory - 디렉터리까지 포함하여 파일 혹은 디렉터리를 삭제함
+보통 강제로 디렉터리와 하위 폴더, 파일까지 다 삭제하면 rm -rf directory를 사용함</p>
+<p>4.3 Tree 명령어</p>
+<p>du - disk usage에 대한 현황을 보여줌, 특정 디렉터리를 기준으로 디스크 사용량 확인
+find - 파일을 찾아주는 명령어
+find -&gt; 현재 디렉터리에서만, find . -name &ldquo;filename&rdquo; -&gt; 현제 디렉토리 아래 모든 파일 및 디렉토리 검색
+find / -name &ldquo;filename&rdquo; -&gt; 전체 시스템 중 특정 파일을 검색
+sudo fdisk -l - 디스크 파티션 테이블을 만들거나 조작
+df - 이때 디스크의 용량을 체크함, 리눅스 시스템 전체의 디스크 사용량 확인</p>
+<p>4.4 Linux Manual</p>
+<p>man man - 리눅스의 매뉴얼을 보여줌
+man df -&gt; df의 매뉴얼을 보여줌
+man -k file -&gt; man에서 keyword file을 가지는 애를 찾음
+grep - 패턴과 매칭 되는 줄을 출력함
+man -k file | grep read -&gt; man 페이지에서 file의 키워드를 가지는 애를 찾고, 거기서 read와 매칭되는 줄을 출력함</p>
+<p>4.5 Process 명령어</p>
+<p>ps - 현재 사용하고 있는 프로세스를 출력함
+ps -la, ps -a
+kill -9 pid# - pid# 을 강제 종료함
+top - 프로세스가 실행하고 있는 실제 시간을 알려줌, 시스템의 상태를 전반적으로 알려준다.
+kill이 좀 중요하긴 한데 자세한 내용은 다음의 쉘 프로그래밍에서 알려드리겠습니다.</p>
+<p>top</p>
+<ul>
+<li>cpu 사용량 확인</li>
+</ul>
+<p>sudo shutdown -h now  # 즉시 하드웨어 종료</p>
+<h1 id="또는">또는</h1>
+<p>sudo poweroff -f      # 강제(force) 종료</p>
+<p>???
+/mnt/work/d315ao/JetPack_5.1.2_Linux_DGTR2a/Linux_for_Tegra/rootfs</p>
+<p>리눅스</p>
+<p>SCP는 SSH 위에서 동작</p>
+<p>SSH(Secure Shell)</p>
+<ul>
+<li>목적: 원격 컴퓨터에 접속</li>
+</ul>
+<p>SCP : Secure Copy</p>
+<ul>
+<li>목적 : 파일 복사</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>항목</th>
+					<th>SSH</th>
+					<th>SCP</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>원격 접속</td>
+					<td>O</td>
+					<td>X</td>
+			</tr>
+			<tr>
+					<td>명령 실행</td>
+					<td>O</td>
+					<td>X</td>
+			</tr>
+			<tr>
+					<td>파일 전송</td>
+					<td>X</td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>암호화</td>
+					<td>O</td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>포트</td>
+					<td>22</td>
+					<td>22</td>
+			</tr>
+			<tr>
+					<td>SSH 사용</td>
+					<td>-</td>
+					<td>O</td>
+			</tr>
+	</tbody>
+</table>
+<h1 id="기본명령어-모음">기본명령어 모음</h1>
+<p>ls
+pwd
+top
+reboot</p>
+<h1 id="rm">rm</h1>
+<p>파일 삭제</p>
+<h2 id="폴더-삭제">폴더 삭제</h2>
+<p>rm -r myfolder</p>
+<p>-r = recursive
+-f : 확인 없이 강제 삭제
+-ri : 파일마다 삭제 전 확인</p>
+<p>rmdir myfolder</p>
+<ul>
+<li>비어있는 폴더만 삭제함</li>
+</ul>
+<h3 id="임베디드에서-사용-예시">임베디드에서 사용 예시</h3>
+<pre tabindex="0"><code>rm -rf build
+rm -rf output
+rm -rf install
+</code></pre><h1 id="trash-1000">.Trash-1000</h1>
+<ul>
+<li>리눅스의 휴지통(Trash) 폴더</li>
+</ul>
+<h2 id="왜-생기나">왜 생기나?</h2>
+<p>파일 관리자(예: GNOME Files, Nautilus, Dolphin 등)에서 파일을 삭제할 때</p>
+<p>실제로는 바로 삭제하지 않고 .Trash-1000/ 으로 이동시킴</p>
+<h2 id="1000-">1000 ?</h2>
+<p>리눅스에서는 사용자마다 UID가 있습니다.</p>
+<p>확인 명령어</p>
+<pre tabindex="0"><code>id -u
+</code></pre><p>보통 첫 번째 일반 사용자는 1000</p>
+<h2 id="어디에-생기나">어디에 생기나?</h2>
+<p>외장 SSD, USB, NAS 마운트 지점 등</p>
+<p>예:</p>
+<pre tabindex="0"><code>/media/user/SSD/
+├── project
+├── docs
+└── .Trash-1000
+</code></pre><h2 id="확인">확인</h2>
+<pre tabindex="0"><code>ls -la .Trash-1000
+</code></pre><p>숨김 폴더라서 일반 ls에는 안 보입니다.
+ls -la</p>
+<pre tabindex="0"><code>.Trash-1000/
+├── files/
+├── info/
+</code></pre><ul>
+<li>files/ : 실제 삭제된 파일</li>
+<li>info/ : 원래 위치 정보</li>
+</ul>
+<h1 id="완전-삭제">완전 삭제</h1>
+<p>휴지통 내용 확인:</p>
+<pre tabindex="0"><code>du -sh .Trash-1000
+</code></pre><p>휴지통 비우기:</p>
+<pre tabindex="0"><code>rm -rf .Trash-1000/* 
+
+# or
+
+gio trash --empty
+</code></pre><h1 id="압축파일">압축파일</h1>
+<h2 id="현재-폴더에-어떤-targz-파일이-있는지-확인-명령어">현재 폴더에 어떤 tar.gz 파일이 있는지 확인 명령어</h2>
+<pre tabindex="0"><code>ls *.tar.gz
+</code></pre><p>##현재 폴더에 압축 해제</p>
+<pre tabindex="0"><code>tar -xzvf file.tar.gz
+tar -xzvf project.tar.gz
+</code></pre><p>옵션 의미</p>
+<ul>
+<li>x : extract (압축 해제)</li>
+<li>z : gzip 해제</li>
+<li>v : 진행상황 출력</li>
+<li>f : 파일 지정</li>
+</ul>
+<h2 id="특정-폴더에-압축-해제">특정 폴더에 압축 해제</h2>
+<pre tabindex="0"><code>tar -xzvf project.tar.gz -C /home/user/workspace/
+</code></pre><h2 id="내부-파일-목록만-보기">내부 파일 목록만 보기</h2>
+<ul>
+<li>압축 풀지 않고 확인:</li>
+</ul>
+<pre tabindex="0"><code>tar -tzvf project.tar.gzip
+</code></pre><h2 id="조용히-압축-해제">조용히 압축 해제</h2>
+<ul>
+<li>진행상황 출력 없이:</li>
+</ul>
+<pre tabindex="0"><code>tar -xzf project.tar.gz
+</code></pre><h1 id="zip-파일과-헷갈리지-않기">zip 파일과 헷갈리지 않기</h1>
+<p>project.tar.gz  → tar -xzvf
+project.zip     → unzip</p>
+<h1 id="파일-구조">파일 구조</h1>
+<p>리눅스에서 /desktop은 보통 존재하지 않는 경로
+Desktop이 한글인 경우 Ubuntu 설정에 따라 ~/바탕화면 일 수도 있음</p>
+<p>올바른 경로</p>
+<pre tabindex="0"><code>/home/nvidia/Desktop
+
+또는
+
+~/Desktop
+</code></pre><h2 id="현재-사용자-확인후-접근">현재 사용자 확인후 접근</h2>
+<pre tabindex="0"><code>whoami 
+</code></pre><ul>
+<li>nvidia</li>
+</ul>
+<pre tabindex="0"><code>/home/nvidia/Desktop
+</code></pre><h2 id="확인-명령어">확인 명령어</h2>
+<pre tabindex="0"><code>xdg-user-dir DESKTOP
+</code></pre><p>결과</p>
+<pre tabindex="0"><code>/home/nvidia/Desktop
+</code></pre><h1 id="예시">예시</h1>
+<pre tabindex="0"><code>/mnt에서 Desktop으로 이동 예시
+mv /mnt/project.tar.gz ~/Desktop/
+
+폴더라면:
+
+mv /mnt/project ~/Desktop/
+</code></pre><h2 id="경로-확인-습관">경로 확인 습관</h2>
+<p>이동 전에:</p>
+<p>pwd
+ls</p>
+<p>Desktop 확인:</p>
+<p>ls ~/Desktop</p>
+<h1 id="install">install</h1>
+<p>확인:</p>
+<pre tabindex="0"><code>ls -l install
+</code></pre><p>결과</p>
+<pre tabindex="0"><code>-rwxr-xr-x
+</code></pre><ul>
+<li>위에 처럼 x가 있으면 실행 가능합니다.</li>
+</ul>
+<p>du 명령은 다른 터미널에서 그냥 냅두시면 돼요. 빌드랑 충돌 없어요.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+    <a class="f4 fw4 white-70 dn dib-ns pv2 ph3 no-underline" href="/">
+      &copy; 2025 
+    </a>
+    <div>
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://github.com/username">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

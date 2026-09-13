@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>개발일지s on  </title>
+		<link>https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/</link>
+		<description>Recent content in 개발일지s on  </description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 13 Sep 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>저장소 정리: SvelteKit/Sveltepress 잔재 제거</title>
+				<link>https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2026-09-13-repo-cleanup/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>https://ijjeon1203.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2026-09-13-repo-cleanup/</guid>
+				<description>&lt;h2 id=&#34;배경&#34;&gt;배경&lt;/h2&gt;&#xA;&lt;p&gt;저장소를 분석하던 중, 예전에 Sveltepress/SvelteKit으로 사이트를 만들다가 Hugo로&#xA;전환한 흔적이 정리되지 않고 그대로 커밋되어 있는 것을 발견했다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;node_modules/&lt;/code&gt; 가 통째로 git에 커밋되어 있었음 (17,996개 파일)&lt;/li&gt;&#xA;&lt;li&gt;정작 그걸 설치했을 &lt;code&gt;package.json&lt;/code&gt;은 저장소 어디에도 없음 (테마 서브모듈 내부 제외)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;.svelte-kit/&lt;/code&gt;, &lt;code&gt;.sveltepress/&lt;/code&gt;, &lt;code&gt;src/routes/+page.md&lt;/code&gt; 도 같은 이유로 잔재로 남아있었음&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;.git&lt;/code&gt; 디렉토리가 132MB까지 불어난 주 원인이었음&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;작업-내역&#34;&gt;작업 내역&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;code&gt;.gitignore&lt;/code&gt; 정비&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;처음엔 &lt;code&gt;node_modules/&lt;/code&gt;, &lt;code&gt;.svelte-kit/&lt;/code&gt;, &lt;code&gt;.sveltepress/&lt;/code&gt; 등을 ignore 규칙으로&#xA;추가했으나, 이미 git에 추적(tracked)된 파일들이라 gitignore만으로는&#xA;저장소에서 사라지지 않는다는 점을 확인함&lt;/li&gt;&#xA;&lt;li&gt;논의 후 &amp;ldquo;무시&amp;quot;가 아니라 &amp;ldquo;완전 삭제&amp;quot;로 방향을 바꿈&lt;/li&gt;&#xA;&lt;li&gt;Hugo가 빌드 때마다 재생성하는 &lt;code&gt;.hugo_build.lock&lt;/code&gt;, &lt;code&gt;/public/&lt;/code&gt;,&#xA;&lt;code&gt;/resources/_gen/&lt;/code&gt;, &lt;code&gt;.hugo_cache/&lt;/code&gt; 만 계속 ignore 대상으로 유지&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;죽은 산출물 삭제&lt;/strong&gt; (&lt;code&gt;git rm -r&lt;/code&gt;)&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
